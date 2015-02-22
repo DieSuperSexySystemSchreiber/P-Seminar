@@ -141,8 +141,10 @@ public class STEUERZENTRALE
             return term ;
         }
         else
-        //Wenn start = true ist, dann wird das Ergebnis abgespeichert.
-        //Somit wird sichergestellt, dass nur das Endergebnis abgespeichert wird.
+        /*
+         * Wenn start = true ist, dann wird das Ergebnis abgespeichert.
+         * Somit wird sichergestellt, dass nur das Endergebnis abgespeichert wird.
+        */
         {
             term =b.TermKlammertiefe(klammertiefe,lösung);
             this.ErgebnisEinfuegen(b.Ergebnis());
