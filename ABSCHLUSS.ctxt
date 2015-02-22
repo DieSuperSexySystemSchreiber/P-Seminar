@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=
+comment0.target=ABSCHLUSS()
+comment1.params=erg
+comment1.target=ERGEBNIS\ ErgebnisEinfuegen(double)
+comment2.params=
+comment2.target=double\ ErgebnisPruefen()
+numComments=3

@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.params=
+comment0.target=STEUERZENTRALE()
+comment1.params=erg
+comment1.target=void\ ErgebnisEinfuegen(double)
+comment1.text=\r\n\ Die\ Methode\ f\u00FCgt\ eine\ Zahl\ in\ den\ Ergebnisspeicher\ ein.\r\n\ @param\ erster\ \r\n
+comment2.params=
+comment2.target=TERM\ randTermKlasse()
+comment3.params=
+comment3.target=java.lang.String\ fRandTerm()
+comment4.params=erg
+comment4.target=java.lang.String\ ErgebnisPruefen(double)
+comment5.params=
+comment5.target=ERGEBNIS\ showErster()
+comment6.params=klammertiefe
+comment6.target=java.lang.String\ KlammerTerm(int)
+comment7.params=klammertiefe\ erg\ start
+comment7.target=java.lang.String\ TermKlammertiefe(int,\ double,\ boolean)
+comment8.params=
+comment8.target=char[]\ gibEins()
+numComments=9
