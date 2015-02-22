@@ -20,9 +20,6 @@ public class STEUERZENTRALE
     {
         erster=erster.ErgebnisEinfuegen(erg);   
     }
-<<<<<<< HEAD
-    
-=======
 
     /**
      * Method randTermKlasse
@@ -31,7 +28,7 @@ public class STEUERZENTRALE
      *
      * @return eine der Klassen SUMME, DIFFERENZ, PRODUKT und DIVISION
      */
->>>>>>> origin/master
+
     public TERM randTermKlasse()
     {
         TERM k;
