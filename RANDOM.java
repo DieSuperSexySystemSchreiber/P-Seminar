@@ -1,9 +1,19 @@
 
+/**
+ * Die Klasse RANDOM ist für zufällige Zahlen mit begrenztem Zahlenraum zuständig.
+ * 
+ * @author (Kilian Steinberg)
+ * @version (15/02/22)
+ */
 public class RANDOM {
-
     
-    
-    
+    /**
+     * Method getRandom
+     * Erzeugt eine zufällige Zahl in einem ähnlichen Zahlenraum wie das Ergebnis.
+     * 
+     * @param Ergebnis
+     * @return zufällige Zahl
+     */ 
     public double getRandom(double erg) {
         double x=0;
              if(erg>=100000)
@@ -27,6 +37,12 @@ public class RANDOM {
         
     }
     
+    /**
+     * Method getErgebnis
+     *Erstellt eine Zufällige Zahl/Ergebnis im natürlichen Zahlenraum von 10-9999
+     *
+     * @return zufällige Zahl
+     */
     public double getErgebnis() {
         double rand=Math.random()*(10|100|1000);
         
