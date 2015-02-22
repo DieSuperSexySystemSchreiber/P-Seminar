@@ -19,7 +19,7 @@ public class STEUERZENTRALE
     {
         erster=erster.ErgebnisEinfuegen(erg);   
     }
-
+    
     public TERM randTermKlasse()
     {
         TERM k;
