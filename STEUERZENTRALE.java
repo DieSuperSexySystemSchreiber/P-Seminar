@@ -10,17 +10,17 @@ public class STEUERZENTRALE
     public STEUERZENTRALE()
     {
     }
-    
+
     /**
      * Die Methode fügt eine Zahl in den Ergebnisspeicher ein.
-     * @param erster 
+     * 
+     * @param erg ist das Ergebnis welches abgespeichert wird.
      */
     private void ErgebnisEinfuegen(double erg)
     {
         erster=erster.ErgebnisEinfuegen(erg);   
     }
 
-  
     /**
      * Method randTermKlasse
      *
@@ -72,6 +72,7 @@ public class STEUERZENTRALE
         return term ;
 
     }
+
     /**
      * Method ErgebnisPruefen
      *Vergleicht das Ergebnis des Benutzers mit dem richtigen mit dem ältesten ungelösten Ergebnis
@@ -93,7 +94,7 @@ public class STEUERZENTRALE
     }
 
     /**
-     * Method showErster
+     * Method showErster zeigt das erste abgespeicherte Ergebnis
      *
      * @return Das zuerst abgespeicherte Ergebnis.
      */
@@ -136,24 +137,22 @@ public class STEUERZENTRALE
             return term ;
         }
         else
-       //Wenn start = true ist, dann wird das Ergebnis abgespeichert.
-       //Somit wird sichergestellt, dass nur das Endergebnis abgespeichert wird.
+        //Wenn start = true ist, dann wird das Ergebnis abgespeichert.
+        //Somit wird sichergestellt, dass nur das Endergebnis abgespeichert wird.
         {
             term =b.TermKlammertiefe(klammertiefe,lösung);
             this.ErgebnisEinfuegen(b.Ergebnis());
             return term ; 
         }
 
-        
     }
-
     
-   /** Method gibEins
-    * Testmethode; macht aus einem String ein char array.
-    * 
-    * @return char array
-    */
-   public char[] gibEins()
+    /** Method gibEins
+     * Testmethode; macht aus einem String ein char array.
+     * 
+     * @return char array
+     */
+    public char[] gibEins()
     {
         String hello = "Hello";
         char[] chars = KlammerTerm(3).toCharArray();
