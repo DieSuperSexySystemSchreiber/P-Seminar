@@ -4,7 +4,7 @@
  * Die Klasse ABSCHLUSS ist eine Hilfe für den ERGEBNISSPEICHER
  * 
  * @author (Kilian Steinberg)
- * @version (15/02/22)
+ * @version (15/02/23)
  */
 public class ABSCHLUSS extends ERGEBNIS
 {
@@ -19,9 +19,9 @@ public class ABSCHLUSS extends ERGEBNIS
      * @param erg Das Ergebnis welches eingefügt wird
      * @return neuer Speicher
      */
-    public ERGEBNIS ErgebnisEinfuegen(double erg)
+    public ERGEBNIS ErgebnisEinfuegen(double erg, String term)
     {
-        ERGEBNISSPEICHER e=new ERGEBNISSPEICHER(erg);
+        ERGEBNISSPEICHER e=new ERGEBNISSPEICHER(erg, term);
         e.naechster=this;
         return e;
     }

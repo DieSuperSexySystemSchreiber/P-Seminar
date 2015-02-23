@@ -1,6 +1,6 @@
 #BlueJ class context
-comment0.params=erg
-comment0.target=ERGEBNIS\ ErgebnisEinfuegen(double)
+comment0.params=erg\ term
+comment0.target=ERGEBNIS\ ErgebnisEinfuegen(double,\ java.lang.String)
 comment1.params=
 comment1.target=double\ ErgebnisPruefen()
 numComments=2

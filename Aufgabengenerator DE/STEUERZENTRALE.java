@@ -2,7 +2,7 @@
  * Die Klasse STEUERZENTRALE ist die ausführende bzw. Anweisung gebende Klasse des Termgenerators.
  * 
  * @author (Kilian Steinberg)
- * @version (15/02/22)
+ * @version (15/02/23)
  */
 public class STEUERZENTRALE
 {
@@ -12,13 +12,14 @@ public class STEUERZENTRALE
     }
 
     /**
-     * Die Methode fügt eine Zahl in den Ergebnisspeicher ein.
+     * Die Methode fügt einen Term mit zugehörigem Ergebnis in den Ergebnisspeicher ein.
      * 
      * @param erg ist das Ergebnis welches abgespeichert wird.
+     * @param term ist der Term der abgespeichert wird.
      */
-    private void ErgebnisEinfuegen(double erg)
+    private void ErgebnisEinfuegen(double erg, String term)
     {
-        erster=erster.ErgebnisEinfuegen(erg);   
+        erster=erster.ErgebnisEinfuegen(erg, term);   
     }
 
     /**
@@ -69,7 +70,7 @@ public class STEUERZENTRALE
         String term;
 
         term =k.RandTerm();
-        this.ErgebnisEinfuegen(k.Ergebnis());
+        this.ErgebnisEinfuegen(k.Ergebnis(), term);
         return term ;
 
     }
@@ -122,7 +123,7 @@ public class STEUERZENTRALE
      *
      * @param klammertiefe die gewünschte Klammertiefe
      * @param erg ein Ergebnis welches Rekursiv in einen Term zerlegt werden kann
-     * @param start gibt an ob dies der fertige Term oder nur ein Zwischenterm dessen ist
+     * @param start gibt an ob dies der fertige Term oder nur ein Zwischenterm dessen ist; setzt man start=false wird ein Term mit gewünschtem Ergebnis erstellt.
      * @return Term
      */
     public String TermKlammertiefe(int klammertiefe, double erg, boolean start)
@@ -144,7 +145,7 @@ public class STEUERZENTRALE
         */
         {
             term =b.TermKlammertiefe(klammertiefe,lösung);
-            this.ErgebnisEinfuegen(b.Ergebnis());
+            this.ErgebnisEinfuegen(b.Ergebnis(), term);
             return term ; 
         }
 

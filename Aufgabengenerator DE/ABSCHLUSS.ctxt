@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.params=
 comment0.target=ABSCHLUSS()
-comment1.params=erg
-comment1.target=ERGEBNIS\ ErgebnisEinfuegen(double)
+comment1.params=erg\ term
+comment1.target=ERGEBNIS\ ErgebnisEinfuegen(double,\ java.lang.String)
 comment1.text=\r\n\ Method\ ErgebnisEinfuegen\r\n\ Erstellt\ einen\ neuen\ ERGEBNISSPEICHER\ mit\ einem\ bestimmten\ Ergebnis\ als\ Attribut\r\n\r\n\ @param\ erg\ Das\ Ergebnis\ welches\ eingef\u00FCgt\ wird\r\n\ @return\ neuer\ Speicher\r\n
 comment2.params=
 comment2.target=double\ ErgebnisPruefen()
