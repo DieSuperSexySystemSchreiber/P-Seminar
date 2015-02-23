@@ -1,5 +1,5 @@
 /**
- * Die Klasse STEUERZENTRALE ist die ausführende bzw. Anweisung gebende Klasse des Termgenerators.
+ * The class STEUERZENTRALE is the executive class of the problem generator.
  * 
  * @author (Kilian Steinberg)
  * @version (15/02/22)
