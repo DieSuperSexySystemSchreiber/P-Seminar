@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=
+comment0.target=double\ Ergebnis()
+comment1.params=
+comment1.target=java.lang.String\ RandTerm()
+comment2.params=klammertiefe\ erg
+comment2.target=java.lang.String\ TermKlammertiefe(int,\ double)
+numComments=3
