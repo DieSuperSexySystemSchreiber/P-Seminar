@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.params=erg
 comment0.target=double\ getRandom(double)
-comment0.text=\n\ Method\ getRandom\n\ Erzeugt\ eine\ zuf\u00E4llige\ Zahl\ in\ einem\ \u00E4hnlichen\ Zahlenraum\ wie\ das\ Ergebnis.\n\ \n\ @param\ Ergebnis\n\ @return\ zuf\u00E4llige\ Zahl\n
+comment0.text=\n\ Method\ getRandom\n\ Generates\ a\ random\ number\ in\ a\ similar\ co-domain\ as\ the\ result.\n\ \n\ @param\ Ergebnis\ (result)\n\ @return\ zuf\u00E4llige\ Zahl\ (random\ number)\n
 comment1.params=
 comment1.target=double\ getErgebnis()
-comment1.text=\n\ Method\ getErgebnis\nErstellt\ eine\ Zuf\u00E4llige\ Zahl/Ergebnis\ im\ nat\u00FCrlichen\ Zahlenraum\ von\ 10-9999\n\n\ @return\ zuf\u00E4llige\ Zahl\n
+comment1.text=\n\ Method\ getErgebnis\n\ Generates\ a\ random\ number/\ result\ with\ a\ natural\ co-domain\ between\ 10\ and\ 9999.\n\n\ @return\ zuf\u00E4llige\ Zahl\ (random\ number)\n
 numComments=2

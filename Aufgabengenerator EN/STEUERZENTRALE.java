@@ -1,5 +1,5 @@
 /**
- * The class STEUERZENTRALE is the executive class of the problem generator.
+ * The class STEUERZENTRALE (control center) is the executive class of the term generator.
  * 
  * @author (Kilian Steinberg)
  * @version (15/02/22)
@@ -12,9 +12,9 @@ public class STEUERZENTRALE
     }
 
     /**
-     * Die Methode fügt eine Zahl in den Ergebnisspeicher ein.
+     * This method adds a number to the result memory.
      * 
-     * @param erg ist das Ergebnis welches abgespeichert wird.
+     * @param erg is the result which is beeing saved.
      */
     private void ErgebnisEinfuegen(double erg)
     {
@@ -24,9 +24,9 @@ public class STEUERZENTRALE
     /**
      * Method randTermKlasse
      *
-     *Eine Unterklasse von TERM wird zufällig ausgewählt, mit welcher anschließend gearbeitet werden kann.
+     *A subclass of TERM is randomly choosen, with which the program works.
      *
-     * @return eine der Klassen SUMME, DIFFERENZ, PRODUKT und DIVISION
+     * @return a class SUMME (sum), DIFFERENZ (difference) , PRODUKT (product) and DIVISION
      */
 
     public TERM randTermKlasse()
@@ -59,7 +59,7 @@ public class STEUERZENTRALE
 
     /**
      * Method fRandTerm
-     * Erstellt einen zufällig generierten Term mit einem zufälligen Ergebnis und der Klammertiefe 2.
+     * Creates a random generated term with a random result and a nesting depth of 2.
      *
      * @return Term
      */
@@ -76,10 +76,10 @@ public class STEUERZENTRALE
 
     /**
      * Method ErgebnisPruefen
-     *Vergleicht das Ergebnis des Benutzers mit dem richtigen mit dem ältesten ungelösten Ergebnis
+     * Compairs the users' result with the oldest, right and unsolved result.
      *
-     * @param erg Ergebnis des Benutzers
-     * @return eine Antwort: "Richtig" oder "Falsch" je nach dem ob das Ergebnis richtig war
+     * @param erg The users' result
+     * @return an answer: "Right" or "Wrong", depending on whether the result is correct.
      */
     public String ErgebnisPruefen(double erg)
     {
@@ -95,9 +95,9 @@ public class STEUERZENTRALE
     }
 
     /**
-     * Method showErster zeigt das erste abgespeicherte Ergebnis
+     * Method showErster shows the saved result.
      *
-     * @return Das zuerst abgespeicherte Ergebnis.
+     * @return The first saved result.
      */
     public ERGEBNIS showErster()
     {
@@ -106,9 +106,9 @@ public class STEUERZENTRALE
 
     /**
      * Method KlammerTerm
-     *Generiert einen zufälligen Term mit beliebiger Klammertiefe
+     * Generates a random term with a random nesting depth.
      *
-     * @param klammertiefe die Gewünschte Klammertiefe (z.B. 1 -> eine Zahl; 2 -> a+b)
+     * @param klammertiefe The required nesting depth (e.g. 1 -> one number; 2 -> a+b)
      * @return Term
      */
     public  String KlammerTerm(int klammertiefe)
@@ -118,11 +118,11 @@ public class STEUERZENTRALE
 
     /**
      * Method TermKlammertiefe
-     * Erzeugt einen Term mit gewünschter Klammertiefe und wahlweise für ein gewünschtes Ergebnis.
+     * Generates a term with the required nesting depth and an (optional) result.
      *
-     * @param klammertiefe die gewünschte Klammertiefe
-     * @param erg ein Ergebnis welches Rekursiv in einen Term zerlegt werden kann
-     * @param start gibt an ob dies der fertige Term oder nur ein Zwischenterm dessen ist
+     * @param klammertiefe The required nesting depth.
+     * @param erg A result which can be decomposed recursively into a term.
+     * @param start Tells you if this is the final or a intermediate term.
      * @return Term
      */
     public String TermKlammertiefe(int klammertiefe, double erg, boolean start)
@@ -132,15 +132,15 @@ public class STEUERZENTRALE
         RANDOM f=new RANDOM();
         double lösung=f.getErgebnis();
         if (start==false)
-        // Wenn start = false ist, dann wird der parameter erg in einen weiteren Term aufgespalten
+        // If start = false, the parameter erg is beeing split into another term.
         {lösung=erg;
             term =b.TermKlammertiefe(klammertiefe,lösung);
             return term ;
         }
         else
         /*
-         * Wenn start = true ist, dann wird das Ergebnis abgespeichert.
-         * Somit wird sichergestellt, dass nur das Endergebnis abgespeichert wird.
+         * If start = true ist, the result is beeing saved.
+         * This ensures that only the final result will be saved.
         */
         {
             term =b.TermKlammertiefe(klammertiefe,lösung);
@@ -151,7 +151,7 @@ public class STEUERZENTRALE
     }
     
     /** Method gibEins
-     * Testmethode; macht aus einem String ein char array.
+     * Testmethod; modifies String to char array.
      * 
      * @return char array
      */

@@ -1,7 +1,7 @@
 
 
 /**
- * Die Klasse ABSCHLUSS ist eine Hilfe für den ERGEBNISSPEICHER
+ * The class ABSCHLUSS is an assistance for the ERGEBNISSPEICHER (result memory).
  * 
  * @author (Kilian Steinberg)
  * @version (15/02/22)
@@ -14,10 +14,9 @@ public class ABSCHLUSS extends ERGEBNIS
 
     /**
      * Method ErgebnisEinfuegen
-     * Erstellt einen neuen ERGEBNISSPEICHER mit einem bestimmten Ergebnis als Attribut
-     *
-     * @param erg Das Ergebnis welches eingefügt wird
-     * @return neuer Speicher
+     * Creates a new ERGEBNISSPEICHER with a certain result as an attribute.
+     * @param erg The result which is beeing inserted.
+     * @return new memory
      */
     public ERGEBNIS ErgebnisEinfuegen(double erg)
     {
@@ -29,9 +28,9 @@ public class ABSCHLUSS extends ERGEBNIS
     
     /**
      * Method ErgebnisPruefen
-     * Sollte die Methode beim Abschluss ankommen ist kein Ergebnis verfügbar oder alle wurden bereits gelöst.
+     * If the method comes to an end, than there is no result or everything is beeing solved.
      *
-     * @return -1 (Gibt es der Steuerzentrale zu erkennen)
+     * @return -1 (A recognition for the control center)
      */
     public double ErgebnisPruefen()
     {
