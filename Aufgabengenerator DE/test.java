@@ -39,8 +39,6 @@ public class test
     public boolean testOne()
     {
        STEUERZENTRALE k= new STEUERZENTRALE();
-       return regex(k.fRandTerm());
-       
+       return regex(k.KlammerTerm(3));
     }
 }
-
