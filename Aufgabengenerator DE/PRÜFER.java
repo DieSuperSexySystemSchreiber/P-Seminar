@@ -57,8 +57,13 @@ public class PRÜFER
                 }
 
         }
-
-        return new String(chars);
+        
+        char[] term=new char[chars.length-counter];
+        for(int j=0;j<term.length;j++)
+        {
+            term[j]=chars[j];
+        }
+        return new String(term);
     }
 
     public char[] PosEntfernen(int Pos, char[] Liste)
