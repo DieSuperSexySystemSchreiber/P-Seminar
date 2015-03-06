@@ -58,6 +58,8 @@ public class PRÜFER
 
         }
         
+        
+        
         char[] term=new char[chars.length-counter];
         for(int j=0;j<term.length;j++)
         {
@@ -66,7 +68,7 @@ public class PRÜFER
         return new String(term);
     }
 
-    public char[] PosEntfernen(int Pos, char[] Liste)
+    private char[] PosEntfernen(int Pos, char[] Liste)
     {   
 
         for (int a=Pos; a<Liste.length-1; a++)
