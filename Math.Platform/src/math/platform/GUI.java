@@ -28,6 +28,8 @@ public class GUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel5 = new javax.swing.JLabel();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jInternalFrame1 = new javax.swing.JInternalFrame();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -52,28 +54,55 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel5.setText("jLabel5");
 
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        jInternalFrame1.setVisible(true);
+
+        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
+        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
+        jInternalFrame1Layout.setHorizontalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jInternalFrame1Layout.setVerticalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Lernplattform | Mathematik");
         setFocusable(false);
 
-        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
         jLabel1.setText("Aufgabeneinstellungen");
 
-        jLabel3.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jLabel3.setText("Name:");
 
+        jComboBox1.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jComboBox1.setMaximumRowCount(2);
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "5", "6" }));
         jComboBox1.setToolTipText("Hier Jahrgangsstufe auswählen");
 
-        jLabel4.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jLabel4.setText("Schwierigkeit:");
 
-        jLabel6.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jLabel6.setText("Jahrgangsstufe:");
 
+        jTextField1.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jTextField1.setToolTipText("Hier gewünschten Namen eingeben");
 
+        jSlider1.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jSlider1.setMajorTickSpacing(1);
         jSlider1.setMaximum(5);
         jSlider1.setMinimum(1);
@@ -83,20 +112,25 @@ public class GUI extends javax.swing.JFrame {
         jSlider1.setSnapToTicks(true);
         jSlider1.setToolTipText("Gewünschte Schwierigkeit wählen");
 
-        jLabel7.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jLabel7.setText("Rechenoperationen:");
 
+        jCheckBox1.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jCheckBox1.setText("Plus ( + )");
 
+        jCheckBox2.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jCheckBox2.setText("Minus ( - )");
 
+        jCheckBox3.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jCheckBox3.setText("Mal ( * )");
 
+        jCheckBox4.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jCheckBox4.setText("Geteilt ( / )");
 
-        jLabel8.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jLabel8.setText("Klammertiefe:");
 
+        jSlider2.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jSlider2.setMajorTickSpacing(1);
         jSlider2.setMaximum(10);
         jSlider2.setMinimum(1);
@@ -106,23 +140,26 @@ public class GUI extends javax.swing.JFrame {
         jSlider2.setSnapToTicks(true);
         jSlider2.setToolTipText("Klammertiefe wählen");
 
-        jLabel9.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jLabel9.setText("Zahlenraum");
 
-        jLabel10.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jLabel10.setText("von");
 
+        jComboBox2.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jComboBox2.setMaximumRowCount(6);
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "10", "100", "1000", "10000", "100000" }));
         jComboBox2.setToolTipText("");
 
-        jLabel11.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jLabel11.setText("bis");
 
+        jComboBox3.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jComboBox3.setMaximumRowCount(5);
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10", "100", "1000", "10000", "100000" }));
         jComboBox3.setToolTipText("");
 
+        jButton1.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jButton1.setText("Generieren...");
         jButton1.setToolTipText("");
 
@@ -221,7 +258,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11)
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
@@ -273,6 +310,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;
+    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
