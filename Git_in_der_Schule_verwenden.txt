@@ -1,5 +1,7 @@
 Proxy setzten:
 
+export http_proxy="http://user:password@10.16.1.254:8080"
+export https_proxy="http://user:password@10.16.1.254:8080"
 export all_proxy="http://user:password@10.16.1.254:8080"
 
 Git:
