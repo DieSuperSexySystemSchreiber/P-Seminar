@@ -6,7 +6,7 @@ public class test
     }
     public void regex(String a)
     {
-        String term="((\\(*\\-?)?\\d+\\)*[*|/|+|-])+\\d+\\)*";
+        String term="((\\(*\\-?)?\\d+\\)*[//*|///|//+|//-])+\\d+\\)*";
         Pattern pattern = Pattern.compile(term);
         Matcher matcher = pattern.matcher(a);
         if(matcher.matches())
