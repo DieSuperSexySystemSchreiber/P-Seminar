@@ -5,6 +5,8 @@
  */
 package math.platform;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author David Müller
@@ -32,25 +34,20 @@ public class GUI extends javax.swing.JFrame {
         jInternalFrame1 = new javax.swing.JInternalFrame();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jSlider1 = new javax.swing.JSlider();
         jLabel7 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
+        plus = new javax.swing.JCheckBox();
+        minus = new javax.swing.JCheckBox();
+        mal = new javax.swing.JCheckBox();
+        geteilt = new javax.swing.JCheckBox();
         jLabel8 = new javax.swing.JLabel();
-        jSlider2 = new javax.swing.JSlider();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox();
-        jLabel11 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox();
-        jButton1 = new javax.swing.JButton();
+        klammertiefe = new javax.swing.JComboBox();
+        buttonGenerieren = new javax.swing.JButton();
+        operanten = new javax.swing.JLabel();
+        operantenzahl = new javax.swing.JComboBox();
+        jLabel13 = new javax.swing.JLabel();
+        stellen = new javax.swing.JComboBox();
+        positiv = new javax.swing.JCheckBox();
+        brueche = new javax.swing.JCheckBox();
 
         jLabel5.setText("jLabel5");
 
@@ -82,189 +79,186 @@ public class GUI extends javax.swing.JFrame {
         setTitle("Lernplattform | Mathematik");
         setFocusable(false);
 
-        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Aufgabeneinstellungen");
 
-        jLabel3.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
-        jLabel3.setText("Name:");
-
-        jComboBox1.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
-        jComboBox1.setMaximumRowCount(2);
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "5", "6" }));
-        jComboBox1.setToolTipText("Hier Jahrgangsstufe auswählen");
-
-        jLabel4.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
-        jLabel4.setText("Schwierigkeit:");
-
-        jLabel6.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
-        jLabel6.setText("Jahrgangsstufe:");
-
-        jTextField1.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
-        jTextField1.setToolTipText("Hier gewünschten Namen eingeben");
-
-        jSlider1.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
-        jSlider1.setMajorTickSpacing(1);
-        jSlider1.setMaximum(5);
-        jSlider1.setMinimum(1);
-        jSlider1.setMinorTickSpacing(1);
-        jSlider1.setPaintLabels(true);
-        jSlider1.setPaintTicks(true);
-        jSlider1.setSnapToTicks(true);
-        jSlider1.setToolTipText("Gewünschte Schwierigkeit wählen");
-
-        jLabel7.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setText("Rechenoperationen:");
 
-        jCheckBox1.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
-        jCheckBox1.setText("Plus ( + )");
+        plus.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        plus.setText("Plus ( + )");
 
-        jCheckBox2.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
-        jCheckBox2.setText("Minus ( - )");
+        minus.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        minus.setText("Minus ( - )");
 
-        jCheckBox3.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
-        jCheckBox3.setText("Mal ( * )");
+        mal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        mal.setText("Mal ( * )");
 
-        jCheckBox4.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
-        jCheckBox4.setText("Geteilt ( / )");
+        geteilt.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        geteilt.setText("Geteilt ( / )");
 
-        jLabel8.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel8.setText("Klammertiefe:");
 
-        jSlider2.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
-        jSlider2.setMajorTickSpacing(1);
-        jSlider2.setMaximum(10);
-        jSlider2.setMinimum(1);
-        jSlider2.setMinorTickSpacing(1);
-        jSlider2.setPaintLabels(true);
-        jSlider2.setPaintTicks(true);
-        jSlider2.setSnapToTicks(true);
-        jSlider2.setToolTipText("Klammertiefe wählen");
+        klammertiefe.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        klammertiefe.setMaximumRowCount(5);
+        klammertiefe.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5" }));
+        klammertiefe.setToolTipText("");
 
-        jLabel9.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
-        jLabel9.setText("Zahlenraum");
+        buttonGenerieren.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        buttonGenerieren.setText("Generieren...");
+        buttonGenerieren.setToolTipText("");
+        buttonGenerieren.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonGenerierenActionPerformed(evt);
+            }
+        });
 
-        jLabel10.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
-        jLabel10.setText("von");
+        operanten.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        operanten.setText("Operantenanzahl:");
 
-        jComboBox2.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
-        jComboBox2.setMaximumRowCount(6);
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "10", "100", "1000", "10000", "100000" }));
-        jComboBox2.setToolTipText("");
+        operantenzahl.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        operantenzahl.setMaximumRowCount(10);
+        operantenzahl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+        operantenzahl.setToolTipText("");
 
-        jLabel11.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
-        jLabel11.setText("bis");
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel13.setText("maximale Stellen:");
 
-        jComboBox3.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
-        jComboBox3.setMaximumRowCount(5);
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10", "100", "1000", "10000", "100000" }));
-        jComboBox3.setToolTipText("");
+        stellen.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        stellen.setMaximumRowCount(5);
+        stellen.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5" }));
+        stellen.setToolTipText("");
 
-        jButton1.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
-        jButton1.setText("Generieren...");
-        jButton1.setToolTipText("");
+        positiv.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        positiv.setText("nur positive Zahlen");
+        positiv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                positivActionPerformed(evt);
+            }
+        });
+
+        brueche.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        brueche.setText("mit Brüchen");
+        brueche.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bruecheActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel1)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel6)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel7)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jCheckBox2)
-                                        .addComponent(jCheckBox1))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jCheckBox4)
-                                        .addComponent(jCheckBox3)))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel8)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel9)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jLabel10)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jLabel11)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addContainerGap())))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(minus)
+                                    .addComponent(plus))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(mal)
+                                    .addComponent(geteilt)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel13)
+                                    .addComponent(jLabel8))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(stellen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(klammertiefe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(10, 10, 10)
+                                        .addComponent(operanten)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(operantenzahl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel2)
+                        .addGap(88, 88, 88))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(positiv)
+                                .addGap(18, 18, 18)
+                                .addComponent(brueche)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(buttonGenerieren)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
+                        .addGap(88, 88, 88)
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jLabel7)
+                            .addComponent(plus)
+                            .addComponent(mal))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(7, 7, 7)
+                            .addComponent(geteilt)
+                            .addComponent(minus))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(klammertiefe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(operanten)
+                            .addComponent(operantenzahl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel13)
+                            .addComponent(stellen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jCheckBox1)
-                    .addComponent(jCheckBox3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox4)
-                    .addComponent(jCheckBox2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(jSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addContainerGap())
+                    .addComponent(positiv)
+                    .addComponent(brueche))
+                .addGap(18, 18, 18)
+                .addComponent(buttonGenerieren)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void positivActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_positivActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_positivActionPerformed
+
+    private void bruecheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bruecheActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bruecheActionPerformed
+
+    private void buttonGenerierenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerierenActionPerformed
+        boolean rzPlus = plus.isSelected();
+        boolean rzMinus = minus.isSelected();
+        boolean rzMal = mal.isSelected();
+        boolean rzGeteilt = geteilt.isSelected();
+        int klammert = klammertiefe.getSelectedIndex() + 1;
+        int ersetzungen = operantenzahl.getSelectedIndex() + 1;
+        int maxStellen = stellen.getSelectedIndex() + 1;
+        boolean nurPositiv = positiv.isSelected();
+        boolean bruch = brueche.isSelected();
+        
+        System.out.println("Der Term mit der Klammertiefe "+klammert+" besteht aus "+ersetzungen+" Ersetzungen. Die Zahlen dürfen maximal "+maxStellen+" Stellen lang sein.");
+        JOptionPane.showMessageDialog(this, "Der Term mit der Klammertiefe "+klammert+" besteht aus "+ersetzungen+" Ersetzungen. Die Zahlen dürfen maximal "+maxStellen+" Stellen lang sein.", "Ausgabe", JOptionPane.INFORMATION_MESSAGE);
+        //class.generiereTerm(rzPlus, rzminus, rzMal, rzGeteilt, klammert, ersetzungen, maxStellen, nurPositiv, bruch)
+    }//GEN-LAST:event_buttonGenerierenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -302,29 +296,24 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JComboBox jComboBox3;
+    private javax.swing.JCheckBox brueche;
+    private javax.swing.JButton buttonGenerieren;
+    private javax.swing.JCheckBox geteilt;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JSlider jSlider1;
-    private javax.swing.JSlider jSlider2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JComboBox klammertiefe;
+    private javax.swing.JCheckBox mal;
+    private javax.swing.JCheckBox minus;
+    private javax.swing.JLabel operanten;
+    private javax.swing.JComboBox operantenzahl;
+    private javax.swing.JCheckBox plus;
+    private javax.swing.JCheckBox positiv;
+    private javax.swing.JComboBox stellen;
     // End of variables declaration//GEN-END:variables
 }
