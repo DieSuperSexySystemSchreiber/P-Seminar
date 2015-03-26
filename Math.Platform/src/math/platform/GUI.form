@@ -74,13 +74,13 @@
                               <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="minus" min="-2" max="-2" attributes="0"/>
-                                  <Component id="plus" min="-2" max="-2" attributes="0"/>
+                                  <Component id="subtractCheckbox" min="-2" max="-2" attributes="0"/>
+                                  <Component id="addCheckbox" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="mal" min="-2" max="-2" attributes="0"/>
-                                  <Component id="geteilt" min="-2" max="-2" attributes="0"/>
+                                  <Component id="multiplyCheckbox" min="-2" max="-2" attributes="0"/>
+                                  <Component id="divideCheckbox" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -90,13 +90,13 @@
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="stellen" min="-2" max="-2" attributes="0"/>
+                                  <Component id="digitsDropdown" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="klammertiefe" min="-2" max="-2" attributes="0"/>
+                                      <Component id="bracketDephtDropdown" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                       <Component id="operanten" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="operantenzahl" min="-2" max="-2" attributes="0"/>
+                                      <Component id="substitutionDropdown" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -110,9 +110,9 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="positiv" min="-2" max="-2" attributes="0"/>
+                              <Component id="positiveCheckbox" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="brueche" min="-2" max="-2" attributes="0"/>
+                              <Component id="fractionCheckbox" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -121,7 +121,7 @@
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="buttonGenerieren" min="-2" max="-2" attributes="0"/>
+              <Component id="generateButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -140,35 +140,35 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="plus" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="mal" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="addCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="multiplyCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="geteilt" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="minus" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="divideCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="subtractCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="klammertiefe" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="bracketDephtDropdown" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="operanten" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="operantenzahl" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="substitutionDropdown" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="stellen" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="digitsDropdown" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="positiv" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="brueche" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="positiveCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="fractionCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="buttonGenerieren" min="-2" max="-2" attributes="0"/>
+              <Component id="generateButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="22" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -193,7 +193,7 @@
         <Property name="text" type="java.lang.String" value="Rechenoperationen:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="plus">
+    <Component class="javax.swing.JCheckBox" name="addCheckbox">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="12" style="0"/>
@@ -201,7 +201,7 @@
         <Property name="text" type="java.lang.String" value="Plus ( + )"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="minus">
+    <Component class="javax.swing.JCheckBox" name="subtractCheckbox">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="12" style="0"/>
@@ -209,7 +209,7 @@
         <Property name="text" type="java.lang.String" value="Minus ( - )"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="mal">
+    <Component class="javax.swing.JCheckBox" name="multiplyCheckbox">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="12" style="0"/>
@@ -217,7 +217,7 @@
         <Property name="text" type="java.lang.String" value="Mal ( * )"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="geteilt">
+    <Component class="javax.swing.JCheckBox" name="divideCheckbox">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="12" style="0"/>
@@ -233,7 +233,7 @@
         <Property name="text" type="java.lang.String" value="Klammertiefe:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="klammertiefe">
+    <Component class="javax.swing.JComboBox" name="bracketDephtDropdown">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="12" style="0"/>
@@ -251,7 +251,7 @@
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="buttonGenerieren">
+    <Component class="javax.swing.JButton" name="generateButton">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="12" style="0"/>
@@ -260,7 +260,7 @@
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonGenerierenActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="generateButtonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="operanten">
@@ -271,7 +271,7 @@
         <Property name="text" type="java.lang.String" value="Operantenanzahl:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="operantenzahl">
+    <Component class="javax.swing.JComboBox" name="substitutionDropdown">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="12" style="0"/>
@@ -302,7 +302,7 @@
         <Property name="text" type="java.lang.String" value="maximale Stellen:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="stellen">
+    <Component class="javax.swing.JComboBox" name="digitsDropdown">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="12" style="0"/>
@@ -320,7 +320,7 @@
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="positiv">
+    <Component class="javax.swing.JCheckBox" name="positiveCheckbox">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="12" style="0"/>
@@ -328,10 +328,10 @@
         <Property name="text" type="java.lang.String" value="nur positive Zahlen"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="positivActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="positiveCheckboxActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="brueche">
+    <Component class="javax.swing.JCheckBox" name="fractionCheckbox">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="12" style="0"/>
@@ -339,7 +339,7 @@
         <Property name="text" type="java.lang.String" value="mit Br&#xfc;chen"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bruecheActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fractionCheckboxActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
