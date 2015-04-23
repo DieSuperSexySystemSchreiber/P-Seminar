@@ -23,25 +23,12 @@ public class DATENKNOTEN extends TERMELEMENT
 
     public void präfix()
     {
-        System.out.println(inhalt.x);
+        System.out.println(inhalt.op);
         linkerNaechster.präfix();
         rechterNaechster.präfix();
     }
 
-    public void unterbäumeErstellen(int anz) {
-        if( anz!=0) {
-        int nx=(int)Math.random()*inhalt.x;
-            
-           setzeLinkerNaechster(new DATENKNOTEN(new OPERATOR(nx)));
-           setzeRechterNaechster(new DATENKNOTEN(new OPERATOR(inhalt.x-nx)));
-           linkerNaechster.unterbäumeErstellen(--anz);
-           rechterNaechster.unterbäumeErstellen(--anz);
-    }
-    else{
-        System.out.println("Alle Bäume erstellt");
-    }
     
-}
 
 public int gibHöhe() {
     return 1+ Math.max(linkerNaechster.gibHöhe(),rechterNaechster.gibHöhe());
@@ -49,10 +36,10 @@ public int gibHöhe() {
 
 public TERMELEMENT sortiertEinfügen(OPERATOR e) {
     
-    if(e.x>inhalt.x) {
+    if(e.op>inhalt.op) {
         rechterNaechster=rechterNaechster.sortiertEinfügen(e);
 }
-else if(e.x<inhalt.x) {
+else if(e.op<inhalt.op) {
      linkerNaechster=linkerNaechster.sortiertEinfügen(e);
 }
 else { System.out.println("Was kannst du eigentlich?");
@@ -84,6 +71,6 @@ public OPERATOR[] baumSortieren(int anz,OPERATOR[] liste) {
 }
 public String infix()
 {
-    return rechterNaechster.infix()+inhalt.x+linkerNaechster.infix();
+    return rechterNaechster.infix()+inhalt.op+linkerNaechster.infix();
 }
 }

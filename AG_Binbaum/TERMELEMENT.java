@@ -1,7 +1,7 @@
 public abstract class TERMELEMENT
 {
     public abstract void präfix();
-    public abstract void unterbäumeErstellen(int anz);
+    
     public abstract int gibHöhe();
     public abstract TERMELEMENT sortiertEinfügen(OPERATOR e);
 

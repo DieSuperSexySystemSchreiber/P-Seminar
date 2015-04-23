@@ -1,9 +1,17 @@
 public class ZAHL extends TERMELEMENT
 {
     private int number;
+    private final int NAN=Integer.MAX_VALUE;
+    
     public ZAHL(int i)
     {
         number=i;
+        
+    }
+    
+    public ZAHL()
+    {
+        number=NAN;
     }
     
     public void präfix()

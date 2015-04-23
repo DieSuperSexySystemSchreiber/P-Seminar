@@ -43,11 +43,7 @@ public class TERM
         wurzel.präfix();
     }
 
-    public void unterbäumeErstellen(int anzBäume) {
-
-        wurzel.unterbäumeErstellen(anzBäume);
-
-    }
+    
 
     public int gibHöhe()
     {
