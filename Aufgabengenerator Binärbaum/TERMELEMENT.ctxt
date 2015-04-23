@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ pr\u00E4fix()
+comment1.params=anz
+comment1.target=void\ unterb\u00E4umeErstellen(int)
+comment2.params=
+comment2.target=int\ gibH\u00F6he()
+comment3.params=e
+comment3.target=TERMELEMENT\ sortiertEinf\u00FCgen(OPERATOR)
+comment4.params=
+comment4.target=int\ gibAnzahl()
+comment5.params=nr\ liste
+comment5.target=OPERATOR[]\ baumSortieren(int,\ OPERATOR[])
+comment6.params=
+comment6.target=boolean\ isAVL()
+comment7.params=
+comment7.target=java.lang.String\ infix()
+numComments=8

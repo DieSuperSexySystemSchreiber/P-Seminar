@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.params=
+comment0.target=ZAHL()
+comment1.params=
+comment1.target=void\ pr\u00E4fix()
+comment2.params=anz
+comment2.target=void\ unterb\u00E4umeErstellen(int)
+comment3.params=
+comment3.target=int\ gibH\u00F6he()
+comment4.params=e
+comment4.target=BAUMELEMENT\ sortiertEinf\u00FCgen(DATENELEMENT)
+comment5.params=
+comment5.target=int\ gibAnzahl()
+comment6.params=nr\ liste
+comment6.target=DATENELEMENT[]\ baumSortieren(int,\ DATENELEMENT[])
+comment7.params=
+comment7.target=boolean\ isAVL()
+comment8.params=
+comment8.target=java.lang.String\ infix()
+numComments=9
