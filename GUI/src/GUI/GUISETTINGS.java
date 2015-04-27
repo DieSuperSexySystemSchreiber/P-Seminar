@@ -283,7 +283,7 @@ public class GUISETTINGS extends javax.swing.JFrame {
         int maxBrackets = subs;
         
         int minSubs = brackets;
-        int maxSubs = (int) pow(2, brackets) - 1;
+        int maxSubs = (int) pow(2, brackets - 1);
         
         if(brackets < minBrackets){
             bracketDephtError.setText("Mindestklammertiefe: " + minBrackets);
