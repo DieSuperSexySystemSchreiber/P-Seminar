@@ -17,6 +17,8 @@ public class GUISETTINGS extends javax.swing.JFrame {
     /**
      * Creates new form GUI
      */
+    boolean noFaults = true;
+    
     public GUISETTINGS() {
         initComponents();
         operationError.setText("");
@@ -285,24 +287,20 @@ public class GUISETTINGS extends javax.swing.JFrame {
         int minSubs = brackets;
         int maxSubs = (int) pow(2, brackets - 1);
         
-        if(brackets < minBrackets){
+        if(brackets < minBrackets || subs > maxSubs){
             bracketDephtError.setText("Mindestklammertiefe: " + minBrackets);
+            substitutionsError.setText("Maximaloperanten: " + maxSubs);
+            noFaults = false;
         }
-        else if(brackets > maxBrackets){
+        else if(brackets > maxBrackets || subs < minSubs){
             bracketDephtError.setText("Maximalklammertiefe: " + maxBrackets);
+            substitutionsError.setText("Mindestoperanten: " + minSubs);
+            noFaults = false;
         }
         else{
             bracketDephtError.setText("");
-        }
-        
-        if(subs > maxSubs){
-            substitutionsError.setText("Maximaloperanten: " + maxSubs);
-        }
-        else if(subs < minSubs){
-            substitutionsError.setText("Mindestoperanten: " + minSubs);
-        }
-        else{
             substitutionsError.setText("");
+            noFaults = true;
         }
     }//GEN-LAST:event_bracketDephtOrSubstitutionDropdownActionPerformed
 
@@ -311,12 +309,21 @@ public class GUISETTINGS extends javax.swing.JFrame {
         boolean aoSubtraction = subtractCheckbox.isSelected();
         boolean aoMultiplication = multiplyCheckbox.isSelected();
         boolean aoDivision = divideCheckbox.isSelected();
+        int bracketDepht = bracketDephtDropdown.getSelectedIndex() + 1;
+        int Substitutions = substitutionDropdown.getSelectedIndex() + 1;
+        int Digits = digitsDropdown.getSelectedIndex() + 1;
+        boolean justPositive = positiveCheckbox.isSelected();
+        boolean withFraction = fractionCheckbox.isSelected();
         
         if(!aoAddition && !aoSubtraction && !aoMultiplication && !aoDivision){
             operationError.setText("Keine Rechenoperation(en) ausgewählt!");
         }
         else{
             operationError.setText("");
+            if(noFaults){
+                this.setVisible(false);
+                //class.generiereTerm(aoAddition, aoSubtraction, aoMultiplication, aoDivision, bracketDepht, Substitutions, Digits, justPositive, withFraction)
+            }
         }
     }//GEN-LAST:event_generateButtonActionPerformed
 

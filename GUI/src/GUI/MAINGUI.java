@@ -14,6 +14,8 @@ public class MAINGUI extends javax.swing.JFrame {
     /**
      * Creates new form GUIFINAL
      */
+    
+    GUISETTINGS sheetSettings;
     public MAINGUI() {
         initComponents();
     }
@@ -35,7 +37,6 @@ public class MAINGUI extends javax.swing.JFrame {
         buttonWorksheet = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Lernplattform Mathematik");
@@ -69,13 +70,14 @@ public class MAINGUI extends javax.swing.JFrame {
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK));
         jMenuItem1.setText("Beenden");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Bearbeiten");
-        jMenu2.setToolTipText("");
-        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -94,14 +96,21 @@ public class MAINGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonWorksheetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonWorksheetActionPerformed
-        GUISETTINGS sheetsettings = new GUISETTINGS();
-        sheetsettings.setVisible(true);
+        if(sheetSettings == null){
+            sheetSettings = new GUISETTINGS();
+        }
+        
+        sheetSettings.setVisible(true);
     }//GEN-LAST:event_buttonWorksheetActionPerformed
 
     private void buttonMathTrainingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMathTrainingActionPerformed
-        GUISETTINGS sheetsettings = new GUISETTINGS();
-        sheetsettings.setVisible(true);
+        GUISETTINGS trainingSettings = new GUISETTINGS();
+        trainingSettings.setVisible(true);
     }//GEN-LAST:event_buttonMathTrainingActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,7 +152,6 @@ public class MAINGUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem buttonMathTraining;
     private javax.swing.JMenuItem buttonWorksheet;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
