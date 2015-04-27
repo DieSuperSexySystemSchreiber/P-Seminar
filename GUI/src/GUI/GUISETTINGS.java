@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import static java.lang.Math.pow;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,6 +19,9 @@ public class GUISETTINGS extends javax.swing.JFrame {
      */
     public GUISETTINGS() {
         initComponents();
+        operationError.setText("");
+        bracketDephtError.setText("");
+        substitutionsError.setText("");
     }
 
     /**
@@ -34,20 +38,24 @@ public class GUISETTINGS extends javax.swing.JFrame {
         jInternalFrame1 = new javax.swing.JInternalFrame();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        operanten = new javax.swing.JLabel();
+        substitutionDropdown = new javax.swing.JComboBox();
+        jLabel13 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        digitsDropdown = new javax.swing.JComboBox();
         addCheckbox = new javax.swing.JCheckBox();
+        positiveCheckbox = new javax.swing.JCheckBox();
         subtractCheckbox = new javax.swing.JCheckBox();
+        fractionCheckbox = new javax.swing.JCheckBox();
         multiplyCheckbox = new javax.swing.JCheckBox();
+        generateCancelButton = new javax.swing.JButton();
         divideCheckbox = new javax.swing.JCheckBox();
         jLabel8 = new javax.swing.JLabel();
         bracketDephtDropdown = new javax.swing.JComboBox();
         generateButton = new javax.swing.JButton();
-        operanten = new javax.swing.JLabel();
-        substitutionDropdown = new javax.swing.JComboBox();
-        jLabel13 = new javax.swing.JLabel();
-        digitsDropdown = new javax.swing.JComboBox();
-        positiveCheckbox = new javax.swing.JCheckBox();
-        fractionCheckbox = new javax.swing.JCheckBox();
+        bracketDephtError = new javax.swing.JLabel();
+        substitutionsError = new javax.swing.JLabel();
+        operationError = new javax.swing.JLabel();
 
         jLabel5.setText("jLabel5");
 
@@ -82,17 +90,48 @@ public class GUISETTINGS extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Aufgabeneinstellungen");
 
+        operanten.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        operanten.setText("Operantenanzahl:");
+
+        substitutionDropdown.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        substitutionDropdown.setMaximumRowCount(10);
+        substitutionDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+        substitutionDropdown.setToolTipText("");
+        substitutionDropdown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bracketDephtOrSubstitutionDropdownActionPerformed(evt);
+            }
+        });
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel13.setText("maximale Stellen:");
+
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setText("Rechenoperationen:");
+
+        digitsDropdown.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        digitsDropdown.setMaximumRowCount(5);
+        digitsDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5" }));
+        digitsDropdown.setToolTipText("");
 
         addCheckbox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         addCheckbox.setText("Plus ( + )");
 
+        positiveCheckbox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        positiveCheckbox.setText("nur positive Zahlen");
+
         subtractCheckbox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         subtractCheckbox.setText("Minus ( - )");
 
+        fractionCheckbox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        fractionCheckbox.setText("mit Brüchen");
+
         multiplyCheckbox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         multiplyCheckbox.setText("Mal ( * )");
+
+        generateCancelButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        generateCancelButton.setText("Abbrechen");
+        generateCancelButton.setToolTipText("");
 
         divideCheckbox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         divideCheckbox.setText("Geteilt ( / )");
@@ -101,164 +140,184 @@ public class GUISETTINGS extends javax.swing.JFrame {
         jLabel8.setText("Klammertiefe:");
 
         bracketDephtDropdown.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        bracketDephtDropdown.setMaximumRowCount(5);
-        bracketDephtDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5" }));
+        bracketDephtDropdown.setMaximumRowCount(10);
+        bracketDephtDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
         bracketDephtDropdown.setToolTipText("");
+        bracketDephtDropdown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bracketDephtOrSubstitutionDropdownActionPerformed(evt);
+            }
+        });
 
         generateButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        generateButton.setText("Generieren...");
+        generateButton.setText("OK");
         generateButton.setToolTipText("");
+        generateButton.setMaximumSize(new java.awt.Dimension(93, 23));
+        generateButton.setMinimumSize(new java.awt.Dimension(93, 23));
         generateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 generateButtonActionPerformed(evt);
             }
         });
 
-        operanten.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        operanten.setText("Operantenanzahl:");
+        bracketDephtError.setForeground(new java.awt.Color(255, 0, 0));
+        bracketDephtError.setText("bracketDephtError");
 
-        substitutionDropdown.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        substitutionDropdown.setMaximumRowCount(10);
-        substitutionDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
-        substitutionDropdown.setToolTipText("");
+        substitutionsError.setForeground(new java.awt.Color(255, 0, 0));
+        substitutionsError.setText("substitutionsError");
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel13.setText("maximale Stellen:");
-
-        digitsDropdown.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        digitsDropdown.setMaximumRowCount(5);
-        digitsDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5" }));
-        digitsDropdown.setToolTipText("");
-
-        positiveCheckbox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        positiveCheckbox.setText("nur positive Zahlen");
-        positiveCheckbox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                positiveCheckboxActionPerformed(evt);
-            }
-        });
-
-        fractionCheckbox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        fractionCheckbox.setText("mit Brüchen");
-        fractionCheckbox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fractionCheckboxActionPerformed(evt);
-            }
-        });
+        operationError.setForeground(new java.awt.Color(255, 0, 0));
+        operationError.setText("operationError");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(subtractCheckbox)
-                                    .addComponent(addCheckbox))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(multiplyCheckbox)
-                                    .addComponent(divideCheckbox)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel13)
-                                    .addComponent(jLabel8))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(digitsDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(bracketDephtDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(10, 10, 10)
-                                        .addComponent(operanten)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(substitutionDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel2)
-                        .addGap(88, 88, 88))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
+                                .addComponent(operanten)
+                                .addGap(172, 172, 172))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(positiveCheckbox)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(fractionCheckbox))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel13))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(digitsDropdown, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(bracketDephtDropdown, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(substitutionDropdown, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addComponent(fractionCheckbox)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(generateButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(bracketDephtError)
+                                    .addComponent(substitutionsError))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addGap(146, 146, 146))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(multiplyCheckbox)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(divideCheckbox)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(addCheckbox)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(subtractCheckbox)
+                        .addGap(0, 4, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(generateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(generateCancelButton))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(operationError)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(multiplyCheckbox)
+                    .addComponent(divideCheckbox)
+                    .addComponent(addCheckbox)
+                    .addComponent(subtractCheckbox))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(addCheckbox)
-                            .addComponent(multiplyCheckbox))
+                        .addGap(77, 77, 77)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(divideCheckbox)
-                            .addComponent(subtractCheckbox))
-                        .addGap(18, 18, 18)
+                        .addComponent(operationError)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(bracketDephtDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bracketDephtError))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(operanten)
-                            .addComponent(substitutionDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(substitutionDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(substitutionsError))
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(digitsDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel13)
-                            .addComponent(digitsDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
+                            .addComponent(positiveCheckbox)
+                            .addComponent(fractionCheckbox))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(positiveCheckbox)
-                    .addComponent(fractionCheckbox))
-                .addGap(18, 18, 18)
-                .addComponent(generateButton)
-                .addContainerGap(22, Short.MAX_VALUE))
+                    .addComponent(generateCancelButton)
+                    .addComponent(generateButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void positiveCheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_positiveCheckboxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_positiveCheckboxActionPerformed
-
-    private void fractionCheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fractionCheckboxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fractionCheckboxActionPerformed
+    private void bracketDephtOrSubstitutionDropdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bracketDephtOrSubstitutionDropdownActionPerformed
+        int subs = Integer.parseInt(substitutionDropdown.getSelectedItem().toString());
+        int brackets = Integer.parseInt(bracketDephtDropdown.getSelectedItem().toString());
+        
+        int minBrackets = (int) Math.ceil(Math.log(subs) / Math.log(2) + 1);
+        int maxBrackets = subs;
+        
+        int minSubs = brackets;
+        int maxSubs = (int) pow(2, brackets) - 1;
+        
+        if(brackets < minBrackets){
+            bracketDephtError.setText("Mindestklammertiefe: " + minBrackets);
+        }
+        else if(brackets > maxBrackets){
+            bracketDephtError.setText("Maximalklammertiefe: " + maxBrackets);
+        }
+        else{
+            bracketDephtError.setText("");
+        }
+        
+        if(subs > maxSubs){
+            substitutionsError.setText("Maximaloperanten: " + maxSubs);
+        }
+        else if(subs < minSubs){
+            substitutionsError.setText("Mindestoperanten: " + minSubs);
+        }
+        else{
+            substitutionsError.setText("");
+        }
+    }//GEN-LAST:event_bracketDephtOrSubstitutionDropdownActionPerformed
 
     private void generateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateButtonActionPerformed
         boolean aoAddition = addCheckbox.isSelected();
         boolean aoSubtraction = subtractCheckbox.isSelected();
         boolean aoMultiplication = multiplyCheckbox.isSelected();
         boolean aoDivision = divideCheckbox.isSelected();
-        int bracketDepht = bracketDephtDropdown.getSelectedIndex() + 1;
-        int Substitutions = substitutionDropdown.getSelectedIndex() + 1;
-        int Digits = digitsDropdown.getSelectedIndex() + 1;
-        boolean justPositive = positiveCheckbox.isSelected();
-        boolean withFraction = fractionCheckbox.isSelected();
         
-        //Nur vorläufig:
-        System.out.println("Der Term mit der Klammertiefe "+bracketDepht+" besteht aus "+Substitutions+" Ersetzungen. Die Zahlen dürfen maximal "+Digits+" Stellen lang sein.");
-        JOptionPane.showMessageDialog(this, "Der Term mit der Klammertiefe "+bracketDepht+" besteht aus "+Substitutions+" Ersetzungen. Die Zahlen dürfen maximal "+Digits+" Stellen lang sein.", "Ausgabe", JOptionPane.INFORMATION_MESSAGE);
-        //class.generiereTerm(aoAddition, aoSubtraction, aoMultiplication, aoDivision, bracketDepht, Substitutions, Digits, justPositive, withFraction)
+        if(!aoAddition && !aoSubtraction && !aoMultiplication && !aoDivision){
+            operationError.setText("Keine Rechenoperation(en) ausgewählt!");
+        }
+        else{
+            operationError.setText("");
+        }
     }//GEN-LAST:event_generateButtonActionPerformed
 
     /**
@@ -300,10 +359,12 @@ public class GUISETTINGS extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox addCheckbox;
     private javax.swing.JComboBox bracketDephtDropdown;
+    private javax.swing.JLabel bracketDephtError;
     private javax.swing.JComboBox digitsDropdown;
     private javax.swing.JCheckBox divideCheckbox;
     private javax.swing.JCheckBox fractionCheckbox;
     private javax.swing.JButton generateButton;
+    private javax.swing.JButton generateCancelButton;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
@@ -314,8 +375,10 @@ public class GUISETTINGS extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JCheckBox multiplyCheckbox;
     private javax.swing.JLabel operanten;
+    private javax.swing.JLabel operationError;
     private javax.swing.JCheckBox positiveCheckbox;
     private javax.swing.JComboBox substitutionDropdown;
+    private javax.swing.JLabel substitutionsError;
     private javax.swing.JCheckBox subtractCheckbox;
     // End of variables declaration//GEN-END:variables
 }
