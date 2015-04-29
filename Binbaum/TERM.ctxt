@@ -1,0 +1,27 @@
+#BlueJ class context
+comment0.params=aoAddition\ aoSubstraction\ aoMultiplication\ aoDivision\ bracketDepth\ substitutions\ digits\ oPositive\ wFraction
+comment0.target=TERM(boolean,\ boolean,\ boolean,\ boolean,\ int,\ int,\ int,\ boolean,\ boolean)
+comment1.params=newKnoten
+comment1.target=void\ wurzelSetzten(DATENKNOTEN)
+comment10.params=
+comment10.target=void\ infix()
+comment11.params=stellenZahl\ nurPositiv\ mitBruechen
+comment11.target=int\ ergebnisErzeugen(int,\ boolean,\ boolean)
+comment2.params=
+comment2.target=void\ pr\u00E4fix()
+comment3.params=plus\ min\ mul\ div
+comment3.target=char\ getRechenzeichen(boolean,\ boolean,\ boolean,\ boolean)
+comment4.params=
+comment4.target=int\ gibH\u00F6he()
+comment5.params=sub
+comment5.target=int[]\ splitSubs(int)
+comment6.params=erg\ operator\ digits\ oPos\ root
+comment6.target=void\ createSub(double,\ java.lang.String,\ int,\ boolean,\ TERMELEMENT)
+comment6.text=\r\n\ \r\n\ \ \ \ \ public\ void\ sortiertEinf\u00FCgen(OPERATOR\ e)\ {\r\n\r\n\ \ \ \ \ \ \ \ wurzel.sortiertEinf\u00FCgen(e);\r\n\ \ \ \ }\r\n
+comment7.params=min\ max
+comment7.target=int\ getRand(int,\ int)
+comment8.params=
+comment8.target=int\ gibAnzahl()
+comment9.params=
+comment9.target=boolean\ isAVL()
+numComments=12

@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.params=inhalt
+comment0.target=DATENKNOTEN(char)
+comment1.params=newElement
+comment1.target=void\ setzeLinkerNaechster(TERMELEMENT)
+comment2.params=newElement
+comment2.target=void\ setzeRechterNaechster(TERMELEMENT)
+comment3.params=
+comment3.target=void\ pr\u00E4fix()
+comment4.params=
+comment4.target=int\ gibH\u00F6he()
+comment5.params=
+comment5.target=int\ gibAnzahl()
+comment6.params=
+comment6.target=boolean\ isAVL()
+comment7.params=
+comment7.target=java.lang.String\ infix()
+numComments=8
