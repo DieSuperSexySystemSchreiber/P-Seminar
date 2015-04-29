@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import java.awt.*;
 import static java.lang.Math.pow;
 import javax.swing.JOptionPane;
 
@@ -24,6 +25,9 @@ public class GUISETTINGS extends javax.swing.JFrame {
         operationError.setText("");
         bracketDephtError.setText("");
         substitutionsError.setText("");
+        
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
     }
 
     /**
@@ -85,9 +89,10 @@ public class GUISETTINGS extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Lernplattform | Mathematik");
+        setTitle("Einstellungen");
         setFocusable(false);
+        setResizable(false);
+        setType(java.awt.Window.Type.UTILITY);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Aufgabeneinstellungen");
@@ -134,6 +139,11 @@ public class GUISETTINGS extends javax.swing.JFrame {
         generateCancelButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         generateCancelButton.setText("Abbrechen");
         generateCancelButton.setToolTipText("");
+        generateCancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generateCancelButtonActionPerformed(evt);
+            }
+        });
 
         divideCheckbox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         divideCheckbox.setText("Geteilt ( / )");
@@ -180,9 +190,7 @@ public class GUISETTINGS extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(operanten)
-                                .addGap(172, 172, 172))
+                            .addComponent(operanten)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(positiveCheckbox)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -200,7 +208,7 @@ public class GUISETTINGS extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(bracketDephtError)
                                     .addComponent(substitutionsError))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                         .addComponent(jLabel2)
                         .addGap(146, 146, 146))
                     .addGroup(layout.createSequentialGroup()
@@ -326,6 +334,10 @@ public class GUISETTINGS extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_generateButtonActionPerformed
+
+    private void generateCancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateCancelButtonActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_generateCancelButtonActionPerformed
 
     /**
      * @param args the command line arguments
