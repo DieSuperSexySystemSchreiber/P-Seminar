@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.params=klammertiefe\ operatoren\ zahlenraum\ Ergebnis
+comment0.target=trm(int,\ java.lang.String[],\ java.lang.String,\ double)
+comment1.params=nString
+comment1.target=java.lang.String[]\ getMatchingZeichen(java.lang.String[])
+comment2.params=raum
+comment2.target=java.lang.String\ getRaum(java.lang.String)
+comment3.params=
+comment3.target=java.lang.String\ getOperator()
+comment4.params=min\ max
+comment4.target=int\ getRand(int,\ int)
+comment5.params=erg\ operator
+comment5.target=java.lang.String\ getStringForOperator(double,\ java.lang.String)
+comment6.params=num
+comment6.target=double\ getLastNums(double[])
+comment6.text=private\ String\ genExpression()\ {\n\ \ String\ exp\ \=\ "";\n\ \ \ \ \ \ \ \ switch\ (klammertiefe)\ {\n\ \ \ \ \ \ \ \ \ \ \ \ case\ 1\:\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ double\ anz\ \=\ Math.random()\ *\ 10;\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ double[]\ nums\ \=\ new\ double[(int)\ anz];\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nums[0]\ \=\ Double.valueOf(ergebnis)\ -\ Math.random()\ *\ Double.valueOf(ergebnis);\n\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for\ (int\ k\ \=\ 1;\ k\ <\ (int)\ anz;\ k++)\ {\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nums[k]\ \=\ (Double.valueOf(ergebnis)\ -\ getLastNums(nums));\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\n\n\n\ \ \ \ \ \ \ \ }\n\ \ \ \ \ \ \ \ return\ exp;\n\ \ \ \ }\n\n
+comment7.params=
+comment7.target=java.lang.String\ getExpression()
+numComments=8
