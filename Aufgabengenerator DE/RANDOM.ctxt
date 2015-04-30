@@ -1,8 +1,0 @@
-#BlueJ class context
-comment0.params=erg
-comment0.target=double\ getRandom(double)
-comment0.text=\r\n\ Method\ getRandom\r\n\ Erzeugt\ eine\ zuf\u00E4llige\ Zahl\ in\ einem\ \u00E4hnlichen\ Zahlenraum\ wie\ das\ Ergebnis.\r\n\ \r\n\ @param\ Ergebnis\r\n\ @return\ zuf\u00E4llige\ Zahl\r\n
-comment1.params=
-comment1.target=double\ getErgebnis()
-comment1.text=\r\n\ Method\ getErgebnis\r\nErstellt\ eine\ Zuf\u00E4llige\ Zahl/Ergebnis\ im\ nat\u00FCrlichen\ Zahlenraum\ von\ 10-9999\r\n\r\n\ @return\ zuf\u00E4llige\ Zahl\r\n
-numComments=2
