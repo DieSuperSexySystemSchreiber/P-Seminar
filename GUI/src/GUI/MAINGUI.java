@@ -15,7 +15,10 @@ public class MAINGUI extends javax.swing.JFrame {
      * Creates new form GUIFINAL
      */
     
-    GUISETTINGS sheetSettings;
+    GUISETTINGS manuelSettings;
+    GUISETTINGSPDF pdfSettings;
+    int taskNum = 0;
+    
     public MAINGUI() {
         initComponents();
     }
@@ -33,10 +36,13 @@ public class MAINGUI extends javax.swing.JFrame {
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
-        buttonMathTraining = new javax.swing.JMenuItem();
+        jMenu7 = new javax.swing.JMenu();
+        buttonMathTrainingPresettings = new javax.swing.JMenuItem();
+        buttonMathTrainingManuel = new javax.swing.JMenuItem();
         buttonWorksheet = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -49,6 +55,8 @@ public class MAINGUI extends javax.swing.JFrame {
         jMenu4.setText("Edit");
         jMenuBar2.add(jMenu4);
 
+        jMenuItem2.setText("jMenuItem2");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Lernplattform Mathematik");
         setExtendedState(6);
@@ -59,13 +67,25 @@ public class MAINGUI extends javax.swing.JFrame {
 
         jMenu3.setText("Neu");
 
-        buttonMathTraining.setText("Direktübung");
-        buttonMathTraining.addActionListener(new java.awt.event.ActionListener() {
+        jMenu7.setText("Direktübung");
+
+        buttonMathTrainingPresettings.setText("Voreinstellungen");
+        buttonMathTrainingPresettings.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonMathTrainingActionPerformed(evt);
+                buttonMathTrainingPresettingsActionPerformed(evt);
             }
         });
-        jMenu3.add(buttonMathTraining);
+        jMenu7.add(buttonMathTrainingPresettings);
+
+        buttonMathTrainingManuel.setText("Manuelle Einstellung");
+        buttonMathTrainingManuel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonMathTrainingManuelActionPerformed(evt);
+            }
+        });
+        jMenu7.add(buttonMathTrainingManuel);
+
+        jMenu3.add(jMenu7);
 
         buttonWorksheet.setText("Arbeitsblatt");
         buttonWorksheet.setToolTipText("");
@@ -115,21 +135,29 @@ public class MAINGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonWorksheetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonWorksheetActionPerformed
-        if(sheetSettings == null){
-            sheetSettings = new GUISETTINGS();
+        if(pdfSettings == null){
+            pdfSettings = new GUISETTINGSPDF();
         }
+        taskNum = 0;
         
-        sheetSettings.setVisible(true);
+        pdfSettings.setVisible(true);
     }//GEN-LAST:event_buttonWorksheetActionPerformed
 
-    private void buttonMathTrainingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMathTrainingActionPerformed
-        GUISETTINGS trainingSettings = new GUISETTINGS();
-        trainingSettings.setVisible(true);
-    }//GEN-LAST:event_buttonMathTrainingActionPerformed
+    private void buttonMathTrainingManuelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMathTrainingManuelActionPerformed
+        if(manuelSettings == null){
+            manuelSettings = new GUISETTINGS();
+        }
+        
+        manuelSettings.setVisible(true);
+    }//GEN-LAST:event_buttonMathTrainingManuelActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void buttonMathTrainingPresettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMathTrainingPresettingsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonMathTrainingPresettingsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,7 +196,8 @@ public class MAINGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem buttonMathTraining;
+    private javax.swing.JMenuItem buttonMathTrainingManuel;
+    private javax.swing.JMenuItem buttonMathTrainingPresettings;
     private javax.swing.JMenuItem buttonWorksheet;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -176,9 +205,11 @@ public class MAINGUI extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     // End of variables declaration//GEN-END:variables

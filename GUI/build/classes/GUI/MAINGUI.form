@@ -26,6 +26,11 @@
         </Menu>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JMenuItem" name="jMenuItem2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jMenuItem2"/>
+      </Properties>
+    </Component>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jMenu1">
@@ -39,14 +44,29 @@
                 <Property name="text" type="java.lang.String" value="Neu"/>
               </Properties>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="buttonMathTraining">
+                <Menu class="javax.swing.JMenu" name="jMenu7">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Direkt&#xfc;bung"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonMathTrainingActionPerformed"/>
-                  </Events>
-                </MenuItem>
+                  <SubComponents>
+                    <MenuItem class="javax.swing.JMenuItem" name="buttonMathTrainingPresettings">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Voreinstellungen"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonMathTrainingPresettingsActionPerformed"/>
+                      </Events>
+                    </MenuItem>
+                    <MenuItem class="javax.swing.JMenuItem" name="buttonMathTrainingManuel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Manuelle Einstellung"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonMathTrainingManuelActionPerformed"/>
+                      </Events>
+                    </MenuItem>
+                  </SubComponents>
+                </Menu>
                 <MenuItem class="javax.swing.JMenuItem" name="buttonWorksheet">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Arbeitsblatt"/>

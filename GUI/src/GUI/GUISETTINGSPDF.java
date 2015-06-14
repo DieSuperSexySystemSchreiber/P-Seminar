@@ -8,23 +8,30 @@ package GUI;
 import java.awt.*;
 import static java.lang.Math.pow;
 import javax.swing.JOptionPane;
+import java.util.*;
+import java.text.*;
 
 /**
  *
  * @author David Müller
  */
-public class GUISETTINGS extends javax.swing.JFrame {
+public class GUISETTINGSPDF extends javax.swing.JFrame {
 
     /**
      * Creates new form GUI
      */
     boolean noFaults = true;
+    GUISETTINGSPDF nextSettings;
+    Date date = new Date();
+    SimpleDateFormat ft = new SimpleDateFormat("dd.MM.yyyy");
     
-    public GUISETTINGS() {
+    public GUISETTINGSPDF() {
         initComponents();
         operationError.setText("");
         bracketDephtError.setText("");
         substitutionsError.setText("");
+        labelPDFSettings.setText("Aufgabeneinstellungen (Aufgabe #)");
+        headline.setText("Aufgabenblatt vom " + ft.format(date));
         
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
@@ -42,7 +49,7 @@ public class GUISETTINGS extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jInternalFrame1 = new javax.swing.JInternalFrame();
-        jLabel1 = new javax.swing.JLabel();
+        labelPDFSettings = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         operanten = new javax.swing.JLabel();
         substitutionDropdown = new javax.swing.JComboBox();
@@ -62,6 +69,10 @@ public class GUISETTINGS extends javax.swing.JFrame {
         bracketDephtError = new javax.swing.JLabel();
         substitutionsError = new javax.swing.JLabel();
         operationError = new javax.swing.JLabel();
+        addTaskButton = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        taskNumber = new javax.swing.JComboBox();
+        headline = new javax.swing.JTextField();
 
         jLabel5.setText("jLabel5");
 
@@ -89,13 +100,13 @@ public class GUISETTINGS extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        setTitle("Einstellungen - Übung");
+        setTitle("Einstellungen - PDF");
         setFocusable(false);
         setResizable(false);
         setType(java.awt.Window.Type.UTILITY);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("Übungsaufgaben-Einstellungen");
+        labelPDFSettings.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        labelPDFSettings.setText("Aufgabeneinstellungen (Aufgabe #)");
 
         operanten.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         operanten.setText("Operantenanzahl:");
@@ -162,8 +173,9 @@ public class GUISETTINGS extends javax.swing.JFrame {
         });
 
         generateButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        generateButton.setText("OK");
-        generateButton.setToolTipText("");
+        generateButton.setForeground(new java.awt.Color(0, 155, 0));
+        generateButton.setText("Abschließen");
+        generateButton.setToolTipText("Arbeitsblatt generieren");
         generateButton.setMaximumSize(new java.awt.Dimension(93, 23));
         generateButton.setMinimumSize(new java.awt.Dimension(93, 23));
         generateButton.addActionListener(new java.awt.event.ActionListener() {
@@ -181,6 +193,29 @@ public class GUISETTINGS extends javax.swing.JFrame {
         operationError.setForeground(new java.awt.Color(255, 0, 0));
         operationError.setText("operationError");
 
+        addTaskButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        addTaskButton.setText("Weiterer Aufgabentyp");
+        addTaskButton.setToolTipText("Fügt eine weitere Aufgabe mit neuen Parametern hinzu");
+        addTaskButton.setMaximumSize(new java.awt.Dimension(93, 23));
+        addTaskButton.setMinimumSize(new java.awt.Dimension(93, 23));
+        addTaskButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addTaskButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel14.setText("Anzahl Teilaufgaben:");
+
+        taskNumber.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        taskNumber.setMaximumRowCount(12);
+        taskNumber.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        taskNumber.setToolTipText("Anzahl der Teilaufgaben (1.a; 1.b; etc.)");
+
+        headline.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        headline.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        headline.setText("Aufgabenblatt - [Date]");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -188,13 +223,12 @@ public class GUISETTINGS extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(headline)
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(operanten)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(positiveCheckbox)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(fractionCheckbox))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel8)
@@ -207,42 +241,60 @@ public class GUISETTINGS extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(bracketDephtError)
-                                    .addComponent(substitutionsError))))
+                                    .addComponent(substitutionsError)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(positiveCheckbox)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(fractionCheckbox)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                         .addComponent(jLabel2)
                         .addGap(146, 146, 146))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(labelPDFSettings)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(multiplyCheckbox)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(divideCheckbox)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(addCheckbox)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(subtractCheckbox)
-                        .addGap(0, 4, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(generateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(generateButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(8, 8, 8)
+                                .addComponent(addTaskButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(generateCancelButton))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(operationError)
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(multiplyCheckbox)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(divideCheckbox)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(addCheckbox)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(subtractCheckbox))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel14)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(taskNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelPDFSettings)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(headline, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(taskNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14))
+                .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(multiplyCheckbox)
@@ -257,7 +309,7 @@ public class GUISETTINGS extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(operationError)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                        .addGap(18, 18, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(bracketDephtDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -278,7 +330,8 @@ public class GUISETTINGS extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(generateCancelButton)
-                    .addComponent(generateButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(generateButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addTaskButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -339,6 +392,10 @@ public class GUISETTINGS extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_generateCancelButtonActionPerformed
 
+    private void addTaskButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTaskButtonActionPerformed
+        System.out.println("Date: " + ft.format(date));
+    }//GEN-LAST:event_addTaskButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -356,27 +413,30 @@ public class GUISETTINGS extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUISETTINGS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUISETTINGSPDF.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUISETTINGS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUISETTINGSPDF.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUISETTINGS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUISETTINGSPDF.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUISETTINGS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUISETTINGSPDF.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUISETTINGS().setVisible(true);
+                new GUISETTINGSPDF().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox addCheckbox;
+    private javax.swing.JButton addTaskButton;
     private javax.swing.JComboBox bracketDephtDropdown;
     private javax.swing.JLabel bracketDephtError;
     private javax.swing.JComboBox digitsDropdown;
@@ -384,14 +444,16 @@ public class GUISETTINGS extends javax.swing.JFrame {
     private javax.swing.JCheckBox fractionCheckbox;
     private javax.swing.JButton generateButton;
     private javax.swing.JButton generateCancelButton;
+    private javax.swing.JTextField headline;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JInternalFrame jInternalFrame1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel labelPDFSettings;
     private javax.swing.JCheckBox multiplyCheckbox;
     private javax.swing.JLabel operanten;
     private javax.swing.JLabel operationError;
@@ -399,5 +461,6 @@ public class GUISETTINGS extends javax.swing.JFrame {
     private javax.swing.JComboBox substitutionDropdown;
     private javax.swing.JLabel substitutionsError;
     private javax.swing.JCheckBox subtractCheckbox;
+    private javax.swing.JComboBox taskNumber;
     // End of variables declaration//GEN-END:variables
 }
