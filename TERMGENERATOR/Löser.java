@@ -15,11 +15,9 @@ public class Löser
     public double lösen(String term)
     {
 
-        // das einzige problem: die vergleiche bei den if(c2=(+|-|*|/)
-        //sonst perfekt funktionstüchtig
-        //außer vorvorletzte Zeile vlt -1 statt -2 wenn es spackt
+        
 
-        String a = "\\(\\-?\\d+\\).\\(\\-?\\d+\\)";
+        String a = "\\(\\-?\\d+\\.?\\d*\\).\\(\\-?\\d+\\.?\\d*\\)";
         String f = "";
         Pattern pattern = Pattern.compile(a);
         Matcher matcher = pattern.matcher(term);
@@ -42,27 +40,28 @@ public class Löser
             String c1 = parts[1];
             String c2 = parts[2];
             String c3 = parts[3];
-            double d1 = Integer.parseInt(c1);
-            double d3 = Integer.parseInt(c3);
-            String lol = "+";
-            Pattern mattern = Pattern.compile(lol);
-            Matcher patcher = mattern.matcher(c2);
-           if(patcher.matches()==true)
+            double d1 = Double.parseDouble(c1);
+            double d3 = Double.parseDouble(c3);
+            String z = "+";
+            String y = "-";
+            String w = "*";
+            String s = "/";
+           if(z.equals(c2))
            {
                 double e = (d1) + (d3);
                 f = e + "";
             }
-            else if(c2=="-")
+            else if(y.equals(c2))
             {
                 double e = (d1) - (d3);
                 f = e + "";
             }
-            else if(c2 == "*")
+            else if(w.equals(c2))
             {
                 double e = (d1) * (d3);
                 f = e + "";
             }
-            else if(c2 == "/")
+            else if(s.equals(c2))
             {
                 double e = (d1) / (d3);
                 f = e + "";
@@ -75,8 +74,43 @@ public class Löser
             } 
             term= b1 + f + b2;
         }
-        String i = term.substring(1,term.length()-2);
-        double yay = Integer.parseInt(i);
+        String i = term.substring(1,term.length()-1);
+        
+        String c = i;
+            String[] parts = c.split("\\(|\\)");
+            String c1 = parts[1];
+            String c2 = parts[2];
+            String c3 = parts[3];
+            double d1 = Double.parseDouble(c1);
+            double d3 = Double.parseDouble(c3);
+            String z = "+";
+            String y = "-";
+            String w = "*";
+            String s = "/";
+            double e = 0;
+           if(z.equals(c2))
+           {
+                e = (d1) + (d3);
+            }
+            else if(y.equals(c2))
+            {
+                e = (d1) - (d3);
+            }
+            else if(w.equals(c2))
+            {
+                e = (d1) * (d3);
+            }
+            else if(s.equals(c2))
+            {
+                e = (d1) / (d3);
+            }
+            else
+            {
+                System.out.println("error");
+                e = 0;
+                
+            } 
+        double yay = e;
 
         return yay;
     }
