@@ -20,17 +20,36 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
     /**
      * Creates new form GUI
      */
+    MAINGUI maingui;
+    GUISETTINGSPDF previous;
+    GUISETTINGSPDF next;
+    int num;
+    
+    boolean aoAddition;
+    boolean aoSubtraction;
+    boolean aoMultiplication;
+    boolean aoDivision;
+    int bracketDepht;
+    int Substitutions;
+    int Digits;
+    boolean justPositive;
+    boolean withFraction;
+    
     boolean noFaults = true;
     GUISETTINGSPDF nextSettings;
     Date date = new Date();
     SimpleDateFormat ft = new SimpleDateFormat("dd.MM.yyyy");
     
-    public GUISETTINGSPDF() {
+    public GUISETTINGSPDF(MAINGUI mgui, GUISETTINGSPDF prev, int n) {
+        maingui = mgui;
+        previous = prev;
+        num = n;
+        
         initComponents();
         operationError.setText("");
         bracketDephtError.setText("");
         substitutionsError.setText("");
-        labelPDFSettings.setText("Aufgabeneinstellungen (Aufgabe #)");
+        labelPDFSettings.setText("Aufgabeneinstellungen (Aufgabe " + num + ")");
         headline.setText("Aufgabenblatt vom " + ft.format(date));
         
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -215,6 +234,7 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
         headline.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         headline.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         headline.setText("Aufgabenblatt - [Date]");
+        headline.setToolTipText("Überschrift für das Aufgabenblatt");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -256,11 +276,11 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(generateButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(8, 8, 8)
+                                .addComponent(generateCancelButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(addTaskButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(generateCancelButton))
+                                .addComponent(generateButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(operationError)
                                 .addGap(0, 0, Short.MAX_VALUE)))
@@ -306,7 +326,7 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
                         .addGap(77, 77, 77)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(operationError)
                         .addGap(18, 18, Short.MAX_VALUE)
@@ -326,8 +346,7 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(positiveCheckbox)
-                            .addComponent(fractionCheckbox))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                            .addComponent(fractionCheckbox))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(generateCancelButton)
                     .addComponent(generateButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -366,15 +385,15 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
     }//GEN-LAST:event_bracketDephtOrSubstitutionDropdownActionPerformed
 
     private void generateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateButtonActionPerformed
-        boolean aoAddition = addCheckbox.isSelected();
-        boolean aoSubtraction = subtractCheckbox.isSelected();
-        boolean aoMultiplication = multiplyCheckbox.isSelected();
-        boolean aoDivision = divideCheckbox.isSelected();
-        int bracketDepht = bracketDephtDropdown.getSelectedIndex() + 1;
-        int Substitutions = substitutionDropdown.getSelectedIndex() + 1;
-        int Digits = digitsDropdown.getSelectedIndex() + 1;
-        boolean justPositive = positiveCheckbox.isSelected();
-        boolean withFraction = fractionCheckbox.isSelected();
+        aoAddition = addCheckbox.isSelected();
+        aoSubtraction = subtractCheckbox.isSelected();
+        aoMultiplication = multiplyCheckbox.isSelected();
+        aoDivision = divideCheckbox.isSelected();
+        bracketDepht = bracketDephtDropdown.getSelectedIndex() + 1;
+        Substitutions = substitutionDropdown.getSelectedIndex() + 1;
+        Digits = digitsDropdown.getSelectedIndex() + 1;
+        justPositive = positiveCheckbox.isSelected();
+        withFraction = fractionCheckbox.isSelected();
         
         if(!aoAddition && !aoSubtraction && !aoMultiplication && !aoDivision){
             operationError.setText("Keine Rechenoperation(en) ausgewählt!");
@@ -393,7 +412,28 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
     }//GEN-LAST:event_generateCancelButtonActionPerformed
 
     private void addTaskButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTaskButtonActionPerformed
-        System.out.println("Date: " + ft.format(date));
+        aoAddition = addCheckbox.isSelected();
+        aoSubtraction = subtractCheckbox.isSelected();
+        aoMultiplication = multiplyCheckbox.isSelected();
+        aoDivision = divideCheckbox.isSelected();
+        bracketDepht = bracketDephtDropdown.getSelectedIndex() + 1;
+        Substitutions = substitutionDropdown.getSelectedIndex() + 1;
+        Digits = digitsDropdown.getSelectedIndex() + 1;
+        justPositive = positiveCheckbox.isSelected();
+        withFraction = fractionCheckbox.isSelected();
+        
+        if(!aoAddition && !aoSubtraction && !aoMultiplication && !aoDivision){
+            operationError.setText("Keine Rechenoperation(en) ausgewählt!");
+        }
+        else{
+            operationError.setText("");
+            if(noFaults){
+                next = new GUISETTINGSPDF(maingui, this, num + 1);
+                next.setVisible(true);
+        
+                this.setVisible(false);
+            }
+        }
     }//GEN-LAST:event_addTaskButtonActionPerformed
 
     /**
@@ -427,11 +467,11 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUISETTINGSPDF().setVisible(true);
-            }
-        });
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new GUISETTINGSPDF().setVisible(true);
+//            }
+//        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

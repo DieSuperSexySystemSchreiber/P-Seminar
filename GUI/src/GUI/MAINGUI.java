@@ -135,9 +135,7 @@ public class MAINGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonWorksheetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonWorksheetActionPerformed
-        if(pdfSettings == null){
-            pdfSettings = new GUISETTINGSPDF();
-        }
+        pdfSettings = new GUISETTINGSPDF(this, null, 1);
         taskNum = 0;
         
         pdfSettings.setVisible(true);
@@ -151,6 +149,20 @@ public class MAINGUI extends javax.swing.JFrame {
         manuelSettings.setVisible(true);
     }//GEN-LAST:event_buttonMathTrainingManuelActionPerformed
 
+    public GUISETTINGSPDF[] getParameters(GUISETTINGSPDF start, int max){
+        GUISETTINGSPDF[] parList = new GUISETTINGSPDF[max];
+        GUISETTINGSPDF currSettings = start;
+        
+        for(int n = max-1; n >= 0; n--){
+            parList[n] = currSettings;
+            currSettings = currSettings.previous;
+        }
+        
+        return parList;
+    }
+    
+    public void getPDF()
+    
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
