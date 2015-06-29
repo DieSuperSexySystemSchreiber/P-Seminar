@@ -3,4 +3,6 @@ comment0.params=
 comment0.target=com.itextpdf.text.Font\ Font()
 comment1.params=
 comment1.target=com.itextpdf.text.Font\ FontHeader()
-numComments=2
+comment2.params=
+comment2.target=com.itextpdf.text.Font\ getFont()
+numComments=3
