@@ -6,7 +6,6 @@ public class DATE
 {
     public static String getDate()
     {
-        
         return Date();
     }
     public static String Date()
