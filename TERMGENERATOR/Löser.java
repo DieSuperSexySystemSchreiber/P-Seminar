@@ -14,9 +14,32 @@ public class Löser
 
     public double lösen(String term)
     {
-
+        term = "(" + term + ")";
+        int u =1;
         
-
+        String k ="\\d\\)*[\\+|\\-|\\*|\\/]";
+        Pattern mattern = Pattern.compile(k);
+        Matcher patcher = mattern.matcher(term);
+        while(patcher.find())
+        {
+            patcher = mattern.matcher(term);
+            patcher.find();
+            System.out.println(patcher.group());
+            String k1 = term.substring(0,patcher.end() - 1);
+            String k2 = term.substring(patcher.end() - 1,patcher.end());
+            String k3 = term.substring(patcher.end());
+            term = k1 + "l)" + k2 + "(" + k3;
+            u++;
+        }
+        
+        String g = term;
+        String[] part = g.split("l");
+        String g1 = "";
+        for(int n=0;n<u;n++)
+        {
+            g1 = g1 + part[n];
+        }
+        term = g1;
         String a = "\\(\\-?\\d+\\.?\\d*\\).\\(\\-?\\d+\\.?\\d*\\)";
         String f = "";
         Pattern pattern = Pattern.compile(a);
@@ -73,46 +96,12 @@ public class Löser
                 break;
             } 
             term= b1 + f + b2;
+            matcher = pattern.matcher(term);
         }
-        String i = term.substring(1,term.length()-1);
-        
-        String c = i;
-            String[] parts = c.split("\\(|\\)");
-            String c1 = parts[1];
-            String c2 = parts[2];
-            String c3 = parts[3];
-            double d1 = Double.parseDouble(c1);
-            double d3 = Double.parseDouble(c3);
-            String z = "+";
-            String y = "-";
-            String w = "*";
-            String s = "/";
-            double e = 0;
-           if(z.equals(c2))
-           {
-                e = (d1) + (d3);
-            }
-            else if(y.equals(c2))
-            {
-                e = (d1) - (d3);
-            }
-            else if(w.equals(c2))
-            {
-                e = (d1) * (d3);
-            }
-            else if(s.equals(c2))
-            {
-                e = (d1) / (d3);
-            }
-            else
-            {
-                System.out.println("error");
-                e = 0;
-                
-            } 
-        double yay = e;
-
-        return yay;
+        String yay = term.substring(1,term.length()-1);
+        double awsome = Double.parseDouble(yay);
+        return awsome;
+  
     }
 
     public String entklammern(String term)
