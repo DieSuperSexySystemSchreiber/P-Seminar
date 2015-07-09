@@ -1,8 +1,0 @@
-#BlueJ class context
-comment0.params=
-comment0.target=CHOOSER()
-comment1.params=
-comment1.target=java.io.File\ getConfigFile()
-comment2.params=
-comment2.target=java.lang.String[]\ parseFile()
-numComments=3
