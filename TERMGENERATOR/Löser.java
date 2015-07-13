@@ -14,6 +14,9 @@ public class Löser
 
     public double lösen(String term)
     {
+        boolean t = Prüfer(term);
+        if(t == false)
+        return -0.000000000000000000000000000000001;
         term = "(" + term + ")";
         int u =1;
         
@@ -101,12 +104,12 @@ public class Löser
         String yay = term.substring(1,term.length()-1);
         double awsome = Double.parseDouble(yay);
         return awsome;
-  
+    
     }
 
     public String entklammern(String term)
     {
-        String a =  "\\(\\d+(\\.\\d+)?\\)"; // "[^\\+\\-\\*\\/]\\(\\-?\\d+(\\.\\d+)?)\\)|.\\(\\d+(\\.\\d+)?\\)";
+        String a =  "\\(\\-?\\d+(\\.\\d+)?\\)"; // "[^\\+\\-\\*\\/]\\(\\-?\\d+(\\.\\d+)?)\\)|.\\(\\d+(\\.\\d+)?\\)";
         Pattern pattern = Pattern.compile(a);
         Matcher matcher = pattern.matcher(term);
         while (matcher.find())
@@ -171,5 +174,14 @@ public class Löser
          */
         return term;
 
+    }
+    public boolean Prüfer(String l)
+    {
+        String prüfer="((\\(*\\-?)?\\d+\\)*[\\*|\\/|\\+|\\-])+\\d+\\)*";
+        Pattern muster = Pattern.compile(prüfer);
+        Matcher übereinstimmer = muster.matcher(l);
+        if(übereinstimmer.matches())
+        return true;
+        else return false;
     }
 }
