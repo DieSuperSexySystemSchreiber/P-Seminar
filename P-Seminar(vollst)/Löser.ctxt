@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=
+comment0.target=L\u00F6ser()
+comment1.params=term
+comment1.target=double\ l\u00F6sen(java.lang.String)
+comment2.params=term
+comment2.target=java.lang.String\ entklammern(java.lang.String)
+comment3.params=l
+comment3.target=boolean\ Pr\u00FCfer(java.lang.String)
+numComments=4

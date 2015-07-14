@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ initComponents()
+comment0.text=\r\n\ This\ method\ is\ called\ from\ within\ the\ constructor\ to\ initialize\ the\ form.\r\n\ WARNING\:\ Do\ NOT\ modify\ this\ code.\ The\ content\ of\ this\ method\ is\ always\r\n\ regenerated\ by\ the\ Form\ Editor.\r\n
+comment1.params=evt
+comment1.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment10.params=args
+comment10.target=void\ main(java.lang.String[])
+comment10.text=\r\n\ @param\ args\ the\ command\ line\ arguments\r\n
+comment2.params=evt
+comment2.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment3.params=evt
+comment3.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment4.params=evt
+comment4.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment5.params=evt
+comment5.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment6.params=evt
+comment6.target=void\ bracketDephtOrSubstitutionDropdownActionPerformed(java.awt.event.ActionEvent)
+comment7.params=evt
+comment7.target=void\ generateButtonActionPerformed(java.awt.event.ActionEvent)
+comment8.params=evt
+comment8.target=void\ generateCancelButtonActionPerformed(java.awt.event.ActionEvent)
+comment9.params=evt
+comment9.target=void\ addTaskButtonActionPerformed(java.awt.event.ActionEvent)
+numComments=11

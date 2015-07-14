@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.params=
+comment0.target=GUI2()
+comment0.text=\r\n\ Creates\ new\ form\ GUI2\r\n
+comment1.params=
+comment1.target=void\ initComponents()
+comment1.text=\r\n\ This\ method\ is\ called\ from\ within\ the\ constructor\ to\ initialize\ the\ form.\r\n\ WARNING\:\ Do\ NOT\ modify\ this\ code.\ The\ content\ of\ this\ method\ is\ always\r\n\ regenerated\ by\ the\ Form\ Editor.\r\n
+comment2.params=args
+comment2.target=void\ main(java.lang.String[])
+comment2.text=\r\n\ @param\ args\ the\ command\ line\ arguments\r\n
+comment3.params=
+comment3.target=void\ run()
+numComments=4
