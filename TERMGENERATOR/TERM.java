@@ -1,6 +1,7 @@
 
 import java.util.Arrays;
 import java.util.Random;
+import java.util.ArrayList;
 import java.math.*;
 import java.text.DecimalFormat;
 import java.math.MathContext;
@@ -41,6 +42,7 @@ public class TERM
     boolean wFraction;
     int result;
     char operator;
+    int decimalPlaces;
 
     /**
      * TERM Constructor
@@ -67,8 +69,8 @@ public class TERM
         this.oPositive=oPositive;
         this.wFraction=wFraction;
         this.result=ergebnisErzeugen(digits,oPositive,wFraction);
-
-        createSub(aoAddition,aoSubstraction,aoMultiplication,aoDivision,bracketDepth,substitutions,digits,decimalPlaces,oPositive,this.result);
+        this.decimalPlaces=decimalPlaces;
+        createSub(aoAddition,aoSubstraction,aoMultiplication,aoDivision,bracketDepth,substitutions,digits,oPositive,this.result);
     }
 
     /**
@@ -192,7 +194,7 @@ public class TERM
     }
      */
 
-    public void createSub(boolean aoAddition,boolean aoSubstraction,boolean aoMultiplication,boolean aoDivision,int bracketDepth,int substitutions,int digits, int decimalPlaces, boolean oPositive,int erg) {
+    public void createSub(boolean aoAddition,boolean aoSubstraction,boolean aoMultiplication,boolean aoDivision,int bracketDepth,int substitutions,int digits, boolean oPositive,int erg) {
         int[] newSubs=splitSubs(this.substitutions-1);
         String operator=getRechenzeichen(aoAddition,aoSubstraction,aoMultiplication,aoDivision);
 
@@ -201,7 +203,7 @@ public class TERM
 
             int plus1=0;
             int plus2=0;
-            if (oPositive==true&&decimalPlaces==0){
+            if (oPositive==true){
                 plus1=(int) getRand((int) 0, (int) erg);    
                 System.out.println(plus1);
             }
@@ -209,30 +211,33 @@ public class TERM
                 if( erg>=0) {
                     plus1 =(int)  getRand((int) (-1*(Math.pow(10,digits)-1))+(int) erg, (int) Math.pow(10,digits )-1);
 
-                    
                 }
                 else if(erg < 0) {
                     plus1 =(int)  getRand((int) (-1*(Math.pow(10,digits)-1)), (int) (Math.pow(10,digits )-1)+(int) erg);
 
-                    
                 }
             }
             plus2 =(int) erg-plus1;
             //System.out.println(plus1+" , "+plus2);
             this.wurzelSetzen(new DATENKNOTEN("+"));
-            this.wurzel.rechterTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,(bracketDepth-1)-1,newSubs[1],digits,decimalPlaces,oPositive,plus1);
-            this.wurzel.linkerTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,bracketDepth-1,newSubs[0],digits,decimalPlaces,oPositive,plus2);
+            this.wurzel.rechterTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,(bracketDepth-1)-1,newSubs[1],digits,oPositive,plus1);
+            this.wurzel.linkerTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,bracketDepth-1,newSubs[0],digits,oPositive,plus2);
 
             //return number1 + "+" + number2;
             break;
             case "-":
             int min1=0;
             int min2=0;
-            if (oPositive==true&&decimalPlaces==0){
+            if (oPositive==true){
                 min1=(int) getRand((int) erg, (int) Math.pow(10,digits)-1);    
             }
             else{
-                min1 =(int)  getRand((int) (-1*(Math.pow(10,digits)-1))+(int) erg, (int) Math.pow(10,digits )-1);
+                if(erg>=0) {
+                    min1 =(int)  getRand((int) (-1*(Math.pow(10,digits)-1))+(int) erg, (int) Math.pow(10,digits )-1);
+                }
+                else if(erg < 0 ){
+                    min1=(int) getRand((int) (-1*(Math.pow(10,digits)-1)),(int) (Math.pow(10,digits)-1)+(int) erg);
+                }
 
             }
             min2 =(int)  min1 - (int)erg;
@@ -241,8 +246,8 @@ public class TERM
             System.out.println(newSubs[0]+"subs0");
             System.out.println(min1+" , "+min2);
             this.wurzelSetzen(new DATENKNOTEN("-"));
-            this.wurzel.rechterTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,(bracketDepth-1)-1,newSubs[1],digits, decimalPlaces,oPositive,min1);
-            this.wurzel.linkerTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,bracketDepth-1,newSubs[0],digits,decimalPlaces,oPositive,min2);
+            this.wurzel.rechterTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,(bracketDepth-1)-1,newSubs[1],digits,oPositive,min1);
+            this.wurzel.linkerTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,bracketDepth-1,newSubs[0],digits,oPositive,min2);
 
             //return number3 + "-" + number4;
             break;
@@ -257,8 +262,8 @@ public class TERM
 
             //int[] newSubs=splitSubs(this.substitutions-1);
             this.wurzelSetzen(new DATENKNOTEN("*"));
-            this.wurzel.rechterTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,(bracketDepth-1)-1,newSubs[1],digits,decimalPlaces,oPositive,mul1);
-            this.wurzel.linkerTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,bracketDepth-1,newSubs[0],digits,decimalPlaces,oPositive,mul2);
+            this.wurzel.rechterTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,(bracketDepth-1)-1,newSubs[1],digits,oPositive,mul1);
+            this.wurzel.linkerTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,bracketDepth-1,newSubs[0],digits,oPositive,mul2);
 
             //return number5 + "*" + number6;
             break;
@@ -290,8 +295,8 @@ public class TERM
 
             this.wurzelSetzen(new DATENKNOTEN("/"));
 
-            this.wurzel.rechterTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,(bracketDepth-1)-1,newSubs[1],digits,decimalPlaces,oPositive,(int)div1);
-            this.wurzel.linkerTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,bracketDepth-1,newSubs[0],digits,decimalPlaces,oPositive,(int)div2);
+            this.wurzel.rechterTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,(bracketDepth-1)-1,newSubs[1],digits,oPositive,(int)div1);
+            this.wurzel.linkerTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,bracketDepth-1,newSubs[0],digits,oPositive,(int)div2);
             break;
             //return number7 + "/" + number8;
         }
@@ -344,9 +349,36 @@ public class TERM
      */
     public String infix()
     {
-        System.out.println(wurzel.infix());
-        return  wurzel.infix();
+        if( this.decimalPlaces!=0) {
+            ArrayList term= new ArrayList();
+            String fTerm= "";
+            term=wurzel.collect(term);
+            for(Object o:term) {
+                System.out.println(o.toString());
+                if(o instanceof Integer ) {
+
+                    int inst=(int) o;
+                    double formatted;
+                    formatted= (inst/Math.pow(10,this.decimalPlaces)) ;
+
+                    fTerm=fTerm+Double.toString(formatted);
+                }
+                else {
+                    fTerm=fTerm+o.toString();
+                }
+
+                //return "T";
+            }
+            double re=  this.result/ Math.pow(10,this.decimalPlaces);
+            System.out.println(re+" = "+fTerm);
+            System.out.println(wurzel.infix());
+        }
+        else {
+            System.out.println(wurzel.infix());
+            return  wurzel.infix();
+        }
         //System.out.println(result+"="+expression);
+        return "t";
     }
 
     public void parseExpressionToLatex(String exp) {

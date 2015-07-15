@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 public class ZAHL extends TERMELEMENT
 {
     private int number;
@@ -16,6 +17,19 @@ public class ZAHL extends TERMELEMENT
 
     public void präfix()
     {
+    }
+
+    public ArrayList collect(ArrayList dest) {
+        if( number < 0 ) {
+            dest.add("(");
+            dest.add(number);
+            dest.add(")");
+        }
+        else {
+            dest.add(number);
+        }
+        
+        return dest;
     }
 
     public int gibHöhe() {
@@ -58,8 +72,8 @@ public class ZAHL extends TERMELEMENT
         }
     }
 
-    public  void rechterTermErsetzen(boolean aoAddition,boolean aoSubstraction,boolean aoMultiplication,boolean aoDivision,int bracketDepth,int substitutions,int digits, int decimalPlaces, boolean oPositive,int erg){};
+    public  void rechterTermErsetzen(boolean aoAddition,boolean aoSubstraction,boolean aoMultiplication,boolean aoDivision,int bracketDepth,int substitutions,int digits, boolean oPositive,int erg){};
 
-    public  void linkerTermErsetzen(boolean aoAddition,boolean aoSubstraction,boolean aoMultiplication,boolean aoDivision,int bracketDepth,int substitutions,int digits,int decimalPlaces, boolean oPositive,int erg) {};
+    public  void linkerTermErsetzen(boolean aoAddition,boolean aoSubstraction,boolean aoMultiplication,boolean aoDivision,int bracketDepth,int substitutions,int digits, boolean oPositive,int erg) {};
 
 }
