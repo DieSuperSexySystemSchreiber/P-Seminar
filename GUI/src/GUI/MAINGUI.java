@@ -17,7 +17,10 @@ public class MAINGUI extends javax.swing.JFrame {
     
     GUISETTINGS manuelSettings;
     GUISETTINGSPDF pdfSettings;
+    PRESETTINGS preSettings;
     int taskNum = 0;
+    
+    //PDF pdfGenerator;
     
     public MAINGUI() {
         initComponents();
@@ -143,12 +146,18 @@ public class MAINGUI extends javax.swing.JFrame {
 
     private void buttonMathTrainingManuelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMathTrainingManuelActionPerformed
         if(manuelSettings == null){
-            manuelSettings = new GUISETTINGS();
+            manuelSettings = new GUISETTINGS(this);
         }
         
         manuelSettings.setVisible(true);
     }//GEN-LAST:event_buttonMathTrainingManuelActionPerformed
 
+    public void showTerm(TERM term){
+        System.out.println("Term: "+term.infix());
+        GUI3 gui3 = new GUI3(term);
+        gui3.setVisible(true);
+    }
+    
     public GUISETTINGSPDF[] getParameters(GUISETTINGSPDF start, int max){
         GUISETTINGSPDF[] parList = new GUISETTINGSPDF[max];
         GUISETTINGSPDF currSettings = start;
@@ -161,14 +170,18 @@ public class MAINGUI extends javax.swing.JFrame {
         return parList;
     }
     
-    public void getPDF()
+    public void createPDF(GUISETTINGSPDF erster, String headline, int num){
+        PDFGEN pdfGenerator = new PDFGEN();
+        pdfGenerator.PDFAB(headline, num, erster, false);
+    }
     
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void buttonMathTrainingPresettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMathTrainingPresettingsActionPerformed
-        // TODO add your handling code here:
+        preSettings = new PRESETTINGS(this);
+        preSettings.setVisible(true);
     }//GEN-LAST:event_buttonMathTrainingPresettingsActionPerformed
 
     /**
@@ -201,6 +214,7 @@ public class MAINGUI extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new MAINGUI().setVisible(true);
             }

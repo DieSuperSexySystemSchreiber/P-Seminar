@@ -25,6 +25,7 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
     GUISETTINGSPDF next;
     int num;
     
+    int taskNumber;
     boolean aoAddition;
     boolean aoSubtraction;
     boolean aoMultiplication;
@@ -32,10 +33,12 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
     int bracketDepht;
     int Substitutions;
     int Digits;
+    int decimalPlaces;
     boolean justPositive;
     boolean withFraction;
     
     boolean noFaults = true;
+    boolean noFaults2 = true;
     GUISETTINGSPDF nextSettings;
     Date date = new Date();
     SimpleDateFormat ft = new SimpleDateFormat("dd.MM.yyyy");
@@ -49,6 +52,8 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
         operationError.setText("");
         bracketDephtError.setText("");
         substitutionsError.setText("");
+        digitsError.setText("");
+        decimalError.setText("");
         labelPDFSettings.setText("Aufgabeneinstellungen (Aufgabe " + num + ")");
         headline.setText("Aufgabenblatt vom " + ft.format(date));
         
@@ -90,8 +95,12 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
         operationError = new javax.swing.JLabel();
         addTaskButton = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
-        taskNumber = new javax.swing.JComboBox();
+        taskNumberDropdown = new javax.swing.JComboBox();
         headline = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        decimalPlacesDropdown = new javax.swing.JComboBox();
+        digitsError = new javax.swing.JLabel();
+        decimalError = new javax.swing.JLabel();
 
         jLabel5.setText("jLabel5");
 
@@ -122,7 +131,7 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
         setTitle("Einstellungen - PDF");
         setFocusable(false);
         setResizable(false);
-        setType(java.awt.Window.Type.UTILITY);
+        setType(java.awt.Window.Type.POPUP);
 
         labelPDFSettings.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labelPDFSettings.setText("Aufgabeneinstellungen (Aufgabe #)");
@@ -147,9 +156,13 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
         jLabel7.setText("Rechenoperationen:");
 
         digitsDropdown.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        digitsDropdown.setMaximumRowCount(5);
-        digitsDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5" }));
+        digitsDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8" }));
         digitsDropdown.setToolTipText("");
+        digitsDropdown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                digitsDropdownOrDecimalDropdownActionPerformed(evt);
+            }
+        });
 
         addCheckbox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         addCheckbox.setText("Plus ( + )");
@@ -226,15 +239,34 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel14.setText("Anzahl Teilaufgaben:");
 
-        taskNumber.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        taskNumber.setMaximumRowCount(12);
-        taskNumber.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
-        taskNumber.setToolTipText("Anzahl der Teilaufgaben (1.a; 1.b; etc.)");
+        taskNumberDropdown.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        taskNumberDropdown.setMaximumRowCount(12);
+        taskNumberDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        taskNumberDropdown.setToolTipText("Anzahl der Teilaufgaben (1.a; 1.b; etc.)");
 
         headline.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         headline.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         headline.setText("Aufgabenblatt - [Date]");
         headline.setToolTipText("Überschrift für das Aufgabenblatt");
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel15.setText("Dezimalstellen:");
+
+        decimalPlacesDropdown.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        decimalPlacesDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4", "5", "6", "7" }));
+        decimalPlacesDropdown.setToolTipText("");
+        decimalPlacesDropdown.setPreferredSize(new java.awt.Dimension(40, 21));
+        decimalPlacesDropdown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                digitsDropdownOrDecimalDropdownActionPerformed(evt);
+            }
+        });
+
+        digitsError.setForeground(new java.awt.Color(255, 0, 0));
+        digitsError.setText("digitsError");
+
+        decimalError.setForeground(new java.awt.Color(255, 0, 0));
+        decimalError.setText("decimalError");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -250,28 +282,12 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(operanten)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel13))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(digitsDropdown, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(bracketDephtDropdown, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(substitutionDropdown, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(bracketDephtError)
-                                    .addComponent(substitutionsError)))
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(positiveCheckbox)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(fractionCheckbox)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                         .addComponent(jLabel2)
                         .addGap(146, 146, 146))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelPDFSettings)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -287,6 +303,28 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelPDFSettings)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(decimalPlacesDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel8)
+                                            .addComponent(jLabel13))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(digitsDropdown, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(bracketDephtDropdown, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(substitutionDropdown, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(bracketDephtError)
+                                    .addComponent(digitsError)
+                                    .addComponent(decimalError)
+                                    .addComponent(substitutionsError))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -300,7 +338,8 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel14)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(taskNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(taskNumberDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel15))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -312,7 +351,7 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
                 .addComponent(headline, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(taskNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(taskNumberDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14))
                 .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -329,7 +368,7 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(operationError)
-                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(bracketDephtDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -342,8 +381,14 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
                         .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(digitsDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13))
-                        .addGap(18, 18, 18)
+                            .addComponent(jLabel13)
+                            .addComponent(digitsError))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel15)
+                            .addComponent(decimalPlacesDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(decimalError))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(positiveCheckbox)
                             .addComponent(fractionCheckbox))))
@@ -385,6 +430,7 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
     }//GEN-LAST:event_bracketDephtOrSubstitutionDropdownActionPerformed
 
     private void generateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateButtonActionPerformed
+        taskNumber = taskNumberDropdown.getSelectedIndex() + 1;
         aoAddition = addCheckbox.isSelected();
         aoSubtraction = subtractCheckbox.isSelected();
         aoMultiplication = multiplyCheckbox.isSelected();
@@ -392,6 +438,7 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
         bracketDepht = bracketDephtDropdown.getSelectedIndex() + 1;
         Substitutions = substitutionDropdown.getSelectedIndex() + 1;
         Digits = digitsDropdown.getSelectedIndex() + 1;
+        decimalPlaces = decimalPlacesDropdown.getSelectedIndex();
         justPositive = positiveCheckbox.isSelected();
         withFraction = fractionCheckbox.isSelected();
         
@@ -402,7 +449,7 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
             operationError.setText("");
             if(noFaults){
                 this.setVisible(false);
-                //class.generiereTerm(aoAddition, aoSubtraction, aoMultiplication, aoDivision, bracketDepht, Substitutions, Digits, justPositive, withFraction)
+                maingui.createPDF(maingui.pdfSettings, headline.getText(), num);
             }
         }
     }//GEN-LAST:event_generateButtonActionPerformed
@@ -412,6 +459,7 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
     }//GEN-LAST:event_generateCancelButtonActionPerformed
 
     private void addTaskButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTaskButtonActionPerformed
+        taskNumber = taskNumberDropdown.getSelectedIndex() + 1;
         aoAddition = addCheckbox.isSelected();
         aoSubtraction = subtractCheckbox.isSelected();
         aoMultiplication = multiplyCheckbox.isSelected();
@@ -419,6 +467,7 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
         bracketDepht = bracketDephtDropdown.getSelectedIndex() + 1;
         Substitutions = substitutionDropdown.getSelectedIndex() + 1;
         Digits = digitsDropdown.getSelectedIndex() + 1;
+        decimalPlaces = decimalPlacesDropdown.getSelectedIndex();
         justPositive = positiveCheckbox.isSelected();
         withFraction = fractionCheckbox.isSelected();
         
@@ -427,7 +476,7 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
         }
         else{
             operationError.setText("");
-            if(noFaults){
+            if(noFaults && noFaults2){
                 next = new GUISETTINGSPDF(maingui, this, num + 1);
                 next.setVisible(true);
         
@@ -435,6 +484,26 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_addTaskButtonActionPerformed
+
+    private void digitsDropdownOrDecimalDropdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_digitsDropdownOrDecimalDropdownActionPerformed
+        int digi = Integer.parseInt(digitsDropdown.getSelectedItem().toString());
+        int deci = Integer.parseInt(decimalPlacesDropdown.getSelectedItem().toString());
+        
+        int minDigi = deci + 1;
+        
+        int maxDeci = digi - 1;
+        
+        if(digi < minDigi || deci > maxDeci){
+            digitsError.setText("Mindeststellen: " + minDigi);
+            decimalError.setText("Maximale Dezimalstellen: " + maxDeci);
+            noFaults2 = false;
+        }
+        else{
+            digitsError.setText("");
+            decimalError.setText("");
+            noFaults2 = true;
+        }
+    }//GEN-LAST:event_digitsDropdownOrDecimalDropdownActionPerformed
 
     /**
      * @param args the command line arguments
@@ -479,7 +548,10 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
     private javax.swing.JButton addTaskButton;
     private javax.swing.JComboBox bracketDephtDropdown;
     private javax.swing.JLabel bracketDephtError;
+    private javax.swing.JLabel decimalError;
+    private javax.swing.JComboBox decimalPlacesDropdown;
     private javax.swing.JComboBox digitsDropdown;
+    private javax.swing.JLabel digitsError;
     private javax.swing.JCheckBox divideCheckbox;
     private javax.swing.JCheckBox fractionCheckbox;
     private javax.swing.JButton generateButton;
@@ -489,6 +561,7 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
@@ -501,6 +574,6 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
     private javax.swing.JComboBox substitutionDropdown;
     private javax.swing.JLabel substitutionsError;
     private javax.swing.JCheckBox subtractCheckbox;
-    private javax.swing.JComboBox taskNumber;
+    private javax.swing.JComboBox taskNumberDropdown;
     // End of variables declaration//GEN-END:variables
 }

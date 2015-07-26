@@ -19,12 +19,18 @@ public class GUISETTINGS extends javax.swing.JFrame {
      * Creates new form GUI
      */
     boolean noFaults = true;
+    boolean noFaults2 = true;
+    MAINGUI maingui;
     
-    public GUISETTINGS() {
+    public GUISETTINGS(MAINGUI maingui) {
+        this.maingui = maingui;
+        
         initComponents();
         operationError.setText("");
         bracketDephtError.setText("");
         substitutionsError.setText("");
+        digitsError.setText("");
+        decimalError.setText("");
         
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
@@ -42,6 +48,7 @@ public class GUISETTINGS extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jInternalFrame1 = new javax.swing.JInternalFrame();
+        digitsDropdown1 = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         operanten = new javax.swing.JLabel();
@@ -62,6 +69,10 @@ public class GUISETTINGS extends javax.swing.JFrame {
         bracketDephtError = new javax.swing.JLabel();
         substitutionsError = new javax.swing.JLabel();
         operationError = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        decimalPlacesDropdown = new javax.swing.JComboBox();
+        digitsError = new javax.swing.JLabel();
+        decimalError = new javax.swing.JLabel();
 
         jLabel5.setText("jLabel5");
 
@@ -89,10 +100,15 @@ public class GUISETTINGS extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        digitsDropdown1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        digitsDropdown1.setMaximumRowCount(5);
+        digitsDropdown1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5" }));
+        digitsDropdown1.setToolTipText("");
+
         setTitle("Einstellungen - Übung");
         setFocusable(false);
         setResizable(false);
-        setType(java.awt.Window.Type.UTILITY);
+        setType(java.awt.Window.Type.POPUP);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Übungsaufgaben-Einstellungen");
@@ -117,9 +133,13 @@ public class GUISETTINGS extends javax.swing.JFrame {
         jLabel7.setText("Rechenoperationen:");
 
         digitsDropdown.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        digitsDropdown.setMaximumRowCount(5);
-        digitsDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5" }));
+        digitsDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8" }));
         digitsDropdown.setToolTipText("");
+        digitsDropdown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                digitsDropdownOrDecimalPlacesDropdownActionPerformed(evt);
+            }
+        });
 
         addCheckbox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         addCheckbox.setText("Plus ( + )");
@@ -181,6 +201,25 @@ public class GUISETTINGS extends javax.swing.JFrame {
         operationError.setForeground(new java.awt.Color(255, 0, 0));
         operationError.setText("operationError");
 
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel14.setText("Dezimalstellen:");
+
+        decimalPlacesDropdown.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        decimalPlacesDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4", "5", "6", "7" }));
+        decimalPlacesDropdown.setToolTipText("");
+        decimalPlacesDropdown.setPreferredSize(new java.awt.Dimension(40, 21));
+        decimalPlacesDropdown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                digitsDropdownOrDecimalPlacesDropdownActionPerformed(evt);
+            }
+        });
+
+        digitsError.setForeground(new java.awt.Color(255, 0, 0));
+        digitsError.setText("digitsError");
+
+        decimalError.setForeground(new java.awt.Color(255, 0, 0));
+        decimalError.setText("decimalError");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -194,37 +233,10 @@ public class GUISETTINGS extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(positiveCheckbox)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(fractionCheckbox))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel13))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(digitsDropdown, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(bracketDephtDropdown, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(substitutionDropdown, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(bracketDephtError)
-                                    .addComponent(substitutionsError))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                                .addComponent(fractionCheckbox)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
                         .addComponent(jLabel2)
                         .addGap(146, 146, 146))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(multiplyCheckbox)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(divideCheckbox)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(addCheckbox)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(subtractCheckbox)
-                        .addGap(0, 4, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -235,7 +247,42 @@ public class GUISETTINGS extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(operationError)
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel13))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(decimalPlacesDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(digitsDropdown, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(bracketDephtDropdown, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(substitutionDropdown, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(bracketDephtError)
+                                    .addComponent(substitutionsError)
+                                    .addComponent(digitsError)
+                                    .addComponent(decimalError))))
+                        .addContainerGap(202, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(multiplyCheckbox)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(divideCheckbox)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(addCheckbox)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(subtractCheckbox))
+                            .addComponent(jLabel14))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,7 +304,7 @@ public class GUISETTINGS extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(operationError)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                        .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(bracketDephtDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -270,8 +317,14 @@ public class GUISETTINGS extends javax.swing.JFrame {
                         .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(digitsDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13))
-                        .addGap(18, 18, 18)
+                            .addComponent(jLabel13)
+                            .addComponent(digitsError))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14)
+                            .addComponent(decimalPlacesDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(decimalError))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(positiveCheckbox)
                             .addComponent(fractionCheckbox))
@@ -320,6 +373,7 @@ public class GUISETTINGS extends javax.swing.JFrame {
         int bracketDepht = bracketDephtDropdown.getSelectedIndex() + 1;
         int Substitutions = substitutionDropdown.getSelectedIndex() + 1;
         int Digits = digitsDropdown.getSelectedIndex() + 1;
+        int decimalPlaces = decimalPlacesDropdown.getSelectedIndex();
         boolean justPositive = positiveCheckbox.isSelected();
         boolean withFraction = fractionCheckbox.isSelected();
         
@@ -328,9 +382,10 @@ public class GUISETTINGS extends javax.swing.JFrame {
         }
         else{
             operationError.setText("");
-            if(noFaults){
+            if(noFaults && noFaults2){
                 this.setVisible(false);
-                //class.generiereTerm(aoAddition, aoSubtraction, aoMultiplication, aoDivision, bracketDepht, Substitutions, Digits, justPositive, withFraction)
+                TERM term = new TERM(aoAddition, aoSubtraction, aoMultiplication, aoDivision, bracketDepht, Substitutions, Digits, decimalPlaces, justPositive, withFraction);
+                maingui.showTerm(term);
             }
         }
     }//GEN-LAST:event_generateButtonActionPerformed
@@ -338,6 +393,26 @@ public class GUISETTINGS extends javax.swing.JFrame {
     private void generateCancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateCancelButtonActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_generateCancelButtonActionPerformed
+
+    private void digitsDropdownOrDecimalPlacesDropdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_digitsDropdownOrDecimalPlacesDropdownActionPerformed
+        int digi = Integer.parseInt(digitsDropdown.getSelectedItem().toString());
+        int deci = Integer.parseInt(decimalPlacesDropdown.getSelectedItem().toString());
+        
+        int minDigi = deci + 1;
+        
+        int maxDeci = digi - 1;
+        
+        if(digi < minDigi || deci > maxDeci){
+            digitsError.setText("Mindeststellen: " + minDigi);
+            decimalError.setText("Maximale Dezimalstellen: " + maxDeci);
+            noFaults2 = false;
+        }
+        else{
+            digitsError.setText("");
+            decimalError.setText("");
+            noFaults2 = true;
+        }
+    }//GEN-LAST:event_digitsDropdownOrDecimalPlacesDropdownActionPerformed
 
     /**
      * @param args the command line arguments
@@ -369,8 +444,9 @@ public class GUISETTINGS extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
-                new GUISETTINGS().setVisible(true);
+                new GUISETTINGS(null).setVisible(true);
             }
         });
     }
@@ -379,7 +455,11 @@ public class GUISETTINGS extends javax.swing.JFrame {
     private javax.swing.JCheckBox addCheckbox;
     private javax.swing.JComboBox bracketDephtDropdown;
     private javax.swing.JLabel bracketDephtError;
+    private javax.swing.JLabel decimalError;
+    private javax.swing.JComboBox decimalPlacesDropdown;
     private javax.swing.JComboBox digitsDropdown;
+    private javax.swing.JComboBox digitsDropdown1;
+    private javax.swing.JLabel digitsError;
     private javax.swing.JCheckBox divideCheckbox;
     private javax.swing.JCheckBox fractionCheckbox;
     private javax.swing.JButton generateButton;
@@ -388,6 +468,7 @@ public class GUISETTINGS extends javax.swing.JFrame {
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
