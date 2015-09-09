@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -22,6 +23,7 @@ public class MAINGUI extends javax.swing.JFrame {
     GUISETTINGSPDF pdfSettings;
     PRESETTINGS preSettings;
     int taskNum = 0;
+    double solution01;
     
     //PDF pdfGenerator;
     
@@ -40,6 +42,10 @@ public class MAINGUI extends javax.swing.JFrame {
         buttonMathTrainingPresettingsStart.setLocation(this.getWidth() / 2 - buttonMathTrainingPresettingsStart.getWidth() / 2, this.getHeight() / 2 - 200);
         buttonMathTrainingManuelStart.setLocation(this.getWidth() / 2 - buttonMathTrainingManuelStart.getWidth() / 2, this.getHeight() / 2 - 100);
         buttonWorksheetStart.setLocation(this.getWidth() / 2 - buttonWorksheetStart.getWidth() / 2, this.getHeight() / 2 + 0);
+        
+        panel01.setLayout(null);
+        panel01.setLocation(this.getWidth() / 2 - panel01.getWidth() / 2, this.getHeight() / 2 - panel01.getHeight() / 2 - 100);
+        panel01.setVisible(false);
     }
 
     /**
@@ -59,6 +65,14 @@ public class MAINGUI extends javax.swing.JFrame {
         buttonMathTrainingPresettingsStart = new javax.swing.JButton();
         buttonMathTrainingManuelStart = new javax.swing.JButton();
         buttonWorksheetStart = new javax.swing.JButton();
+        panel01 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        textfieldTask01 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        textfieldSolution01 = new javax.swing.JTextField();
+        buttonCheck01 = new javax.swing.JButton();
+        buttonSolution01 = new javax.swing.JButton();
+        buttonNewTask = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
@@ -66,6 +80,7 @@ public class MAINGUI extends javax.swing.JFrame {
         buttonMathTrainingPresettings = new javax.swing.JMenuItem();
         buttonMathTrainingManuel = new javax.swing.JMenuItem();
         buttonWorksheet = new javax.swing.JMenuItem();
+        buttonClear = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
@@ -114,6 +129,102 @@ public class MAINGUI extends javax.swing.JFrame {
             }
         });
 
+        panel01.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setText("Berechne:");
+
+        textfieldTask01.setEditable(false);
+        textfieldTask01.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        textfieldTask01.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        textfieldTask01.setText("[Aufgabe]");
+        textfieldTask01.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textfieldTask01ActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setText("=");
+
+        textfieldSolution01.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        textfieldSolution01.setToolTipText("Hier Lösung eintragen");
+        textfieldSolution01.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textfieldSolution01FocusGained(evt);
+            }
+        });
+        textfieldSolution01.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textfieldSolution01ActionPerformed(evt);
+            }
+        });
+
+        buttonCheck01.setText("Prüfen");
+        buttonCheck01.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCheck01ActionPerformed(evt);
+            }
+        });
+
+        buttonSolution01.setText("Ergebnis");
+        buttonSolution01.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSolution01ActionPerformed(evt);
+            }
+        });
+
+        buttonNewTask.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        buttonNewTask.setText("Neue Aufgabe");
+        buttonNewTask.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonNewTaskActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panel01Layout = new javax.swing.GroupLayout(panel01);
+        panel01.setLayout(panel01Layout);
+        panel01Layout.setHorizontalGroup(
+            panel01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel01Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panel01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textfieldTask01)
+                    .addGroup(panel01Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(textfieldSolution01)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonCheck01)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonSolution01))
+                    .addGroup(panel01Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(panel01Layout.createSequentialGroup()
+                .addGap(362, 362, 362)
+                .addComponent(buttonNewTask)
+                .addContainerGap(364, Short.MAX_VALUE))
+        );
+        panel01Layout.setVerticalGroup(
+            panel01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel01Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textfieldTask01, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panel01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(textfieldSolution01, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonSolution01)
+                    .addComponent(buttonCheck01))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonNewTask)
+                .addContainerGap())
+        );
+
         jMenu1.setText("Datei");
         jMenu1.setToolTipText("");
 
@@ -149,6 +260,14 @@ public class MAINGUI extends javax.swing.JFrame {
         jMenu3.add(buttonWorksheet);
 
         jMenu1.add(jMenu3);
+
+        buttonClear.setText("Hauptmenü");
+        buttonClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonClearActionPerformed(evt);
+            }
+        });
+        jMenu1.add(buttonClear);
         jMenu1.add(jSeparator1);
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK));
@@ -184,24 +303,30 @@ public class MAINGUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(114, 114, 114)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(819, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(buttonMathTrainingManuelStart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonMathTrainingPresettingsStart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonWorksheetStart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(1185, Short.MAX_VALUE))
+                    .addComponent(buttonWorksheetStart, javax.swing.GroupLayout.PREFERRED_SIZE, 621, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(480, 480, 480))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panel01, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(72, 72, 72)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panel01, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 323, Short.MAX_VALUE)
                 .addComponent(buttonMathTrainingPresettingsStart)
                 .addGap(72, 72, 72)
                 .addComponent(buttonMathTrainingManuelStart)
                 .addGap(72, 72, 72)
                 .addComponent(buttonWorksheetStart)
-                .addContainerGap(642, Short.MAX_VALUE))
+                .addGap(252, 252, 252))
         );
 
         pack();
@@ -225,9 +350,18 @@ public class MAINGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonMathTrainingManuelActionPerformed
 
     public void showTerm(TERM term){
+        buttonMathTrainingPresettingsStart.setVisible(false);
+        buttonMathTrainingManuelStart.setVisible(false);
+        buttonWorksheetStart.setVisible(false);
+        
         System.out.println("Term: "+term.infix());
-        GUI3 gui3 = new GUI3(term);
-        gui3.setVisible(true);
+        //GUI3 gui3 = new GUI3(term);
+        //gui3.setVisible(true);
+        textfieldTask01.setText(term.infix());
+        panel01.setVisible(true);
+        solution01 = term.getSolution();
+        textfieldSolution01.setText("");
+        textfieldSolution01.setBackground(Color.white);
     }
     
     public GUISETTINGSPDF[] getParameters(GUISETTINGSPDF start, int max){
@@ -260,6 +394,45 @@ public class MAINGUI extends javax.swing.JFrame {
         GUICONFIG config = new GUICONFIG();
         config.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void textfieldTask01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textfieldTask01ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textfieldTask01ActionPerformed
+
+    private void buttonSolution01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSolution01ActionPerformed
+        textfieldSolution01.setText("" + solution01);
+    }//GEN-LAST:event_buttonSolution01ActionPerformed
+
+    private void buttonCheck01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCheck01ActionPerformed
+        if(solution01 == Double.parseDouble(textfieldSolution01.getText())){
+            textfieldSolution01.setBackground(Color.green);
+        }
+        else{
+            textfieldSolution01.setBackground(Color.red);
+        }
+    }//GEN-LAST:event_buttonCheck01ActionPerformed
+
+    private void textfieldSolution01FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textfieldSolution01FocusGained
+        textfieldSolution01.setBackground(Color.white);
+    }//GEN-LAST:event_textfieldSolution01FocusGained
+
+    private void buttonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClearActionPerformed
+        textfieldSolution01.setText("");
+        textfieldSolution01.setBackground(Color.white);
+        panel01.setVisible(false);
+        
+        buttonMathTrainingPresettingsStart.setVisible(true);
+        buttonMathTrainingManuelStart.setVisible(true);
+        buttonWorksheetStart.setVisible(true);
+    }//GEN-LAST:event_buttonClearActionPerformed
+
+    private void buttonNewTaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNewTaskActionPerformed
+        manuelSettings.generateTerm();
+    }//GEN-LAST:event_buttonNewTaskActionPerformed
+
+    private void textfieldSolution01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textfieldSolution01ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textfieldSolution01ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -299,12 +472,18 @@ public class MAINGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonCheck01;
+    private javax.swing.JMenuItem buttonClear;
     private javax.swing.JMenuItem buttonMathTrainingManuel;
     private javax.swing.JButton buttonMathTrainingManuelStart;
     private javax.swing.JMenuItem buttonMathTrainingPresettings;
     private javax.swing.JButton buttonMathTrainingPresettingsStart;
+    private javax.swing.JButton buttonNewTask;
+    private javax.swing.JButton buttonSolution01;
     private javax.swing.JMenuItem buttonWorksheet;
     private javax.swing.JButton buttonWorksheetStart;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -319,5 +498,8 @@ public class MAINGUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPanel panel01;
+    private javax.swing.JTextField textfieldSolution01;
+    private javax.swing.JTextField textfieldTask01;
     // End of variables declaration//GEN-END:variables
 }

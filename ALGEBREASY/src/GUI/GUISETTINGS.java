@@ -22,6 +22,17 @@ public class GUISETTINGS extends javax.swing.JFrame {
     boolean noFaults2 = true;
     MAINGUI maingui;
     
+    boolean aoAddition;
+    boolean aoSubtraction;
+    boolean aoMultiplication;
+    boolean aoDivision;
+    int bracketDepht;
+    int Substitutions;
+    int Digits;
+    int decimalPlaces;
+    boolean justPositive;
+    //boolean withFraction;
+    
     public GUISETTINGS(MAINGUI maingui) {
         this.maingui = maingui;
         
@@ -357,16 +368,16 @@ public class GUISETTINGS extends javax.swing.JFrame {
     }//GEN-LAST:event_bracketDephtOrSubstitutionDropdownActionPerformed
 
     private void generateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateButtonActionPerformed
-        boolean aoAddition = addCheckbox.isSelected();
-        boolean aoSubtraction = subtractCheckbox.isSelected();
-        boolean aoMultiplication = multiplyCheckbox.isSelected();
-        boolean aoDivision = divideCheckbox.isSelected();
-        int bracketDepht = bracketDephtDropdown.getSelectedIndex() + 1;
-        int Substitutions = substitutionDropdown.getSelectedIndex() + 1;
-        int Digits = digitsDropdown.getSelectedIndex() + 1;
-        int decimalPlaces = decimalPlacesDropdown.getSelectedIndex();
-        boolean justPositive = positiveCheckbox.isSelected();
-        //boolean withFraction = fractionCheckbox.isSelected();
+        aoAddition = addCheckbox.isSelected();
+        aoSubtraction = subtractCheckbox.isSelected();
+        aoMultiplication = multiplyCheckbox.isSelected();
+        aoDivision = divideCheckbox.isSelected();
+        bracketDepht = bracketDephtDropdown.getSelectedIndex() + 1;
+        Substitutions = substitutionDropdown.getSelectedIndex() + 1;
+        Digits = digitsDropdown.getSelectedIndex() + 1;
+        decimalPlaces = decimalPlacesDropdown.getSelectedIndex();
+        justPositive = positiveCheckbox.isSelected();
+        //withFraction = fractionCheckbox.isSelected();
         
         if(!aoAddition && !aoSubtraction && !aoMultiplication && !aoDivision){
             operationError.setText("Keine Rechenoperation(en) ausgewählt!");
@@ -374,13 +385,17 @@ public class GUISETTINGS extends javax.swing.JFrame {
         else{
             operationError.setText("");
             if(noFaults && noFaults2){
-                this.setVisible(false);
-                TERM term = new TERM(aoAddition, aoSubtraction, aoMultiplication, aoDivision, bracketDepht, Substitutions, Digits, decimalPlaces, justPositive);
-                maingui.showTerm(term);
+                generateTerm();
             }
         }
     }//GEN-LAST:event_generateButtonActionPerformed
 
+    public void generateTerm(){
+        this.setVisible(false);
+        TERM term = new TERM(aoAddition, aoSubtraction, aoMultiplication, aoDivision, bracketDepht, Substitutions, Digits, decimalPlaces, justPositive);
+        maingui.showTerm(term);
+    }
+    
     private void generateCancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateCancelButtonActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_generateCancelButtonActionPerformed

@@ -43,7 +43,7 @@ public class GUI3 extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         textfieldTask = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        textfieldSolution = new javax.swing.JTextField();
 
         setType(java.awt.Window.Type.POPUP);
 
@@ -63,10 +63,10 @@ public class GUI3 extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Ihre Lösung:");
 
-        jTextField2.setToolTipText("Geben sie hier ihre Lösung ein!");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        textfieldSolution.setToolTipText("Geben sie hier ihre Lösung ein!");
+        textfieldSolution.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                textfieldSolutionActionPerformed(evt);
             }
         });
 
@@ -89,7 +89,7 @@ public class GUI3 extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2)))
+                        .addComponent(textfieldSolution)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -106,16 +106,16 @@ public class GUI3 extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textfieldSolution, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void textfieldSolutionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textfieldSolutionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_textfieldSolutionActionPerformed
 
     private void insertTerm(){
         textfieldTask.setText(term.infix());
@@ -162,7 +162,7 @@ public class GUI3 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JProgressBar jProgressBar1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField textfieldSolution;
     private javax.swing.JTextField textfieldTask;
     // End of variables declaration//GEN-END:variables
 }
