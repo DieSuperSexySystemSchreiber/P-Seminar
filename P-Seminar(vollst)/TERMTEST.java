@@ -4,26 +4,26 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Die Test-Klasse TERMTEST.
+ * The class TERMTEST.
  *
- * @author  (Ihr Name)
- * @version (eine Versionsnummer oder ein Datum)
+ * @author  (Your name)
+ * @version (version or date)
  */
 public class TERMTEST
 {
     private TERM tERM1;
 
     /**
-     * Konstruktor fuer die Test-Klasse TERMTEST
+     * Constructor for the class TERMTEST
      */
     public TERMTEST()
     {
     }
 
     /**
-     *  Setzt das Testgerüst fuer den Test.
+     *  Sets the framework for the TEST
      *
-     * Wird vor jeder Testfall-Methode aufgerufen.
+     * Is used before every Testfall-method.
      */
     @Before
     public void setUp()
@@ -32,9 +32,9 @@ public class TERMTEST
     }
 
     /**
-     * Gibt das Testgerüst wieder frei.
+     * Releases the framework
      *
-     * Wird nach jeder Testfall-Methode aufgerufen.
+     * Is used after every Testfall-method.
      */
     @After
     public void tearDown()

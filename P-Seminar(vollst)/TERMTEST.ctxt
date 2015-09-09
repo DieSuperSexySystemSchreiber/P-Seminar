@@ -1,11 +1,11 @@
 #BlueJ class context
 comment0.params=
 comment0.target=TERMTEST()
-comment0.text=\r\n\ Konstruktor\ fuer\ die\ Test-Klasse\ TERMTEST\r\n
+comment0.text=\n\ Constructor\ for\ the\ class\ TERMTEST\n
 comment1.params=
 comment1.target=void\ setUp()
-comment1.text=\r\n\ \ Setzt\ das\ Testger\u00FCst\ fuer\ den\ Test.\r\n\r\n\ Wird\ vor\ jeder\ Testfall-Methode\ aufgerufen.\r\n
+comment1.text=\n\ \ Sets\ the\ framework\ for\ the\ TEST\n\n\ Is\ used\ before\ every\ Testfall-method.\n
 comment2.params=
 comment2.target=void\ tearDown()
-comment2.text=\r\n\ Gibt\ das\ Testger\u00FCst\ wieder\ frei.\r\n\r\n\ Wird\ nach\ jeder\ Testfall-Methode\ aufgerufen.\r\n
+comment2.text=\n\ Releases\ the\ framework\n\n\ Is\ used\ after\ every\ Testfall-method.\n
 numComments=3

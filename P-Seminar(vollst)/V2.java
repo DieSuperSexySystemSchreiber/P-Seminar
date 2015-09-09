@@ -18,17 +18,17 @@ public class V2 {
     public static void PDFAGListe(String[] Liste, int ArrayLength)
     {
         Document Doc = new Document();
-        // Rectangle braucht man, um die Größe des Documents einstellen zu können (Breite,Höhe) ( 72 == 1 Inch, DIN A4 = 8.2 x 11.6 Inches )
+        // Use Rectangle to set the dimensions of the document (width,hight) ( 72 == 1 Inch, DIN A4 = 8.2 x 11.6 Inches )
         Rectangle Rec = new Rectangle(PageSize.A4);
-        //Die im Rectangle eingegebene Größe auf das Document übernehmen
+        //Assume the entered dimension to the document
         Doc.setPageSize(Rec);
         try 
         {
             F = File.createTempFile("Blatt",".pdf");
             PdfWriter.getInstance(Doc,new FileOutputStream(F));
-            // Öffnen um es bearbeiten zu können
+            // Open to edit
             Doc.open();
-            // Paragraph == ungefähr Textzeile
+            // Paragraph == approximate line
             for (int i = 0; i < ArrayLength; i++)
             {
                 if ( i == 0 )
@@ -45,13 +45,13 @@ public class V2 {
                 Doc.add(Paras);
             }
 
-            // Paragraph.add fügt der Zeile Text hinzu
-            //Paragraph.add("Klappt es jetzt immer noch?");
-            // Paragraph auf Document hinzufügen
+            // Paragraph.add adds text to the line
+            //Paragraph.add("Does it still work?");
+            // Add Paragraph to thendocument
             //Doc.add(Para);
-            // Document wieder schließen
+            // Close the document
             Doc.close();
-            //PDF öffnen
+            //open PDF
             Desktop.getDesktop().open(F);
         }  
         catch (Exception e) 
@@ -64,16 +64,16 @@ public class V2 {
     {
 
         Document Doc = new Document();
-        // Rectangle braucht man, um die Größe des Documents einstellen zu können (Breite,Höhe) ( 72 == 1 Inch, DIN A4 = 8.2 x 11.6 Inches )
+        // Use Rectangle to set the dimensions of the document (width,hight) ( 72 == 1 Inch, DIN A4 = 8.2 x 11.6 Inches )
         Rectangle Rec = new Rectangle(PageSize.A4);
-        //Die im Rectangle eingegebene Größe auf das Document übernehmen
+        //Assume the entered dimension to the document
         Doc.setPageSize(Rec);
         try 
         {
             F = File.createTempFile("Blatt",".pdf");
             PdfWriter.getInstance(Doc,new FileOutputStream(F));
             Doc.open();
-            // Paragraph == ungefähr Textzeile
+            // Paragraph == approximate line
 
             for (int i = 0; i < ArrayLength; i++)
             {
@@ -91,11 +91,11 @@ public class V2 {
                 Doc.add(Paras);
             }
 
-            // Paragraph.add fügt der Zeile Text hinzu
-            //Paragraph.add("Klappt es jetzt immer noch?");
-            // Paragraph auf Document hinzufügen
+            // Paragraph.add adds text to the line
+            //Paragraph.add("Does it still work?");
+            // Add Paragraph to thendocument
             //Doc.add(Para);
-            // Document wieder schließen
+            // Close the document
             Doc.close();
             Desktop.getDesktop().open(F);
         }  
