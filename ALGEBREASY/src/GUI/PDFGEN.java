@@ -1,5 +1,3 @@
-package GUI;
-
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Rectangle;
@@ -16,10 +14,11 @@ import java.util.Hashtable;
 import java.io.FileOutputStream;
 import java.io.File;
 public class PDFGEN {
-    public static File F;
-    public static File G;
-    public static List List;
-    public String[][] Exercises;
+    private static File F;
+    private static File G;
+    private static List List;
+    private MEMORY First;
+    private MEMORY Current;
     public void PDFAB ( String Headline, int AmountExer, GUISETTINGSPDF k, boolean Lösungen )
     {
         Document Doc = new Document();
@@ -34,13 +33,18 @@ public class PDFGEN {
             Paragraph Para = new Paragraph(Headline, FONTS.FontHeader());
             Para.setAlignment(Element.ALIGN_CENTER);
             Doc.add(Para);
+            First = new MEMORY();
+            Current = First;
+            D = k;
             for (int i = 0; i <= AmountExer - 1; i++)
             {
                 List = new List(List.ORDERED, List.ALPHABETICAL);
-                for ( int c = 0; c < k.taskNumber && c < 100 ; c++)
+                for ( int c = 0; c < k.taskNumber; c++)
                 {
-                    Exercises[i][c] = new TERM(k.aoAddition,k.aoSubtraction,k.aoMultiplication,k.aoDivision,k.bracketDepht,k.Substitutions,k.Digits,k.decimalPlaces,k.justPositive).infix() + "=";
-                    List.add(new ListItem(Exercises[i][c]));
+                    Current.writeExercise(new TERM(k.aoAddition,k.aoSubtraction,k.aoMultiplication,k.aoDivision,k.bracketDepht,k.Substitutions,k.Digits,k.decimalPlaces,k.justPositive).infix() + "=");
+                    List.add(new ListItem(Current.readExercise()));
+                    Current.Next = new MEMORY();
+                    Current = Current.Next;
                 }
                 Doc.add(new Paragraph(" \n Aufgabe " + (i + 1), FONTS.Font()));
                 k = k.next;
@@ -50,7 +54,7 @@ public class PDFGEN {
             Desktop.getDesktop().open(F);
             if ( Lösungen == true )
             {
-//                PDFLB(Headline, AmountExer);
+             PDFLB(Headline, AmountExer, D);
             }
             Desktop.getDesktop().open(G);
         }  
@@ -60,7 +64,7 @@ public class PDFGEN {
         }
     }
 
-    /*public void PDFLB (String Headline, int AmountExer)
+    private void PDFLB (String Headline, int AmountExer, GUISETTINGSPDF k)
     {
         Document Doc = new Document();
         Rectangle Rec = new Rectangle(PageSize.A4);
@@ -74,15 +78,14 @@ public class PDFGEN {
             Para.setAlignment(Element.ALIGN_CENTER);
             Doc.add(Para);
             Löser Module = new Löser();
-            int c = 0;
             for (int i = 1; i <= AmountExer; i++)
             {
                 List = new List(List.ORDERED, List.ALPHABETICAL);
-                while ( Exercises[i][c] != null )
+                for (int c = 0; c < k.taskNumber; c++)
                 {
-                    Exercises[i][c] = Exercises[i][c] + Module.lösen(Exercises[i][c]);
-                    List.add(new ListItem(Exercises[i][c]));
-                    c = c++;
+                    String S = First.readExercise() + Module.lösen(First.readExercise());
+                    List.add(new ListItem(S));
+                    First = First.Next();
                 }
                 Doc.add(new Paragraph(" /n Aufgabe" + i, FONTS.Font()));
                 Doc.add(List);
@@ -93,7 +96,6 @@ public class PDFGEN {
         {
             e.printStackTrace();
         }
-    }*/
-
+    }
 }
 
