@@ -108,7 +108,7 @@ public class Löser
 
     public String entklammern(String term)
     {
-        String a =  "\\(\\-?\\d+(\\.\\d+)?\\)"; // "[^\\+\\-\\*\\/]\\(\\-?\\d+(\\.\\d+)?)\\)|.\\(\\d+(\\.\\d+)?\\)";
+        String a =  "\\(\\-?\\d+(\\.\\d+)?\\)"; 
         Pattern pattern = Pattern.compile(a);
         Matcher matcher = pattern.matcher(term);
         while (matcher.find())
@@ -126,8 +126,11 @@ public class Löser
 
             String string = matcher.group();
             String[] parts = string.split("\\(|\\)");
-            term = teil1 + parts[1] + teil2;
+            term = teil1 + parts[1] + teil2; //this puts it all together again
             
+
+
+
            /** String ganzerString = matcher.group();
             String teilString1 = ganzerString .substring(0,1);  // delete the (
             String teilString2 = ganzerString .substring(1);  
@@ -136,6 +139,7 @@ public class Löser
             String part1 = parts[0]; 
             
             term= teil1 + teilString + part1 + teil2; // this put all together again */
+
         }
 
         /**          // pattern muss noch erstellt werden u.a
@@ -164,11 +168,11 @@ public class Löser
     }
     public boolean Prüfer(String l)
     {
-        String prüfer="((\\(*\\-?)?\\d+\\)*[\\*|\\/|\\+|\\-])+\\d+\\)*";
+        String prüfer="(\\(*\\-?\\d+(\\.\\d\\d)?\\)*[\\*|\\/|\\+|\\-])+\\(*\\-?\\d+(\\.\\d\\d)?\\)*";
         Pattern muster = Pattern.compile(prüfer);
         Matcher übereinstimmer = muster.matcher(l);
         if(übereinstimmer.matches())
-        return true;
+        return true;    
         else return false;
     }
 }
