@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.params=i
+comment0.target=ZAHL(int)
+comment1.params=
+comment1.target=ZAHL()
+comment10.params=aoAddition\ aoSubstraction\ aoMultiplication\ aoDivision\ bracketDepth\ substitutions\ digits\ oPositive\ erg
+comment10.target=void\ rechterTermErsetzen(boolean,\ boolean,\ boolean,\ boolean,\ int,\ int,\ int,\ boolean,\ int)
+comment11.params=aoAddition\ aoSubstraction\ aoMultiplication\ aoDivision\ bracketDepth\ substitutions\ digits\ oPositive\ erg
+comment11.target=void\ linkerTermErsetzen(boolean,\ boolean,\ boolean,\ boolean,\ int,\ int,\ int,\ boolean,\ int)
+comment2.params=
+comment2.target=void\ pr\u00E4fix()
+comment3.params=dest
+comment3.target=java.util.ArrayList\ collect(java.util.ArrayList)
+comment4.params=
+comment4.target=int\ gibH\u00F6he()
+comment5.params=
+comment5.target=int\ gibAnzahl()
+comment6.params=k
+comment6.target=void\ setzeLinkerNaechster(TERMELEMENT)
+comment7.params=k
+comment7.target=void\ setzeRechterNaechster(TERMELEMENT)
+comment8.params=
+comment8.target=boolean\ isAVL()
+comment9.params=
+comment9.target=java.lang.String\ infix()
+numComments=12
