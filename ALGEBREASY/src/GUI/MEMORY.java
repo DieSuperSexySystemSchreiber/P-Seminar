@@ -2,8 +2,8 @@
 public class MEMORY
 {
     private String Exercise;
-    private MEMORY Next;
-
+    public MEMORY Next;
+    private double Solution;
     public MEMORY()
     {
     }
@@ -26,5 +26,15 @@ public class MEMORY
     public void setNext(MEMORY N)
     {
         Next = N;
+    }
+    
+    public void writeSolution(double S)
+    {
+        Solution = S;
+    }
+    
+    public double readSolution()
+    {
+        return Solution;
     }
 }
