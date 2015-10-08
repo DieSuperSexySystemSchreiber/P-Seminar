@@ -1,0 +1,1 @@
+Testdatei für die echte Readme, bis diese als Textdatei vorliegt.

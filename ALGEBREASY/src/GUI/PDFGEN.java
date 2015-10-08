@@ -1,3 +1,5 @@
+package GUI;
+
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Rectangle;

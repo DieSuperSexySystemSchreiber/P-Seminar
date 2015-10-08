@@ -5,9 +5,14 @@
  */
 package GUI;
 
-import java.awt.Color;
+import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.BoxLayout;
+import javax.swing.JFrame;
 
 /**
  *
@@ -62,6 +67,7 @@ public class MAINGUI extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         buttonMathTrainingPresettingsStart = new javax.swing.JButton();
         buttonMathTrainingManuelStart = new javax.swing.JButton();
         buttonWorksheetStart = new javax.swing.JButton();
@@ -86,6 +92,8 @@ public class MAINGUI extends javax.swing.JFrame {
         jMenu5 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
+        buttonManual = new javax.swing.JMenuItem();
+        buttonReadme = new javax.swing.JMenuItem();
 
         jMenu2.setText("File");
         jMenuBar2.add(jMenu2);
@@ -95,9 +103,11 @@ public class MAINGUI extends javax.swing.JFrame {
 
         jMenuItem2.setText("jMenuItem2");
 
+        jMenuItem4.setText("jMenuItem4");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Lernplattform Mathematik");
-        setExtendedState(6);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         setName("Lernplattform Mathematik"); // NOI18N
 
         buttonMathTrainingPresettingsStart.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
@@ -293,23 +303,41 @@ public class MAINGUI extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu5);
 
-        jMenu6.setForeground(new java.awt.Color(255, 0, 0));
         jMenu6.setText("Hilfe");
+
+        buttonManual.setText("Handbuch");
+        buttonManual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonManualActionPerformed(evt);
+            }
+        });
+        jMenu6.add(buttonManual);
+
+        buttonReadme.setText("Readme");
+        buttonReadme.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonReadmeActionPerformed(evt);
+            }
+        });
+        jMenu6.add(buttonReadme);
+
         jMenuBar1.add(jMenu6);
 
         setJMenuBar(jMenuBar1);
+
+        buttonMathTrainingPresettingsStart.setLayout(new GridBagLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(819, Short.MAX_VALUE)
+                .addContainerGap(631, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(buttonMathTrainingManuelStart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonMathTrainingPresettingsStart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonWorksheetStart, javax.swing.GroupLayout.PREFERRED_SIZE, 621, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(480, 480, 480))
+                .addContainerGap(647, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panel01, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -326,7 +354,7 @@ public class MAINGUI extends javax.swing.JFrame {
                 .addComponent(buttonMathTrainingManuelStart)
                 .addGap(72, 72, 72)
                 .addComponent(buttonWorksheetStart)
-                .addGap(252, 252, 252))
+                .addContainerGap(252, Short.MAX_VALUE))
         );
 
         pack();
@@ -378,7 +406,7 @@ public class MAINGUI extends javax.swing.JFrame {
     
     public void createPDF(GUISETTINGSPDF erster, String headline, int num){
         PDFGEN pdfGenerator = new PDFGEN();
-        pdfGenerator.PDFAB(headline, num, erster, false);
+        pdfGenerator.PDFAB(headline, num, erster);
     }
     
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -434,6 +462,38 @@ public class MAINGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_textfieldSolution01ActionPerformed
 
+    private void buttonReadmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReadmeActionPerformed
+        try{
+            new ProcessBuilder( "cmd", "/c", "README_DE.doc" ).start();
+        }
+        catch (Exception exp){
+        
+        }
+        
+        try{
+            new ProcessBuilder( "cmd", "/c", "READMEtest.txt" ).start();
+        }
+        catch (Exception exp){
+        
+        }
+        
+        try{
+            new ProcessBuilder( "cmd", "/c", "README_DE.txt" ).start();
+        }
+        catch (Exception exp){
+        
+        }
+    }//GEN-LAST:event_buttonReadmeActionPerformed
+
+    private void buttonManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonManualActionPerformed
+        try{
+            new ProcessBuilder( "cmd", "/c", "Bedienungsanleitung.pdf" ).start();
+        }
+        catch (Exception exp){
+        
+        }
+    }//GEN-LAST:event_buttonManualActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -474,11 +534,13 @@ public class MAINGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCheck01;
     private javax.swing.JMenuItem buttonClear;
+    private javax.swing.JMenuItem buttonManual;
     private javax.swing.JMenuItem buttonMathTrainingManuel;
     private javax.swing.JButton buttonMathTrainingManuelStart;
     private javax.swing.JMenuItem buttonMathTrainingPresettings;
     private javax.swing.JButton buttonMathTrainingPresettingsStart;
     private javax.swing.JButton buttonNewTask;
+    private javax.swing.JMenuItem buttonReadme;
     private javax.swing.JButton buttonSolution01;
     private javax.swing.JMenuItem buttonWorksheet;
     private javax.swing.JButton buttonWorksheetStart;
@@ -496,6 +558,7 @@ public class MAINGUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPanel panel01;

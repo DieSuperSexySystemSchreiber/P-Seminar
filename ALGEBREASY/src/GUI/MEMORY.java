@@ -1,3 +1,5 @@
+package GUI;
+
 
 public class MEMORY
 {
