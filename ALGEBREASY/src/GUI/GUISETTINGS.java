@@ -125,11 +125,12 @@ public class GUISETTINGS extends javax.swing.JFrame {
 
         operanten.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         operanten.setText("Operantenanzahl:");
+        operanten.setToolTipText("Anzahl der max. Rechenzeichen in einer Rechnung");
 
         substitutionDropdown.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         substitutionDropdown.setMaximumRowCount(10);
         substitutionDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
-        substitutionDropdown.setToolTipText("");
+        substitutionDropdown.setToolTipText("Anzahl der max. Rechenzeichen in einer Rechnung");
         substitutionDropdown.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bracketDephtOrSubstitutionDropdownActionPerformed(evt);
@@ -138,13 +139,15 @@ public class GUISETTINGS extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel13.setText("maximale Stellen:");
+        jLabel13.setToolTipText("max. Stellen der verwendeten Zahlen");
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setText("Rechenoperationen:");
+        jLabel7.setToolTipText("Ein Haken ermöglicht diese Rechenart in den Aufgaben");
 
         digitsDropdown.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         digitsDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8" }));
-        digitsDropdown.setToolTipText("");
+        digitsDropdown.setToolTipText("max. Stellen der verwendeten Zahlen");
         digitsDropdown.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 digitsDropdownOrDecimalPlacesDropdownActionPerformed(evt);
@@ -165,7 +168,7 @@ public class GUISETTINGS extends javax.swing.JFrame {
 
         generateCancelButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         generateCancelButton.setText("Abbrechen");
-        generateCancelButton.setToolTipText("");
+        generateCancelButton.setToolTipText("Schließt dieses Fenster");
         generateCancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 generateCancelButtonActionPerformed(evt);
@@ -177,11 +180,12 @@ public class GUISETTINGS extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel8.setText("Klammertiefe:");
+        jLabel8.setToolTipText("Umso höher die Zahl, umso länger der Term ");
 
         bracketDephtDropdown.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         bracketDephtDropdown.setMaximumRowCount(10);
         bracketDephtDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
-        bracketDephtDropdown.setToolTipText("");
+        bracketDephtDropdown.setToolTipText("Umso höher die Zahl, umso länger der Term ");
         bracketDephtDropdown.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bracketDephtOrSubstitutionDropdownActionPerformed(evt);
@@ -210,10 +214,11 @@ public class GUISETTINGS extends javax.swing.JFrame {
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel14.setText("Dezimalstellen:");
+        jLabel14.setToolTipText("Anzahl der Stellen nach dem Komma");
 
         decimalPlacesDropdown.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         decimalPlacesDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4", "5", "6", "7" }));
-        decimalPlacesDropdown.setToolTipText("");
+        decimalPlacesDropdown.setToolTipText("Anzahl der Stellen nach dem Komma");
         decimalPlacesDropdown.setPreferredSize(new java.awt.Dimension(40, 21));
         decimalPlacesDropdown.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

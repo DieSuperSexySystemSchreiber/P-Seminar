@@ -239,6 +239,7 @@
           <Font name="Tahoma" size="12" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Operantenanzahl:"/>
+        <Property name="toolTipText" type="java.lang.String" value="Anzahl der max. Rechenzeichen in einer Rechnung"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="substitutionDropdown">
@@ -261,7 +262,7 @@
             <StringItem index="9" value="10"/>
           </StringArray>
         </Property>
-        <Property name="toolTipText" type="java.lang.String" value=""/>
+        <Property name="toolTipText" type="java.lang.String" value="Anzahl der max. Rechenzeichen in einer Rechnung"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bracketDephtOrSubstitutionDropdownActionPerformed"/>
@@ -273,6 +274,7 @@
           <Font name="Tahoma" size="12" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="maximale Stellen:"/>
+        <Property name="toolTipText" type="java.lang.String" value="max. Stellen der verwendeten Zahlen"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
@@ -281,6 +283,7 @@
           <Font name="Tahoma" size="12" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Rechenoperationen:"/>
+        <Property name="toolTipText" type="java.lang.String" value="Ein Haken erm&#xf6;glicht diese Rechenart in den Aufgaben"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="digitsDropdown">
@@ -300,7 +303,7 @@
             <StringItem index="7" value="8"/>
           </StringArray>
         </Property>
-        <Property name="toolTipText" type="java.lang.String" value=""/>
+        <Property name="toolTipText" type="java.lang.String" value="max. Stellen der verwendeten Zahlen"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="digitsDropdownOrDecimalPlacesDropdownActionPerformed"/>
@@ -344,7 +347,7 @@
           <Font name="Tahoma" size="12" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Abbrechen"/>
-        <Property name="toolTipText" type="java.lang.String" value=""/>
+        <Property name="toolTipText" type="java.lang.String" value="Schlie&#xdf;t dieses Fenster"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="generateCancelButtonActionPerformed"/>
@@ -364,6 +367,7 @@
           <Font name="Tahoma" size="12" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Klammertiefe:"/>
+        <Property name="toolTipText" type="java.lang.String" value="Umso h&#xf6;her die Zahl, umso l&#xe4;nger der Term "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="bracketDephtDropdown">
@@ -386,7 +390,7 @@
             <StringItem index="9" value="10"/>
           </StringArray>
         </Property>
-        <Property name="toolTipText" type="java.lang.String" value=""/>
+        <Property name="toolTipText" type="java.lang.String" value="Umso h&#xf6;her die Zahl, umso l&#xe4;nger der Term "/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bracketDephtOrSubstitutionDropdownActionPerformed"/>
@@ -440,6 +444,7 @@
           <Font name="Tahoma" size="12" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Dezimalstellen:"/>
+        <Property name="toolTipText" type="java.lang.String" value="Anzahl der Stellen nach dem Komma"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="decimalPlacesDropdown">
@@ -459,7 +464,7 @@
             <StringItem index="7" value="7"/>
           </StringArray>
         </Property>
-        <Property name="toolTipText" type="java.lang.String" value=""/>
+        <Property name="toolTipText" type="java.lang.String" value="Anzahl der Stellen nach dem Komma"/>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[40, 21]"/>
         </Property>

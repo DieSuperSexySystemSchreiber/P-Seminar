@@ -171,6 +171,7 @@ public class MAINGUI extends javax.swing.JFrame {
         });
 
         buttonCheck01.setText("Prüfen");
+        buttonCheck01.setToolTipText("Prüfe dein Ergebnis");
         buttonCheck01.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonCheck01ActionPerformed(evt);
@@ -178,6 +179,7 @@ public class MAINGUI extends javax.swing.JFrame {
         });
 
         buttonSolution01.setText("Ergebnis");
+        buttonSolution01.setToolTipText("Richtiges Ergebnis anzeigen");
         buttonSolution01.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSolution01ActionPerformed(evt);
@@ -186,6 +188,7 @@ public class MAINGUI extends javax.swing.JFrame {
 
         buttonNewTask.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         buttonNewTask.setText("Neue Aufgabe");
+        buttonNewTask.setToolTipText("Generiert neue Aufgabe mit den gleichen Einstellungen");
         buttonNewTask.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonNewTaskActionPerformed(evt);

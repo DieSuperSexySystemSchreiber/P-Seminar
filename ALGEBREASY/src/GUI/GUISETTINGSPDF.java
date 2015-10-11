@@ -139,11 +139,12 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
 
         operanten.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         operanten.setText("Operantenanzahl:");
+        operanten.setToolTipText("Anzahl der max. Rechenzeichen in einer Rechnung");
 
         substitutionDropdown.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         substitutionDropdown.setMaximumRowCount(10);
         substitutionDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
-        substitutionDropdown.setToolTipText("");
+        substitutionDropdown.setToolTipText("Anzahl der max. Rechenzeichen in einer Rechnung");
         substitutionDropdown.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bracketDephtOrSubstitutionDropdownActionPerformed(evt);
@@ -152,13 +153,15 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel13.setText("maximale Stellen:");
+        jLabel13.setToolTipText("max. Stellen der verwendeten Zahlen");
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setText("Rechenoperationen:");
+        jLabel7.setToolTipText("Ein Haken ermöglicht diese Rechenart in den Aufgaben");
 
         digitsDropdown.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         digitsDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8" }));
-        digitsDropdown.setToolTipText("");
+        digitsDropdown.setToolTipText("max. Stellen der verwendeten Zahlen");
         digitsDropdown.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 digitsDropdownOrDecimalDropdownActionPerformed(evt);
@@ -179,7 +182,7 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
 
         generateCancelButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         generateCancelButton.setText("Abbrechen");
-        generateCancelButton.setToolTipText("");
+        generateCancelButton.setToolTipText("Schließt dieses Fenster");
         generateCancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 generateCancelButtonActionPerformed(evt);
@@ -191,11 +194,12 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel8.setText("Klammertiefe:");
+        jLabel8.setToolTipText("Umso höher die Zahl, umso länger der Term ");
 
         bracketDephtDropdown.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         bracketDephtDropdown.setMaximumRowCount(10);
         bracketDephtDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
-        bracketDephtDropdown.setToolTipText("");
+        bracketDephtDropdown.setToolTipText("Umso höher die Zahl, umso länger der Term ");
         bracketDephtDropdown.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bracketDephtOrSubstitutionDropdownActionPerformed(evt);
@@ -205,7 +209,7 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
         generateButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         generateButton.setForeground(new java.awt.Color(0, 155, 0));
         generateButton.setText("Abschließen");
-        generateButton.setToolTipText("Arbeitsblatt generieren");
+        generateButton.setToolTipText("Aufgabenblatt fertigstellen");
         generateButton.setMaximumSize(new java.awt.Dimension(93, 23));
         generateButton.setMinimumSize(new java.awt.Dimension(93, 23));
         generateButton.addActionListener(new java.awt.event.ActionListener() {
@@ -236,11 +240,12 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel14.setText("Anzahl Teilaufgaben:");
+        jLabel14.setToolTipText("Anzahl Aufgaben eines Typs (1.a; 1.b; etc.)");
 
         taskNumberDropdown.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         taskNumberDropdown.setMaximumRowCount(12);
         taskNumberDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
-        taskNumberDropdown.setToolTipText("Anzahl der Teilaufgaben (1.a; 1.b; etc.)");
+        taskNumberDropdown.setToolTipText("Anzahl Aufgaben eines Typs (1.a; 1.b; etc.)");
 
         headline.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         headline.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -249,10 +254,11 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel15.setText("Dezimalstellen:");
+        jLabel15.setToolTipText("Anzahl der Stellen nach dem Komma");
 
         decimalPlacesDropdown.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         decimalPlacesDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4", "5", "6", "7" }));
-        decimalPlacesDropdown.setToolTipText("");
+        decimalPlacesDropdown.setToolTipText("Anzahl der Stellen nach dem Komma");
         decimalPlacesDropdown.setPreferredSize(new java.awt.Dimension(40, 21));
         decimalPlacesDropdown.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
