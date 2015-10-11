@@ -1,0 +1,11 @@
+Operations: a tick enables this calculus in the exercises
+bracket depth: the higher the number, the longer the term
+number of operants: number of max. arithmatical operators in one task
+maximal digits: max. digits in the used numbers 
+decimal digits: number of digits after the komma
+number of subtasks: number of tasks of the same type
+more types of exercises: possibility to create another tasktype
+cancel: back to main menu
+finish: finish the worksheet
+check: check your answer
+result: solution of the task

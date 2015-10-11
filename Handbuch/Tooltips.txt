@@ -1,0 +1,11 @@
+Rechenoperationen: Ein Haken ermöglicht diese Rechenart in den Aufgaben
+Klammertiefe: Umso höher die Zahl, umso länger der Term 
+Operantenanzahl: Anzahl der max. Rechenzeichen in einer Rechnung
+maximale Stellen: max. Stellen der verwendeten Zahlen
+Dezimalstellen: Anzahl der Stellen nach dem Komma
+Anzahl Teilaufgaben: Anzahl Aufgaben eines Typs
+Weiterer Aufgabentyp: Möglichkeit der Erstellung eines weiteren Aufgabentyps
+Abbrechen: Zurück zum Hauptmenü
+Abschließen: Aufgabenblatt fertigstellen
+Prüfen: Prüfe dein Ergebnis
+Ergebnis: Lösung der Aufgabe
