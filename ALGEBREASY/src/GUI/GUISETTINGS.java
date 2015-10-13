@@ -398,6 +398,7 @@ public class GUISETTINGS extends javax.swing.JFrame {
     public void generateTerm(){
         this.setVisible(false);
         TERM term = new TERM(aoAddition, aoSubtraction, aoMultiplication, aoDivision, bracketDepht, Substitutions, Digits, decimalPlaces, justPositive);
+        maingui.mode = 0;
         maingui.showTerm(term);
     }
     
