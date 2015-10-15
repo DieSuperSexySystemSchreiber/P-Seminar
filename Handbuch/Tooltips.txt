@@ -1,7 +1,7 @@
 Rechenoperationen: Ein Haken ermöglicht diese Rechenart in den Aufgaben
 Klammertiefe: Umso höher die Zahl, umso länger der Term 
-Operantenanzahl: Anzahl der max. Rechenzeichen in einer Rechnung
-maximale Stellen: max. Stellen der verwendeten Zahlen
+Operantenanzahl: Anzahl der Rechenzeichen in einer Rechnung
+maximale Stellen: max. Stellen der verwendeten Zahlen inkl. Dezimalstellen
 Dezimalstellen: Anzahl der Stellen nach dem Komma
 Anzahl Teilaufgaben: Anzahl Aufgaben eines Typs
 Weiterer Aufgabentyp: Möglichkeit der Erstellung eines weiteren Aufgabentyps
