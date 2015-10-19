@@ -7,13 +7,17 @@ package GUI;
 
 import java.awt.*;
 import java.awt.Dimension;
+import static java.awt.SystemColor.desktop;
 import java.awt.Toolkit;
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
-
+import java.nio.file.*;
+import java.nio.file.attribute.*;
+import static java.nio.file.FileVisitResult.*;
+import static java.nio.file.FileVisitOption.*;
 /**
  *
  * @author David Müller
@@ -486,33 +490,49 @@ public class MAINGUI extends javax.swing.JFrame {
 
     private void buttonReadmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReadmeActionPerformed
         try{
-            new ProcessBuilder( "cmd", "/c", "README_DE.doc" ).start();
+            //new ProcessBuilder( "cmd", "/c", "README_DE.doc" ).start();
+            File file = new File("README_DE.doc");
+            if(file.exists()){
+                Desktop.getDesktop().open(file);
+            }
         }
         catch (Exception exp){
-        
+            System.out.println("Die Datei konnte nicht geöffnet werden.");
         }
         
         try{
-            new ProcessBuilder( "cmd", "/c", "READMEtest.txt" ).start();
+            //new ProcessBuilder( "cmd", "/c", "READMEtest.txt" ).start();
+            File file = new File("READMEtest.txt");
+            if(file.exists()){
+                Desktop.getDesktop().open(file);
+            }
         }
         catch (Exception exp){
-        
+            System.out.println("Die Datei konnte nicht geöffnet werden.");
         }
         
         try{
-            new ProcessBuilder( "cmd", "/c", "README_DE.txt" ).start();
+            //new ProcessBuilder( "cmd", "/c", "README_DE.txt" ).start();
+            File file = new File("README_DE.txt");
+            if(file.exists()){
+                Desktop.getDesktop().open(file);
+            }
         }
         catch (Exception exp){
-        
+            System.out.println("Die Datei konnte nicht geöffnet werden.");
         }
     }//GEN-LAST:event_buttonReadmeActionPerformed
 
     private void buttonManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonManualActionPerformed
         try{
-            new ProcessBuilder( "cmd", "/c", "Bedienungsanleitung.pdf" ).start();
+            //new ProcessBuilder( "cmd", "/c", "Bedienungsanleitung.pdf" ).start();
+            File file = new File("Bedienungsanleitung.pdf");
+            if(file.exists()){
+                Desktop.getDesktop().open(file);
+            }
         }
         catch (Exception exp){
-        
+            System.out.println("Die Datei konnte nicht geöffnet werden.");
         }
     }//GEN-LAST:event_buttonManualActionPerformed
 
