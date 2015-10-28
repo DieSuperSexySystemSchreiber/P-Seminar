@@ -64,8 +64,9 @@ public class PRESETTINGS extends javax.swing.JFrame {
 
         jLabel2.setText("Jahrgangsstufe:");
 
-        classDropdown.setMaximumRowCount(2);
-        classDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "5", "6" }));
+        classDropdown.setMaximumRowCount(4);
+        classDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1/2", "3/4", "5", "6" }));
+        classDropdown.setSelectedIndex(2);
         classDropdown.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 classDropdownActionPerformed(evt);
@@ -110,7 +111,7 @@ public class PRESETTINGS extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(partDropdown, 0, 326, Short.MAX_VALUE))
+                        .addComponent(partDropdown, 0, 316, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(generateButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -144,9 +145,60 @@ public class PRESETTINGS extends javax.swing.JFrame {
     }//GEN-LAST:event_CancelButtonActionPerformed
 
     private void generateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateButtonActionPerformed
-
         
         if(classDropdown.getSelectedIndex() == 0){
+            if(partDropdown.getSelectedIndex() == 0){
+                aoAddition = true;
+                aoSubtraction = true;
+                aoMultiplication = false;
+                aoDivision = false;
+                bracketDepht = 0;
+                Substitutions = 2;
+                Digits = 2;
+                decimalPlaces = 0;
+                justPositive = true;
+                withFraction = false;
+            }
+            else if(partDropdown.getSelectedIndex() == 1){
+                aoAddition = false;
+                aoSubtraction = false;
+                aoMultiplication = true;
+                aoDivision = true;
+                bracketDepht = 0;
+                Substitutions = 2;
+                Digits = 2;
+                decimalPlaces = 0;
+                justPositive = true;
+                withFraction = false;
+            }
+        }
+        else if(classDropdown.getSelectedIndex() == 1){
+            if(partDropdown.getSelectedIndex() == 0){
+                aoAddition = true;
+                aoSubtraction = true;
+                aoMultiplication = false;
+                aoDivision = false;
+                bracketDepht = 2;
+                Substitutions = 2;
+                Digits = 6;
+                decimalPlaces = 0;
+                justPositive = true;
+                withFraction = false;
+            }
+            else if(partDropdown.getSelectedIndex() == 1){
+                aoAddition = true;
+                aoSubtraction = true;
+                aoMultiplication = true;
+                aoDivision = true;
+                bracketDepht = 3;
+                Substitutions = 3;
+                Digits = 7;
+                decimalPlaces = 0;
+                justPositive = true;
+                withFraction = false;
+            }
+        }
+        else if(classDropdown.getSelectedIndex() == 2){
             if(partDropdown.getSelectedIndex() == 0){
                 aoAddition = true;
                 aoSubtraction = true;
@@ -208,7 +260,7 @@ public class PRESETTINGS extends javax.swing.JFrame {
                 withFraction = false;
             }
         }
-        else{
+        else if(classDropdown.getSelectedIndex() == 3){
             if(partDropdown.getSelectedIndex() == 0){
                 aoAddition = true;
                 aoSubtraction = true;
@@ -270,10 +322,18 @@ public class PRESETTINGS extends javax.swing.JFrame {
     
     private void classDropdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classDropdownActionPerformed
         if(classDropdown.getSelectedIndex() == 0){
-            partDropdown.setMaximumRowCount(5);
-            partDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Addition und Subtraktion natürlicher Zahlen", "Addition und Subtraktion ganzer Zahlen", "Multiplikation und Division natürlicher Zahlen", "Multiplikation und Division ganzer Zahlen", "Gesamt" }));
+            partDropdown.setMaximumRowCount(2);
+            partDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Das Einspluseins", "Das kleine Einmaleins" }));
         }
         else if(classDropdown.getSelectedIndex() == 1){
+            partDropdown.setMaximumRowCount(2);
+            partDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Strukturelle Darstellung von Zahlen + Formulierung von Zahlenbeziehungen", "Zahlenbereich bis zur Millionen" }));
+        }
+        else if(classDropdown.getSelectedIndex() == 2){
+            partDropdown.setMaximumRowCount(4);
+            partDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Addition und Subtraktion von nicht negativen Brüchen", "Multiplikation und Division von nicht negativen Brüchen", "Verbindung der Rechenarten", "Gesamt" }));
+        }
+        else if(classDropdown.getSelectedIndex() == 3){
             partDropdown.setMaximumRowCount(4);
             partDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Addition und Subtraktion von nicht negativen Brüchen", "Multiplikation und Division von nicht negativen Brüchen", "Verbindung der Rechenarten", "Gesamt" }));
         }

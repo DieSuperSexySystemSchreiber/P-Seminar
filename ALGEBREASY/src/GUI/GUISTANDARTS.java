@@ -7,18 +7,24 @@ package GUI;
 
 import java.awt.*;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import static java.lang.Math.pow;
 import java.util.Properties;
 import javax.swing.JOptionPane;
+import java.io.Reader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author David Müller
  */
-public class GUISETTINGS extends javax.swing.JFrame {
+public class GUISTANDARTS extends javax.swing.JFrame {
 
     /**
      * Creates new form GUI
@@ -38,7 +44,9 @@ public class GUISETTINGS extends javax.swing.JFrame {
     boolean justPositive;
     //boolean withFraction;
     
-    public GUISETTINGS(MAINGUI maingui) {
+
+    
+    public GUISTANDARTS(MAINGUI maingui) {
         this.maingui = maingui;
         
         initComponents();
@@ -47,6 +55,7 @@ public class GUISETTINGS extends javax.swing.JFrame {
         substitutionsError.setText("");
         digitsError.setText("");
         decimalError.setText("");
+        
         
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
@@ -399,7 +408,7 @@ public class GUISETTINGS extends javax.swing.JFrame {
         else{
             operationError.setText("");
             if(noFaults && noFaults2){
-                generateTerm();
+                setParas();
             }
         }
     }//GEN-LAST:event_generateButtonActionPerformed
@@ -411,30 +420,78 @@ public class GUISETTINGS extends javax.swing.JFrame {
         maingui.showTerm(term);
     }
     
-    private void generateCancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateCancelButtonActionPerformed
+    
+    public void setParas()
+    {
+        File configFile = new File("config.properties");
+ 
+        try {
+            Properties props = new Properties();
+            
+            if(aoAddition)
+            {
+                props.setProperty("aoAddition", "true");
+            }
+            else
+            {
+                props.setProperty("aoAddition", "false");
+            }
+            
+            if(aoSubtraction)
+            {
+                props.setProperty("aoSubtraction", "true");
+            }
+            else
+            {
+                props.setProperty("aoSubtraction", "false");
+            }
+            
+            if(aoMultiplication)
+            {
+                props.setProperty("aoMultiplication", "true");
+            }
+            else
+            {
+                props.setProperty("aoMultiplication", "false");
+            }
+            
+            if(aoDivision)
+            {
+                props.setProperty("aoDivision", "true");
+            }
+            else
+            {
+                props.setProperty("aoDivision", "false");
+            }
+            
+            props.setProperty("bracketDepht", Integer.toString(bracketDepht));
+            
+            props.setProperty("Substitutions", Integer.toString(Substitutions));
+            
+            props.setProperty("Digits", Integer.toString(Digits));
+            
+            props.setProperty("decimalPlaces", Integer.toString(decimalPlaces));
+            
+            if(justPositive)
+            {
+                props.setProperty("justPositive", "true");
+            }
+            else
+            {
+                props.setProperty("justPositive", "false");
+            }
+            
+            FileWriter writer = new FileWriter(configFile);
+            props.store(writer, "standart settings");
+            writer.close();
+        } catch (FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(this, "File not found.", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "Error while editing config.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
         this.setVisible(false);
-    }//GEN-LAST:event_generateCancelButtonActionPerformed
-
-    private void digitsDropdownOrDecimalPlacesDropdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_digitsDropdownOrDecimalPlacesDropdownActionPerformed
-        int digi = Integer.parseInt(digitsDropdown.getSelectedItem().toString());
-        int deci = Integer.parseInt(decimalPlacesDropdown.getSelectedItem().toString());
-        
-        int minDigi = deci + 1;
-        
-        int maxDeci = digi - 1;
-        
-        if(digi < minDigi || deci > maxDeci){
-            digitsError.setText("Mindeststellen: " + minDigi);
-            decimalError.setText("Maximale Dezimalstellen: " + maxDeci);
-            noFaults2 = false;
-        }
-        else{
-            digitsError.setText("");
-            decimalError.setText("");
-            noFaults2 = true;
-        }
-    }//GEN-LAST:event_digitsDropdownOrDecimalPlacesDropdownActionPerformed
-
+    }
+    
     
     public void getParas()
     {
@@ -526,6 +583,30 @@ public class GUISETTINGS extends javax.swing.JFrame {
     }
     
     
+    private void generateCancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateCancelButtonActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_generateCancelButtonActionPerformed
+
+    private void digitsDropdownOrDecimalPlacesDropdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_digitsDropdownOrDecimalPlacesDropdownActionPerformed
+        int digi = Integer.parseInt(digitsDropdown.getSelectedItem().toString());
+        int deci = Integer.parseInt(decimalPlacesDropdown.getSelectedItem().toString());
+        
+        int minDigi = deci + 1;
+        
+        int maxDeci = digi - 1;
+        
+        if(digi < minDigi || deci > maxDeci){
+            digitsError.setText("Mindeststellen: " + minDigi);
+            decimalError.setText("Maximale Dezimalstellen: " + maxDeci);
+            noFaults2 = false;
+        }
+        else{
+            digitsError.setText("");
+            decimalError.setText("");
+            noFaults2 = true;
+        }
+    }//GEN-LAST:event_digitsDropdownOrDecimalPlacesDropdownActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -543,14 +624,16 @@ public class GUISETTINGS extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUISETTINGS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUISTANDARTS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUISETTINGS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUISTANDARTS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUISETTINGS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUISTANDARTS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUISETTINGS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUISTANDARTS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -558,7 +641,7 @@ public class GUISETTINGS extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new GUISETTINGS(null).setVisible(true);
+                new GUISTANDARTS(null).setVisible(true);
             }
         });
     }

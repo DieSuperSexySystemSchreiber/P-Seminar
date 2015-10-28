@@ -57,7 +57,6 @@ public class GUICONFIG extends javax.swing.JFrame {
         addCheckbox = new javax.swing.JCheckBox();
         positiveCheckbox = new javax.swing.JCheckBox();
         subtractCheckbox = new javax.swing.JCheckBox();
-        fractionCheckbox = new javax.swing.JCheckBox();
         multiplyCheckbox = new javax.swing.JCheckBox();
         generateCancelButton = new javax.swing.JButton();
         divideCheckbox = new javax.swing.JCheckBox();
@@ -113,11 +112,12 @@ public class GUICONFIG extends javax.swing.JFrame {
 
         operanten.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         operanten.setText("Operantenanzahl:");
+        operanten.setToolTipText("Anzahl der Rechenzeichen in einer Rechnung");
 
         substitutionDropdown.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         substitutionDropdown.setMaximumRowCount(10);
         substitutionDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
-        substitutionDropdown.setToolTipText("");
+        substitutionDropdown.setToolTipText("Anzahl der Rechenzeichen in einer Rechnung");
         substitutionDropdown.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bracketDephtOrSubstitutionDropdownActionPerformed(evt);
@@ -126,13 +126,15 @@ public class GUICONFIG extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel13.setText("maximale Stellen:");
+        jLabel13.setToolTipText("max. Stellen der verwendeten Zahlen inkl. Dezimalstellen");
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setText("Rechenoperationen:");
+        jLabel7.setToolTipText("Ein Haken ermöglicht diese Rechenart in den Aufgaben");
 
         digitsDropdown.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         digitsDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8" }));
-        digitsDropdown.setToolTipText("");
+        digitsDropdown.setToolTipText("max. Stellen der verwendeten Zahlen inkl. Dezimalstellen");
         digitsDropdown.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 digitsDropdownOrDecimalPlacesDropdownActionPerformed(evt);
@@ -141,22 +143,22 @@ public class GUICONFIG extends javax.swing.JFrame {
 
         addCheckbox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         addCheckbox.setText("Plus ( + )");
+        addCheckbox.setToolTipText("Ein Haken ermöglicht diese Rechenart in den Aufgaben");
 
         positiveCheckbox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         positiveCheckbox.setText("nur positive Zahlen");
 
         subtractCheckbox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         subtractCheckbox.setText("Minus ( - )");
-
-        fractionCheckbox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        fractionCheckbox.setText("mit Brüchen");
+        subtractCheckbox.setToolTipText("Ein Haken ermöglicht diese Rechenart in den Aufgaben");
 
         multiplyCheckbox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         multiplyCheckbox.setText("Mal ( * )");
+        multiplyCheckbox.setToolTipText("Ein Haken ermöglicht diese Rechenart in den Aufgaben");
 
         generateCancelButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         generateCancelButton.setText("Abbrechen");
-        generateCancelButton.setToolTipText("");
+        generateCancelButton.setToolTipText("Schließt dieses Fenster");
         generateCancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 generateCancelButtonActionPerformed(evt);
@@ -165,14 +167,16 @@ public class GUICONFIG extends javax.swing.JFrame {
 
         divideCheckbox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         divideCheckbox.setText("Geteilt ( / )");
+        divideCheckbox.setToolTipText("Ein Haken ermöglicht diese Rechenart in den Aufgaben");
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel8.setText("Klammertiefe:");
+        jLabel8.setToolTipText("Umso höher die Zahl, umso länger der Term ");
 
         bracketDephtDropdown.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         bracketDephtDropdown.setMaximumRowCount(10);
         bracketDephtDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
-        bracketDephtDropdown.setToolTipText("");
+        bracketDephtDropdown.setToolTipText("Umso höher die Zahl, umso länger der Term ");
         bracketDephtDropdown.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bracketDephtOrSubstitutionDropdownActionPerformed(evt);
@@ -201,10 +205,11 @@ public class GUICONFIG extends javax.swing.JFrame {
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel14.setText("Dezimalstellen:");
+        jLabel14.setToolTipText("Anzahl der Stellen nach dem Komma");
 
         decimalPlacesDropdown.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         decimalPlacesDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4", "5", "6", "7" }));
-        decimalPlacesDropdown.setToolTipText("");
+        decimalPlacesDropdown.setToolTipText("Anzahl der Stellen nach dem Komma");
         decimalPlacesDropdown.setPreferredSize(new java.awt.Dimension(40, 21));
         decimalPlacesDropdown.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -228,11 +233,8 @@ public class GUICONFIG extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(operanten)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(positiveCheckbox)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(fractionCheckbox)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                            .addComponent(positiveCheckbox))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 212, Short.MAX_VALUE)
                         .addComponent(jLabel2)
                         .addGap(146, 146, 146))
                     .addGroup(layout.createSequentialGroup()
@@ -323,9 +325,7 @@ public class GUICONFIG extends javax.swing.JFrame {
                             .addComponent(decimalPlacesDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(decimalError))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(positiveCheckbox)
-                            .addComponent(fractionCheckbox))
+                        .addComponent(positiveCheckbox)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(generateCancelButton)
@@ -373,7 +373,7 @@ public class GUICONFIG extends javax.swing.JFrame {
         int Digits = digitsDropdown.getSelectedIndex() + 1;
         int decimalPlaces = decimalPlacesDropdown.getSelectedIndex();
         boolean justPositive = positiveCheckbox.isSelected();
-        boolean withFraction = fractionCheckbox.isSelected();
+//        boolean withFraction = fractionCheckbox.isSelected();
         
         if(!aoAddition && !aoSubtraction && !aoMultiplication && !aoDivision){
             operationError.setText("Keine Rechenoperation(en) ausgewählt!");
@@ -389,7 +389,6 @@ public class GUICONFIG extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_generateButtonActionPerformed
 
-    
     
     
     
@@ -522,7 +521,6 @@ public class GUICONFIG extends javax.swing.JFrame {
     private javax.swing.JComboBox digitsDropdown1;
     private javax.swing.JLabel digitsError;
     private javax.swing.JCheckBox divideCheckbox;
-    private javax.swing.JCheckBox fractionCheckbox;
     private javax.swing.JButton generateButton;
     private javax.swing.JButton generateCancelButton;
     private javax.swing.JDesktopPane jDesktopPane1;

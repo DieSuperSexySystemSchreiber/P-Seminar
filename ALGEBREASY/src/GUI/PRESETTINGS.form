@@ -40,7 +40,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="partDropdown" pref="326" max="32767" attributes="0"/>
+                      <Component id="partDropdown" pref="316" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -91,13 +91,16 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="classDropdown">
       <Properties>
-        <Property name="maximumRowCount" type="int" value="2"/>
+        <Property name="maximumRowCount" type="int" value="4"/>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="2">
-            <StringItem index="0" value="5"/>
-            <StringItem index="1" value="6"/>
+          <StringArray count="4">
+            <StringItem index="0" value="1/2"/>
+            <StringItem index="1" value="3/4"/>
+            <StringItem index="2" value="5"/>
+            <StringItem index="3" value="6"/>
           </StringArray>
         </Property>
+        <Property name="selectedIndex" type="int" value="2"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="classDropdownActionPerformed"/>

@@ -111,12 +111,12 @@
             <Property name="text" type="java.lang.String" value="Einstellungen"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+            <MenuItem class="javax.swing.JMenuItem" name="buttonStandarts">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Standartwerte"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem3ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonStandartsActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -178,21 +178,28 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="631" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="buttonMathTrainingManuelStart" max="32767" attributes="0"/>
-                  <Component id="buttonMathTrainingPresettingsStart" alignment="0" max="32767" attributes="0"/>
-                  <Component id="buttonWorksheetStart" alignment="0" min="-2" pref="621" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="647" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="buttonMainMenu" min="-2" pref="382" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="panel01" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="307" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="buttonMainMenu" pref="382" max="32767" attributes="0"/>
+                  <Component id="panelImage" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace pref="3" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="panel01" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="307" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace pref="239" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="buttonMathTrainingManuelStart" max="32767" attributes="0"/>
+                          <Component id="buttonMathTrainingPresettingsStart" alignment="0" max="32767" attributes="0"/>
+                          <Component id="buttonWorksheetStart" alignment="0" min="-2" pref="621" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="644" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -201,16 +208,23 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="panel01" min="-2" max="-2" attributes="0"/>
-                  <Component id="buttonMainMenu" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="panel01" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="202" max="32767" attributes="0"/>
+                      <Component id="buttonMathTrainingPresettingsStart" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                      <Component id="buttonMathTrainingManuelStart" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                      <Component id="buttonWorksheetStart" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="322" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="buttonMainMenu" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="panelImage" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="202" max="32767" attributes="0"/>
-              <Component id="buttonMathTrainingPresettingsStart" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
-              <Component id="buttonMathTrainingManuelStart" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
-              <Component id="buttonWorksheetStart" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="322" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -413,5 +427,20 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonClearActionPerformedOrbuttonMainMenubuttonWorksheetActionPerformed"/>
       </Events>
     </Component>
+    <Container class="javax.swing.JPanel" name="panelImage">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="382" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+    </Container>
   </SubComponents>
 </Form>

@@ -276,7 +276,7 @@
           <Font name="Tahoma" size="12" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="maximale Stellen:"/>
-        <Property name="toolTipText" type="java.lang.String" value="max. Stellen der verwendeten Zahlen"/>
+        <Property name="toolTipText" type="java.lang.String" value="max. Stellen der verwendeten Zahlen inkl. Dezimalstellen"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
@@ -305,7 +305,7 @@
             <StringItem index="7" value="8"/>
           </StringArray>
         </Property>
-        <Property name="toolTipText" type="java.lang.String" value="max. Stellen der verwendeten Zahlen"/>
+        <Property name="toolTipText" type="java.lang.String" value="max. Stellen der verwendeten Zahlen inkl. Dezimalstellen"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="digitsDropdownOrDecimalDropdownActionPerformed"/>
@@ -317,6 +317,7 @@
           <Font name="Tahoma" size="12" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Plus ( + )"/>
+        <Property name="toolTipText" type="java.lang.String" value="Ein Haken erm&#xf6;glicht diese Rechenart in den Aufgaben"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="positiveCheckbox">
@@ -333,6 +334,7 @@
           <Font name="Tahoma" size="12" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Minus ( - )"/>
+        <Property name="toolTipText" type="java.lang.String" value="Ein Haken erm&#xf6;glicht diese Rechenart in den Aufgaben"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="multiplyCheckbox">
@@ -341,6 +343,7 @@
           <Font name="Tahoma" size="12" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Mal ( * )"/>
+        <Property name="toolTipText" type="java.lang.String" value="Ein Haken erm&#xf6;glicht diese Rechenart in den Aufgaben"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="generateCancelButton">
@@ -361,6 +364,7 @@
           <Font name="Tahoma" size="12" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Geteilt ( / )"/>
+        <Property name="toolTipText" type="java.lang.String" value="Ein Haken erm&#xf6;glicht diese Rechenart in den Aufgaben"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
@@ -502,7 +506,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Aufgabenblatt - [Date]"/>
-        <Property name="toolTipText" type="java.lang.String" value="&#xdc;berschrift f&#xfc;r das Aufgabenblatt"/>
+        <Property name="toolTipText" type="java.lang.String" value="&#xdc;berschrift f&#xfc;r das Aufgabenblatt (Wird mit dem Klicken auf &quot;Abschlie&#xdf;en&quot; &#xfc;bernommen)"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel15">

@@ -6,6 +6,10 @@
 package GUI;
 
 import java.awt.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import static java.lang.Math.pow;
 import javax.swing.JOptionPane;
 import java.util.*;
@@ -153,7 +157,7 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel13.setText("maximale Stellen:");
-        jLabel13.setToolTipText("max. Stellen der verwendeten Zahlen");
+        jLabel13.setToolTipText("max. Stellen der verwendeten Zahlen inkl. Dezimalstellen");
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setText("Rechenoperationen:");
@@ -161,7 +165,7 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
 
         digitsDropdown.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         digitsDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8" }));
-        digitsDropdown.setToolTipText("max. Stellen der verwendeten Zahlen");
+        digitsDropdown.setToolTipText("max. Stellen der verwendeten Zahlen inkl. Dezimalstellen");
         digitsDropdown.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 digitsDropdownOrDecimalDropdownActionPerformed(evt);
@@ -170,15 +174,18 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
 
         addCheckbox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         addCheckbox.setText("Plus ( + )");
+        addCheckbox.setToolTipText("Ein Haken ermöglicht diese Rechenart in den Aufgaben");
 
         positiveCheckbox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         positiveCheckbox.setText("nur positive Zahlen");
 
         subtractCheckbox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         subtractCheckbox.setText("Minus ( - )");
+        subtractCheckbox.setToolTipText("Ein Haken ermöglicht diese Rechenart in den Aufgaben");
 
         multiplyCheckbox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         multiplyCheckbox.setText("Mal ( * )");
+        multiplyCheckbox.setToolTipText("Ein Haken ermöglicht diese Rechenart in den Aufgaben");
 
         generateCancelButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         generateCancelButton.setText("Abbrechen");
@@ -191,6 +198,7 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
 
         divideCheckbox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         divideCheckbox.setText("Geteilt ( / )");
+        divideCheckbox.setToolTipText("Ein Haken ermöglicht diese Rechenart in den Aufgaben");
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel8.setText("Klammertiefe:");
@@ -250,7 +258,7 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
         headline.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         headline.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         headline.setText("Aufgabenblatt - [Date]");
-        headline.setToolTipText("Überschrift für das Aufgabenblatt");
+        headline.setToolTipText("Überschrift für das Aufgabenblatt (Wird mit dem Klicken auf \"Abschließen\" übernommen)");
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel15.setText("Dezimalstellen:");
@@ -504,6 +512,97 @@ public class GUISETTINGSPDF extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_digitsDropdownOrDecimalDropdownActionPerformed
 
+    
+    public void getParas()
+    {
+        File configFile = new File("config.properties");
+        
+        try {
+            FileReader reader = new FileReader(configFile);
+            Properties props = new Properties();
+            props.load(reader);
+            
+            System.out.println(props.getProperty("aoAddition"));
+            
+            if(Boolean.parseBoolean(props.getProperty("aoAddition")) == true)
+            {
+                aoAddition = true;
+                addCheckbox.setSelected(true);
+                System.out.println("Checkbox selected");
+            }
+            else
+            {
+                aoAddition = false;
+                addCheckbox.setSelected(false);
+                System.out.println("Checkbox deselected");
+            }
+            
+            if(Boolean.parseBoolean(props.getProperty("aoSubtraction")) == true)
+            {
+                aoSubtraction = true;
+                subtractCheckbox.setSelected(true);
+            }
+            else
+            {
+                aoSubtraction = false;
+                multiplyCheckbox.setSelected(false);
+            }
+            
+            if(Boolean.parseBoolean(props.getProperty("aoMultiplication")) == true)
+            {
+                aoMultiplication = true;
+                multiplyCheckbox.setSelected(true);
+            }
+            else
+            {
+                aoMultiplication = false;
+                multiplyCheckbox.setSelected(false);
+            }
+            
+            if(Boolean.parseBoolean(props.getProperty("aoDivision")) == true)
+            {
+                aoDivision = true;
+                divideCheckbox.setSelected(true);
+            }
+            else
+            {
+                aoDivision = false;
+                divideCheckbox.setSelected(false);
+            }
+            
+            bracketDepht = Integer.parseInt(props.getProperty("bracketDepht"));
+            bracketDephtDropdown.setSelectedIndex(Integer.parseInt(props.getProperty("bracketDepht")) - 1);
+            
+            Substitutions = Integer.parseInt(props.getProperty("Substitutions"));
+            substitutionDropdown.setSelectedIndex(Integer.parseInt(props.getProperty("Substitutions")) - 1);
+            
+            Digits = Integer.parseInt(props.getProperty("Digits"));
+            digitsDropdown.setSelectedIndex(Integer.parseInt(props.getProperty("Digits")) - 1);
+            
+            decimalPlaces = Integer.parseInt(props.getProperty("decimalPlaces"));
+            decimalPlacesDropdown.setSelectedIndex(Integer.parseInt(props.getProperty("decimalPlaces")));
+            
+            if(Boolean.parseBoolean(props.getProperty("justPositive")) == true)
+            {
+                justPositive = true;
+                positiveCheckbox.setSelected(true);
+            }
+            else
+            {
+                justPositive = false;
+                positiveCheckbox.setSelected(false);
+            }
+            reader.close();
+        }
+        catch (FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(this, "File not found.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "Error while editing config.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
