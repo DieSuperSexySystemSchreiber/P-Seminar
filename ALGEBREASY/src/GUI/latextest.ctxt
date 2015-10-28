@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=
+comment0.target=latextest()
+comment0.text=\r\n\ Konstruktor\ f\u00C3\u00BCr\ Objekte\ der\ Klasse\ \r\n
+comment1.params=min\ max
+comment1.target=double\ getRand(int,\ int)
+comment1.text=\r\n\ Ein\ Beispiel\ einer\ Methode\ -\ ersetzen\ Sie\ diesen\ Kommentar\ mit\ Ihrem\ eigenen\r\n\ \r\n\ @param\ \ y\ \ \ \ ein\ Beispielparameter\ f\u00C3\u00BCr\ eine\ Methode\r\n\ @return\ \ \ \ \ \ \ \ die\ Summe\ aus\ x\ und\ y\r\n
+numComments=2

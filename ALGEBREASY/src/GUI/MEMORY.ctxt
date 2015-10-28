@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.params=
+comment0.target=MEMORY()
+comment1.params=
+comment1.target=java.lang.String\ readExercise()
+comment2.params=
+comment2.target=MEMORY\ returnNext()
+comment3.params=K
+comment3.target=void\ writeExercise(java.lang.String)
+comment4.params=N
+comment4.target=void\ setNext(MEMORY)
+comment5.params=S
+comment5.target=void\ writeSolution(double)
+comment6.params=
+comment6.target=double\ readSolution()
+numComments=7
