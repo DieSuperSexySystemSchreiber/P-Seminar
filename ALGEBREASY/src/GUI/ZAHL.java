@@ -1,4 +1,4 @@
-package GUI;
+package src.GUI;
 
 import java.util.ArrayList;
 public class ZAHL extends TERMELEMENT
@@ -17,7 +17,7 @@ public class ZAHL extends TERMELEMENT
         number=NAN;
     }
 
-    public void prÃ¤fix()
+    public void präfix()
     {
     }
 
@@ -34,7 +34,7 @@ public class ZAHL extends TERMELEMENT
         return dest;
     }
 
-    public int gibHÃ¶he() {
+    public int gibHöhe() {
         return -1;
     }
 
@@ -74,8 +74,8 @@ public class ZAHL extends TERMELEMENT
         }
     }
 
-    public  void rechterTermErsetzen(boolean aoAddition,boolean aoSubstraction,boolean aoMultiplication,boolean aoDivision,int bracketDepth,int substitutions,int digits, boolean oPositive,int erg){};
+    public  void rechterTermErsetzen(boolean aoAddition,boolean aoSubstraction,boolean aoMultiplication,boolean aoDivision,int bracketDepth,int substitutions,int digits, boolean oPositive,int erg, int decimalPlaces){};
 
-    public  void linkerTermErsetzen(boolean aoAddition,boolean aoSubstraction,boolean aoMultiplication,boolean aoDivision,int bracketDepth,int substitutions,int digits, boolean oPositive,int erg) {};
+    public  void linkerTermErsetzen(boolean aoAddition,boolean aoSubstraction,boolean aoMultiplication,boolean aoDivision,int bracketDepth,int substitutions,int digits, boolean oPositive,int erg, int decimalPlaces) {};
 
 }

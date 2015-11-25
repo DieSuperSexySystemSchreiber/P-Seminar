@@ -1,4 +1,4 @@
-package GUI;
+package src.GUI;
 
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;

@@ -1,4 +1,4 @@
-package GUI;
+package src.GUI;
 
 import java.util.Arrays;
 import java.util.ArrayList;
@@ -54,11 +54,11 @@ public class DATENKNOTEN extends TERMELEMENT
         rechterNaechster = newElement;
     }
 
-    public void prÃ¤fix()
+    public void präfix()
     {
         System.out.println(inhalt);
-        linkerNaechster.prÃ¤fix();
-        rechterNaechster.prÃ¤fix();
+        linkerNaechster.präfix();
+        rechterNaechster.präfix();
     }
 
     public int[] splitSubs(int sub) {
@@ -109,7 +109,12 @@ public class DATENKNOTEN extends TERMELEMENT
         return dividents[getRand(0,current)];
     }
 
-    public void rechterTermErsetzen(boolean aoAddition,boolean aoSubstraction,boolean aoMultiplication,boolean aoDivision,int bracketDepth,int substitutions,int digits, boolean oPositive,int erg) {
+    private int getDigitCount(int number) {
+        String s=String.valueOf(number);
+        return s.length();
+    }
+
+    public void rechterTermErsetzen(boolean aoAddition,boolean aoSubstraction,boolean aoMultiplication,boolean aoDivision,int bracketDepth,int substitutions,int digits, boolean oPositive,int erg, int decimalPlaces) {
         if (substitutions<1 || bracketDepth<1) {
             System.out.println(erg+" Ergebnis rechts");
             this.setzeRechterNaechster(new ZAHL(erg));
@@ -142,8 +147,8 @@ public class DATENKNOTEN extends TERMELEMENT
                 //this.setzeLinkerNaechster(new DATENKNOTEN("+".charAt(0)));
                 this.setzeRechterNaechster(new DATENKNOTEN("+"));
 
-                this.rechterNaechster.rechterTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,(bracketDepth-1)-1,newSubs[0],digits, oPositive,plus1);
-                this.rechterNaechster.linkerTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,bracketDepth-1,newSubs[1],digits,oPositive,plus2);
+                this.rechterNaechster.rechterTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,(bracketDepth-1)-1,newSubs[0],digits, oPositive,plus1,decimalPlaces);
+                this.rechterNaechster.linkerTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,bracketDepth-1,newSubs[1],digits,oPositive,plus2,decimalPlaces);
 
                 //return number1 + "+" + number2;
                 break;
@@ -166,54 +171,76 @@ public class DATENKNOTEN extends TERMELEMENT
                 min2 =(int)  min1 - (int)erg;
                 // int[] newSubs=splitSubs(this.substitutions-1);
                 this.setzeRechterNaechster(new DATENKNOTEN("-"));
-                this.rechterNaechster.rechterTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,(bracketDepth-1)-1,newSubs[0],digits, oPositive,min1);
-                this.rechterNaechster.linkerTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,bracketDepth-1,newSubs[1],digits,oPositive,min2);
+                this.rechterNaechster.rechterTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,(bracketDepth-1)-1,newSubs[0],digits, oPositive,min1,decimalPlaces);
+                this.rechterNaechster.linkerTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,bracketDepth-1,newSubs[1],digits,oPositive,min2,decimalPlaces);
 
                 //return number3 + "-" + number4;
                 break;
                 case "*":
-                int divident= getDivident(erg, oPositive);
+                int divident= getDivident(erg,oPositive);
                 int mul1 = divident;
-
                 if(mul1==0) {
                     mul1=1;
                 }
-                int mul2 =(int) erg / mul1;
+                int mul2 = erg / mul1;
+
+                int Fg= mul1>mul2 ? mul1 : mul2;
+                int Fk= mul1>mul2 ? mul2 : mul1;
+
+                /**int dMul1=getDigitCount(mul1);
+                int dMul2=getDigitCount(mul2);
+
+                int Fg= dMul1>dMul2 ? dMul1 : dMul2;
+                int Fk= dMul1>dMul2 ? dMul2 : dMul1;*/
+
+                int DecFg;
+                int DecFk;
+                int BoundLow=0;
+                int BoundHigh=decimalPlaces;
+                if (decimalPlaces!=0)
+                {
+                    if((getDigitCount(Fg)+ decimalPlaces-digits) >=0)
+                        BoundLow=getDigitCount(Fg)+ decimalPlaces-digits;
+                    if((digits-getDigitCount(Fk))<=decimalPlaces)
+                        BoundHigh=digits-getDigitCount(Fk);
+                }
+                DecFg=getRand(BoundLow, BoundHigh);
+                DecFk=decimalPlaces-DecFg;
+
+                int FolZeFg=decimalPlaces-DecFg;
+                int FolZeFk=decimalPlaces-DecFk;
+
+                Fg=Fg*(int)Math.pow(10,FolZeFg);
+                Fk=Fk*(int)Math.pow(10,FolZeFk);
                 //int[] newSubs=splitSubs(this.substitutions-1);
                 this.setzeRechterNaechster(new DATENKNOTEN("*"));
-                this.rechterNaechster.rechterTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,(bracketDepth-1)-1,newSubs[0],digits, oPositive,mul1);
-                this.rechterNaechster.linkerTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,bracketDepth-1,newSubs[1],digits,oPositive,mul2);
-
+                this.rechterNaechster.rechterTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,(bracketDepth-1)-1,newSubs[1],digits,oPositive,Fg,decimalPlaces);
+                this.rechterNaechster.linkerTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,bracketDepth-1,newSubs[0],digits,oPositive,Fk,decimalPlaces);
                 //return number5 + "*" + number6;
                 break;
                 case "/":
-                //!!!!
+                int upperbound=((int)Math.pow(10,digits)/Math.abs(erg));
+                int div1;
+                int div2;
 
-                int div1=1;
-                int div2=1;
-                if(erg<1) { 
-                    div1=1;
-                    div2=1;
+                if (upperbound < (int)Math.pow(10,(digits-decimalPlaces))){
+                    div1=getRand(1,upperbound);
+
                 }
                 else {
-
-                    boolean notNull=true;
-                    while ( !notNull) {
-
-                        div2 =(int) getRand(((int)(-1*(Math.pow(10,digits)-1)))/(int)erg,((int)(Math.pow(10,digits)-1)/erg));
-                        if( div2==0) {
-                            notNull=true;
-                        }
-                        else {
-                            notNull=false;
-                        }
-                    }
-                    div1 = erg * div2;
+                    div1=getRand(1, (int)Math.pow(10,(digits-decimalPlaces)));
                 }
+                div2=erg*div1;
+
+                int decDivs=0;
+                int decDivd=decimalPlaces;
+
+                div2=div2*(int)Math.pow(10,(decimalPlaces-decDivd));
+                div1=div1*(int)Math.pow(10,(decimalPlaces-decDivs));
                 //int[] newSubs=splitSubs(this.substitutions-1);
                 this.setzeRechterNaechster(new DATENKNOTEN("/"));
-                this.rechterNaechster.rechterTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,(bracketDepth-1)-1,newSubs[0],digits, oPositive,(int)div1);
-                this.rechterNaechster.linkerTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,bracketDepth-1,newSubs[1],digits,oPositive,(int)div2);
+                this.rechterNaechster.rechterTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,(bracketDepth-1)-1,newSubs[0],digits, oPositive,(int)div2,decimalPlaces);
+                this.rechterNaechster.linkerTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,bracketDepth-1,newSubs[1],digits,oPositive,(int)div1,decimalPlaces);
 
                 //return number7 + "/" + number8;
                 break;
@@ -221,7 +248,7 @@ public class DATENKNOTEN extends TERMELEMENT
         }
     }
 
-    public void linkerTermErsetzen(boolean aoAddition,boolean aoSubstraction,boolean aoMultiplication,boolean aoDivision,int bracketDepth,int substitutions,int digits, boolean oPositive,int erg) {
+    public void linkerTermErsetzen(boolean aoAddition,boolean aoSubstraction,boolean aoMultiplication,boolean aoDivision,int bracketDepth,int substitutions,int digits, boolean oPositive,int erg,int decimalPlaces) {
         if (substitutions<1 || bracketDepth<1) {
             System.out.println(erg+" Ergebnis links");
             this.setzeLinkerNaechster(new ZAHL(erg));
@@ -251,8 +278,8 @@ public class DATENKNOTEN extends TERMELEMENT
                 //this.setzeLinkerNaechster(new DATENKNOTEN("+".charAt(0)));
                 this.setzeLinkerNaechster(new DATENKNOTEN("+"));
 
-                this.linkerNaechster.rechterTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,(bracketDepth-1)-1,newSubs[0],digits,oPositive,plus1);
-                this.linkerNaechster.linkerTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,bracketDepth-1,newSubs[1],digits,oPositive,plus2);
+                this.linkerNaechster.rechterTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,(bracketDepth-1)-1,newSubs[0],digits,oPositive,plus1,decimalPlaces);
+                this.linkerNaechster.linkerTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,bracketDepth-1,newSubs[1],digits,oPositive,plus2,decimalPlaces);
 
                 //return number1 + "+" + number2;
                 break;
@@ -274,58 +301,78 @@ public class DATENKNOTEN extends TERMELEMENT
                 min2 =(int)  min1 - (int)erg;
                 //int[] newSubs=splitSubs(this.substitutions-1);
                 this.setzeLinkerNaechster(new DATENKNOTEN("-"));
-                this.linkerNaechster.rechterTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,(bracketDepth-1)-1,newSubs[0],digits,oPositive,min1);
-                this.linkerNaechster.linkerTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,bracketDepth-1,newSubs[1],digits,oPositive,min2);
+                this.linkerNaechster.rechterTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,(bracketDepth-1)-1,newSubs[0],digits,oPositive,min1,decimalPlaces);
+                this.linkerNaechster.linkerTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,bracketDepth-1,newSubs[1],digits,oPositive,min2,decimalPlaces);
 
                 //return number3 + "-" + number4;
                 break;
                 case "*":
-                int divident= getDivident(erg, oPositive);
+                int divident= getDivident(erg,oPositive);
                 int mul1 = divident;
-
                 if(mul1==0) {
                     mul1=1;
                 }
-                int mul2 =(int) erg / mul1;
+                int mul2 = erg / mul1;
 
+                int Fg= mul1>mul2 ? mul1 : mul2;
+                int Fk= mul1>mul2 ? mul2 : mul1;
+
+                /**int dMul1=getDigitCount(mul1);
+                int dMul2=getDigitCount(mul2);
+
+                int Fg= dMul1>dMul2 ? dMul1 : dMul2;
+                int Fk= dMul1>dMul2 ? dMul2 : dMul1;*/
+
+                int DecFg;
+                int DecFk;
+                int BoundLow=0;
+                int BoundHigh=decimalPlaces;
+                if (decimalPlaces!=0)
+                {
+                    if((getDigitCount(Fg)+ decimalPlaces-digits) >=0)
+                        BoundLow=getDigitCount(Fg)+ decimalPlaces-digits;
+                    if((digits-getDigitCount(Fk))<=decimalPlaces)
+                        BoundHigh=digits-getDigitCount(Fk);
+                }
+                DecFg=getRand(BoundLow, BoundHigh);
+                DecFk=decimalPlaces-DecFg;
+
+                int FolZeFg=decimalPlaces-DecFg;
+                int FolZeFk=decimalPlaces-DecFk;
+
+                Fg=Fg*(int)Math.pow(10,FolZeFg);
+                Fk=Fk*(int)Math.pow(10,FolZeFk);
                 //int[] newSubs=splitSubs(this.substitutions-1);
-
                 this.setzeLinkerNaechster(new DATENKNOTEN("*"));
-
-                this.linkerNaechster.rechterTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,(bracketDepth-1)-1,newSubs[0],digits,oPositive,mul1);
-                this.linkerNaechster.linkerTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,bracketDepth-1,newSubs[1],digits,oPositive,mul2);
-
+                this.linkerNaechster.rechterTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,(bracketDepth-1)-1,newSubs[1],digits,oPositive,Fg,decimalPlaces);
+                this.linkerNaechster.linkerTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,bracketDepth-1,newSubs[0],digits,oPositive,Fk,decimalPlaces);
                 //return number5 + "*" + number6;
                 break;
                 case "/":
+                int upperbound=(int)Math.pow(10,digits)/Math.abs(erg);
+                int div1;
+                int div2;
 
-                int div1=1;
-                int div2=1;
-                if(erg<1) { 
-                    div1=1;
-                    div2=1;
+                if (upperbound < (int)Math.pow(10,(digits-decimalPlaces))){
+                    div1=getRand(1,(int)upperbound);
+
                 }
                 else {
-
-                    boolean notNull=true;
-                    while ( !notNull) {
-
-                        div2 =(int) getRand(((int)(-1*(Math.pow(10,digits)-1)))/(int)erg,((int)(Math.pow(10,digits)-1)/erg));
-                        if( div2==0) {
-                            notNull=true;
-                        }
-                        else {
-                            notNull=false;
-                        }
-                    }
-                    div1 = erg * div2;
+                    div1=getRand(1, (int)Math.pow(10,(digits-decimalPlaces)));
                 }
+                div2=erg*div1;
+
+                int decDivs=0;
+                int decDivd=decimalPlaces;
+
+                div2=div2*(int)Math.pow(10,(decimalPlaces-decDivd));
+                div1=div1*(int)Math.pow(10,(decimalPlaces-decDivs));
                 //int[] newSubs=splitSubs(this.substitutions-1);
 
                 this.setzeLinkerNaechster(new DATENKNOTEN("/"));
 
-                this.linkerNaechster.rechterTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,(bracketDepth-1)-1,newSubs[0],digits,oPositive,(int)div1);
-                this.linkerNaechster.linkerTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,bracketDepth-1,newSubs[1],digits,oPositive,(int)div2);
+                this.linkerNaechster.rechterTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,(bracketDepth-1)-1,newSubs[0],digits,oPositive,(int)div2,decimalPlaces);
+                this.linkerNaechster.linkerTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,bracketDepth-1,newSubs[1],digits,oPositive,(int)div1,decimalPlaces);
 
                 //return number7 + "/" + number8;
                 break;
@@ -333,8 +380,8 @@ public class DATENKNOTEN extends TERMELEMENT
         }
     }
 
-    public int gibHÃ¶he() {
-        return 1+ Math.max(linkerNaechster.gibHÃ¶he(),rechterNaechster.gibHÃ¶he());
+    public int gibHöhe() {
+        return 1+ Math.max(linkerNaechster.gibHöhe(),rechterNaechster.gibHöhe());
     }
 
     public int gibAnzahl() {
@@ -343,7 +390,7 @@ public class DATENKNOTEN extends TERMELEMENT
 
     public boolean isAVL()
     {
-        if(linkerNaechster.gibHÃ¶he()-rechterNaechster.gibHÃ¶he()<=1|linkerNaechster.gibHÃ¶he()-rechterNaechster.gibHÃ¶he()>=-1)
+        if(linkerNaechster.gibHöhe()-rechterNaechster.gibHöhe()<=1|linkerNaechster.gibHöhe()-rechterNaechster.gibHöhe()>=-1)
         {
             return linkerNaechster.isAVL() &&rechterNaechster.isAVL();
 

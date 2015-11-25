@@ -1,5 +1,4 @@
-package GUI;
-
+package src.GUI;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -86,12 +85,12 @@ public class TERM
     }
 
     /**
-     * method prÃ¤fix
+     * method präfix
      *
      */
-    public void prÃ¤fix()
+    public void präfix()
     {
-        wurzel.prÃ¤fix();
+        wurzel.präfix();
     }
 
     /**
@@ -127,10 +126,10 @@ public class TERM
      *
      * @return height of the binary tree
      */
-    public int gibHÃ¶he()
+    public int gibHöhe()
     {
 
-        return wurzel.gibHÃ¶he();
+        return wurzel.gibHöhe();
     }
 
     /**
@@ -174,6 +173,11 @@ public class TERM
         }
         System.out.println(current);
         return dividents[getRand(0,current)];
+    }
+
+    private int getDigitCount(int number) {
+        String s=String.valueOf(number);
+        return s.length();
     }
     /**
      * method createSub
@@ -222,8 +226,8 @@ public class TERM
             plus2 =(int) erg-plus1;
             //System.out.println(plus1+" , "+plus2);
             this.wurzelSetzen(new DATENKNOTEN("+"));
-            this.wurzel.rechterTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,(bracketDepth-1)-1,newSubs[1],digits,oPositive,plus1);
-            this.wurzel.linkerTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,bracketDepth-1,newSubs[0],digits,oPositive,plus2);
+            this.wurzel.rechterTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,(bracketDepth-1)-1,newSubs[1],digits,oPositive,plus1, decimalPlaces );
+            this.wurzel.linkerTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,bracketDepth-1,newSubs[0],digits,oPositive,plus2, decimalPlaces);
 
             //return number1 + "+" + number2;
             break;
@@ -248,57 +252,79 @@ public class TERM
             System.out.println(newSubs[0]+"subs0");
             System.out.println(min1+" , "+min2);
             this.wurzelSetzen(new DATENKNOTEN("-"));
-            this.wurzel.rechterTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,(bracketDepth-1)-1,newSubs[1],digits,oPositive,min1);
-            this.wurzel.linkerTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,bracketDepth-1,newSubs[0],digits,oPositive,min2);
+            this.wurzel.rechterTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,(bracketDepth-1)-1,newSubs[1],digits,oPositive,min1,decimalPlaces);
+            this.wurzel.linkerTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,bracketDepth-1,newSubs[0],digits,oPositive,min2,decimalPlaces);
 
             //return number3 + "-" + number4;
             break;
             case "*":
-
             int divident= getDivident(erg,oPositive);
             int mul1 = divident;
             if(mul1==0) {
                 mul1=1;
             }
-            int mul2 =(int) erg / mul1;
+            int mul2 = erg / mul1;
 
+            int Fg= mul1>mul2 ? mul1 : mul2;
+            int Fk= mul1>mul2 ? mul2 : mul1;
+
+            /**int dMul1=getDigitCount(mul1);
+            int dMul2=getDigitCount(mul2);
+
+            int Fg= dMul1>dMul2 ? dMul1 : dMul2;
+            int Fk= dMul1>dMul2 ? dMul2 : dMul1; */
+
+            int DecFg;
+            int DecFk;
+            int BoundLow=0;
+            int BoundHigh=decimalPlaces;
+            if (decimalPlaces!=0)
+            {
+                if((getDigitCount(Fg)+ decimalPlaces-digits) >=0)
+                    BoundLow=getDigitCount(Fg)+ decimalPlaces-digits;
+                if((digits-getDigitCount(Fk))<=decimalPlaces)
+                    BoundHigh=digits-getDigitCount(Fk);
+            }
+            DecFg=getRand(BoundLow, BoundHigh);
+            DecFk=decimalPlaces-DecFg;
+
+            int FolZeFg=decimalPlaces-DecFg;
+            int FolZeFk=decimalPlaces-DecFk;
+
+            Fg=Fg*(int)Math.pow(10,FolZeFg);
+            Fk=Fk*(int)Math.pow(10,FolZeFk);
             //int[] newSubs=splitSubs(this.substitutions-1);
             this.wurzelSetzen(new DATENKNOTEN("*"));
-            this.wurzel.rechterTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,(bracketDepth-1)-1,newSubs[1],digits,oPositive,mul1);
-            this.wurzel.linkerTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,bracketDepth-1,newSubs[0],digits,oPositive,mul2);
+            this.wurzel.rechterTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,(bracketDepth-1)-1,newSubs[1],digits,oPositive,Fg, decimalPlaces);
+            this.wurzel.linkerTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,bracketDepth-1,newSubs[0],digits,oPositive,Fk,decimalPlaces);
 
             //return number5 + "*" + number6;
             break;
             case "/":
-            double div1=1;
-            double div2=1;
+            int upperbound=(int)Math.pow(10,digits)/Math.abs(erg);
+            int div1;
+            int div2;
 
-            if(erg<1) { 
-                div1=1;
-                div2=1;
+            if (upperbound < (int)Math.pow(10,(digits-decimalPlaces))){
+                div1=getRand(1,(int)upperbound);
+
             }
             else {
-
-                boolean notNull=true;
-                while ( !notNull) {
-
-                    div2 =(int) getRand(((int)(-1*(Math.pow(10,digits)-1)))/(int)erg,((int)(Math.pow(10,digits)-1)/erg));
-                    if( div2==0) {
-                        notNull=true;
-                    }
-                    else {
-                        notNull=false;
-                    }
-                }
-                div1 = erg * div2;
+                div1=getRand(1, (int)Math.pow(10,(digits-decimalPlaces)));
             }
+            div2=erg*div1;
 
+            int decDivs=0;
+            int decDivd=decimalPlaces;
+
+            div2=div2*(int)Math.pow(10,(decimalPlaces-decDivd));
+            div1=div1*(int)Math.pow(10,(decimalPlaces-decDivs));
             //int[] newSubs=splitSubs(this.substitutions-1);
 
             this.wurzelSetzen(new DATENKNOTEN("/"));
 
-            this.wurzel.rechterTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,(bracketDepth-1)-1,newSubs[1],digits,oPositive,(int)div1);
-            this.wurzel.linkerTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,bracketDepth-1,newSubs[0],digits,oPositive,(int)div2);
+            this.wurzel.rechterTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,(bracketDepth-1)-1,newSubs[1],digits,oPositive,(int)div2,decimalPlaces);
+            this.wurzel.linkerTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,bracketDepth-1,newSubs[0],digits,oPositive,(int)div1,decimalPlaces);
             break;
             //return number7 + "/" + number8;
         }
@@ -381,7 +407,7 @@ public class TERM
             return  wurzel.infix();
         }
         //System.out.println(result+"="+expression);
-        
+
     }
 
     public void parseExpressionToLatex(String exp) {
@@ -422,10 +448,11 @@ public class TERM
     }
 
     public double getSolution() {
-        
+
         double fErg=this.result/Math.pow(10,this.decimalPlaces);
         return fErg;
     }
+
     /**
      * method ergebnisErzeugen
      *
