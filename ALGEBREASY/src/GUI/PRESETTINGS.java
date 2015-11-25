@@ -60,7 +60,7 @@ public class PRESETTINGS extends javax.swing.JFrame {
         setType(java.awt.Window.Type.POPUP);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("Voreinstellungen");
+        jLabel1.setText("Lehrplanwahl");
 
         jLabel2.setText("Jahrgangsstufe:");
 
