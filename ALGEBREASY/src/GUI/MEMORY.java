@@ -1,4 +1,4 @@
-package src.GUI;
+package GUI;
 
 
 public class MEMORY

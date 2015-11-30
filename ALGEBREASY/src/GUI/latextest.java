@@ -1,5 +1,3 @@
-package src.GUI;
-
 import java.util.Random;
 import java.text.DecimalFormat;
 /**

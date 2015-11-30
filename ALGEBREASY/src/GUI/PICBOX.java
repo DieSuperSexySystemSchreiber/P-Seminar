@@ -1,4 +1,4 @@
-package src.GUI;
+package GUI;
 
 import java.awt.Image;
 import java.awt.Graphics;

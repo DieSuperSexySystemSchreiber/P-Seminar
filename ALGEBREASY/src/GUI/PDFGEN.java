@@ -1,4 +1,4 @@
-package src.GUI;
+package GUI;
 
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Document;

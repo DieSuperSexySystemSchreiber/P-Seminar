@@ -1,12 +1,12 @@
-package src.GUI;
+package GUI;
 
 import java.util.ArrayList;
 public abstract class TERMELEMENT
 {
-    public abstract void pr�fix();
+    public abstract void präfix();
 
-    public abstract int gibH�he();
-    //public abstract TERMELEMENT sortiertEinfügen(OPERATOR e);
+    public abstract int gibHöhe();
+    //public abstract TERMELEMENT sortiertEinfÃ¼gen(OPERATOR e);
 
     public abstract int gibAnzahl();
 

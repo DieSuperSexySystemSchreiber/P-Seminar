@@ -1,4 +1,4 @@
-package src.GUI;
+package GUI;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -85,12 +85,12 @@ public class TERM
     }
 
     /**
-     * method pr�fix
+     * method präfix
      *
      */
-    public void pr�fix()
+    public void präfix()
     {
-        wurzel.pr�fix();
+        wurzel.präfix();
     }
 
     /**
@@ -122,14 +122,14 @@ public class TERM
     }
 
     /**
-     * method gibHöhe
+     * method gibHÃ¶he
      *
      * @return height of the binary tree
      */
-    public int gibH�he()
+    public int gibHöhe()
     {
 
-        return wurzel.gibH�he();
+        return wurzel.gibHöhe();
     }
 
     /**
@@ -194,9 +194,9 @@ public class TERM
      */
     /*
      * 
-    public void sortiertEinfügen(OPERATOR e) {
+    public void sortiertEinfÃ¼gen(OPERATOR e) {
 
-    wurzel.sortiertEinfügen(e);
+    wurzel.sortiertEinfÃ¼gen(e);
     }
      */
 
@@ -459,7 +459,7 @@ public class TERM
      * @param stellenZahl Ein Parameter
      * @param nurPositiv Ein Parameter
      * @param mitBruechen Ein Parameter
-     * @return Der Rückgabewert
+     * @return Der RÃ¼ckgabewert
      */
     public int ergebnisErzeugen(int stellenZahl,boolean nurPositiv,boolean mitBruechen) {
         if( nurPositiv ) {

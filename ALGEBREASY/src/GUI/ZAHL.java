@@ -1,4 +1,4 @@
-package src.GUI;
+package GUI;
 
 import java.util.ArrayList;
 public class ZAHL extends TERMELEMENT
@@ -17,7 +17,7 @@ public class ZAHL extends TERMELEMENT
         number=NAN;
     }
 
-    public void pr�fix()
+    public void präfix()
     {
     }
 
@@ -34,11 +34,11 @@ public class ZAHL extends TERMELEMENT
         return dest;
     }
 
-    public int gibH�he() {
+    public int gibHöhe() {
         return -1;
     }
 
-    //public TERMELEMENT sortiertEinfügen(char e) 
+    //public TERMELEMENT sortiertEinfÃ¼gen(char e) 
     //{
     //   DATENKNOTEN dk=new DATENKNOTEN(e);
     //    

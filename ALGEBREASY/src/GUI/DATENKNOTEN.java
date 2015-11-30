@@ -1,4 +1,4 @@
-package src.GUI;
+package GUI;
 
 import java.util.Arrays;
 import java.util.ArrayList;
@@ -54,11 +54,11 @@ public class DATENKNOTEN extends TERMELEMENT
         rechterNaechster = newElement;
     }
 
-    public void präfix()
+    public void prÃ¤fix()
     {
         System.out.println(inhalt);
-        linkerNaechster.präfix();
-        rechterNaechster.präfix();
+        linkerNaechster.prÃ¤fix();
+        rechterNaechster.prÃ¤fix();
     }
 
     public int[] splitSubs(int sub) {
@@ -380,8 +380,8 @@ public class DATENKNOTEN extends TERMELEMENT
         }
     }
 
-    public int gibHöhe() {
-        return 1+ Math.max(linkerNaechster.gibHöhe(),rechterNaechster.gibHöhe());
+    public int gibHÃ¶he() {
+        return 1+ Math.max(linkerNaechster.gibHÃ¶he(),rechterNaechster.gibHÃ¶he());
     }
 
     public int gibAnzahl() {
@@ -390,7 +390,7 @@ public class DATENKNOTEN extends TERMELEMENT
 
     public boolean isAVL()
     {
-        if(linkerNaechster.gibHöhe()-rechterNaechster.gibHöhe()<=1|linkerNaechster.gibHöhe()-rechterNaechster.gibHöhe()>=-1)
+        if(linkerNaechster.gibHÃ¶he()-rechterNaechster.gibHÃ¶he()<=1|linkerNaechster.gibHÃ¶he()-rechterNaechster.gibHÃ¶he()>=-1)
         {
             return linkerNaechster.isAVL() &&rechterNaechster.isAVL();
 
