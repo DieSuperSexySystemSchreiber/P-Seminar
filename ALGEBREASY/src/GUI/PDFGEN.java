@@ -9,6 +9,7 @@ import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.List;
 import com.itextpdf.text.ListItem;
+import com.itextpdf.text.Image;
 
 import java.awt.Desktop;
 import java.util.Hashtable;
@@ -38,6 +39,8 @@ public class PDFGEN {
             First = new MEMORY();
             Current = First;
             GUISETTINGSPDF D = k;
+            //Image Img = Image.getInstance("Logo");
+            //Doc.add(Img);
             for (int i = 1; i <= AmountExer; i++)
             {
                 List = new List(List.ORDERED, List.ALPHABETICAL);
@@ -56,7 +59,7 @@ public class PDFGEN {
             }
             Doc.close();
             Desktop.getDesktop().open(F);
-            PDFLB(Headline, AmountExer, D);
+            PDFLB(AmountExer, D);
             Desktop.getDesktop().open(G);
         }  
         catch (Exception e)
@@ -65,7 +68,7 @@ public class PDFGEN {
         }
     }
 
-    private void PDFLB (String Headline, int AmountExer, GUISETTINGSPDF k)
+    private void PDFLB (int AmountExer, GUISETTINGSPDF k)
     {
         Document Doc = new Document();
         Rectangle Rec = new Rectangle(PageSize.A4);
@@ -75,7 +78,7 @@ public class PDFGEN {
             G = File.createTempFile("Blatt",".pdf");
             PdfWriter.getInstance(Doc, new FileOutputStream(G));
             Doc.open();
-            Paragraph Para = new Paragraph("Lösungsblatt zum" + Headline + " vom " + DATE.getDate(), FONTS.FontHeader());
+            Paragraph Para = new Paragraph("Lösungsblatt", FONTS.FontHeader());
             Para.setAlignment(Element.ALIGN_CENTER);
             Doc.add(Para);
             for (int i = 1; i <= AmountExer; i++)
