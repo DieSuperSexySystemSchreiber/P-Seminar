@@ -35,7 +35,7 @@ public class MAINGUI extends javax.swing.JFrame {
     PRESETTINGS preSettings;
     GUISTANDARTS standartSettings;
     int taskNum = 0;
-    double solution01;
+    String solution01;
     int mode = 0;
     JPictureBox logo;
     
@@ -223,7 +223,7 @@ public class MAINGUI extends javax.swing.JFrame {
         });
         textfieldSolution01.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textfieldSolution01ActionPerformed(evt);
+                buttonCheck01ActionPerformed(evt);
             }
         });
 
@@ -563,11 +563,11 @@ public class MAINGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_textfieldTask01ActionPerformed
 
     private void buttonSolution01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSolution01ActionPerformed
-        textfieldSolution01.setText("" + solution01);
+        textfieldSolution01.setText(solution01);
     }//GEN-LAST:event_buttonSolution01ActionPerformed
 
     private void buttonCheck01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCheck01ActionPerformed
-        if(solution01 == Double.parseDouble(textfieldSolution01.getText())){
+        if(Double.parseDouble(solution01) == Double.parseDouble(textfieldSolution01.getText())){
             textfieldSolution01.setForeground(Color.green);
         }
         else{
@@ -576,10 +576,11 @@ public class MAINGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonCheck01ActionPerformed
 
     private void textfieldSolution01FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textfieldSolution01FocusGained
-        textfieldSolution01.setBackground(Color.white);
+        textfieldSolution01.setForeground(Color.black);
     }//GEN-LAST:event_textfieldSolution01FocusGained
 
     private void buttonNewTaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNewTaskActionPerformed
+        textfieldSolution01.setForeground(Color.black);
         if(mode == 0){
             manuelSettings.generateTerm();
         }
@@ -587,10 +588,6 @@ public class MAINGUI extends javax.swing.JFrame {
             preSettings.generateTerm();
         }
     }//GEN-LAST:event_buttonNewTaskActionPerformed
-
-    private void textfieldSolution01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textfieldSolution01ActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_textfieldSolution01ActionPerformed
 
     private void buttonReadmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReadmeActionPerformed
         try{

@@ -105,13 +105,21 @@ public class DATENKNOTEN extends TERMELEMENT
                 }
             }
         }
-        System.out.println(current);
-        return dividents[getRand(0,current)];
+        if (current<1) {
+            return dividents[getRand(0,0)];
+        }
+        return dividents[getRand(0,current-1)];
     }
 
     private int getDigitCount(int number) {
         String s=String.valueOf(number);
-        return s.length();
+        if( number<0) {
+            return s.length()-1;
+        }
+        else {
+
+            return s.length();
+        }
     }
 
     public void rechterTermErsetzen(boolean aoAddition,boolean aoSubstraction,boolean aoMultiplication,boolean aoDivision,int bracketDepth,int substitutions,int digits, boolean oPositive,int erg, int decimalPlaces) {

@@ -48,7 +48,7 @@ public class PDFGEN {
                 {
                     TERM Term = new TERM(k.aoAddition,k.aoSubtraction,k.aoMultiplication,k.aoDivision,k.bracketDepht,k.Substitutions,k.Digits,k.decimalPlaces,k.justPositive);
                     Current.writeExercise(Term.infix() + "=");
-                    Current.writeSolution(Term.getSolution());
+                    Current.writeSolution(Double.parseDouble(Term.getSolution()));
                     List.add(new ListItem(Current.readExercise()));
                     Current.Next = new MEMORY();
                     Current = Current.Next;

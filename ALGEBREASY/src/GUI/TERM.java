@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.math.*;
 import java.text.DecimalFormat;
 import java.math.MathContext;
+import java.util.regex.*;
 
 import java.awt.Font;
 import java.awt.Graphics2D;
@@ -172,12 +173,21 @@ public class TERM
             }
         }
         System.out.println(current);
-        return dividents[getRand(0,current)];
+        if (current<1) {
+            return dividents[getRand(0,0)];
+        }
+        return dividents[getRand(0,current-1)];
     }
 
     private int getDigitCount(int number) {
         String s=String.valueOf(number);
-        return s.length();
+        if( number<0) {
+            return s.length()-1;
+        }
+        else {
+
+            return s.length();
+        }
     }
     /**
      * method createSub
@@ -447,10 +457,13 @@ public class TERM
         parseExpressionToLatex(infix());
     }
 
-    public double getSolution() {
-
-        double fErg=this.result/Math.pow(10,this.decimalPlaces);
-        return fErg;
+    public String getSolution() {
+        if (this.decimalPlaces==0) {
+            return String.valueOf(this.result);
+        }
+        
+        return String.valueOf(this.result/Math.pow(10,this.decimalPlaces));
+        
     }
 
     /**
@@ -471,4 +484,28 @@ public class TERM
         }
     }
 
+    public static void test(int anzahl,boolean aoAddition,boolean aoSubstraction,boolean aoMultiplication, boolean aoDivision,int bracketDepth, int substitutions, int digits, int decimalPlaces, boolean oPositive) {
+        TERM[] terme=new TERM[anzahl];
+        for(int i=0;i<anzahl;i++) {
+            System.out.println("Term: "+i);
+            terme[i]=new TERM( aoAddition, aoSubstraction, aoMultiplication,aoDivision, bracketDepth,  substitutions,  digits,  decimalPlaces,  oPositive);
+        }
+        System.out.println("Erfolgreich");
+    }
+    public void entnuller(String term)
+    {
+        String t ="\\d\\.[1-9]*0+[^1-9]";
+        Pattern pattern = Pattern.compile(t);
+        Matcher matcher = pattern.matcher(term);
+        while(matcher.find())
+        {
+            String h = "0+[^1-9,\\.]";
+            Pattern p=Pattern.compile(h);
+            Matcher m=p.matcher(matcher.group());
+            m.find();
+            String f = term.substring(0,m.start())+m.group().substring(m.end()-1);
+            term = f;
+            matcher = pattern.matcher(term);
+        }
+    }
 }

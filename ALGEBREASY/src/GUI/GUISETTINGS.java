@@ -151,7 +151,8 @@ public class GUISETTINGS extends javax.swing.JFrame {
         jLabel7.setToolTipText("Ein Haken ermöglicht diese Rechenart in den Aufgaben");
 
         digitsDropdown.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        digitsDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8" }));
+        digitsDropdown.setMaximumRowCount(7);
+        digitsDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7" }));
         digitsDropdown.setToolTipText("max. Stellen der verwendeten Zahlen inkl. Dezimalzahlen");
         digitsDropdown.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -226,7 +227,8 @@ public class GUISETTINGS extends javax.swing.JFrame {
         jLabel14.setToolTipText("Anzahl der Stellen nach dem Komma");
 
         decimalPlacesDropdown.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        decimalPlacesDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4", "5", "6", "7" }));
+        decimalPlacesDropdown.setMaximumRowCount(7);
+        decimalPlacesDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4", "5", "6" }));
         decimalPlacesDropdown.setToolTipText("Anzahl der Stellen nach dem Komma");
         decimalPlacesDropdown.setPreferredSize(new java.awt.Dimension(40, 21));
         decimalPlacesDropdown.addActionListener(new java.awt.event.ActionListener() {
