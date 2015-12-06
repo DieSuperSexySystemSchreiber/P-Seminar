@@ -1,5 +1,5 @@
 /*
-Copyright (C) <2015>  <name of author>
+Copyright (C) 2015  Rieger Lukas, Steinberg Kilian
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -12,16 +12,16 @@ Copyright (C) <2015>  <name of author>
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    along with ALGEBREASY.  If not, see <http://www.gnu.org/licenses/>.
  */
 package src.GUI;
 
 import java.util.ArrayList;
 public abstract class TERMELEMENT
 {
-    public abstract void präfix();
+    public abstract void pr�fix();
 
-    public abstract int gibHöhe();
+    public abstract int gibH�he();
     //public abstract TERMELEMENT sortiertEinfÃ¼gen(OPERATOR e);
 
     public abstract int gibAnzahl();

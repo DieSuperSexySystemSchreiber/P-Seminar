@@ -1,5 +1,5 @@
 /*
-Copyright (C) <2015>  <name of author>
+Copyright (C) 2015  Rieger Lukas, Steinberg Kilian
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -70,11 +70,11 @@ public class DATENKNOTEN extends TERMELEMENT
         rechterNaechster = newElement;
     }
 
-    public void prÃ¤fix()
+    public void präfix()
     {
-        System.out.println(inhalt);
-        linkerNaechster.prÃ¤fix();
-        rechterNaechster.prÃ¤fix();
+        
+        linkerNaechster.präfix();
+        rechterNaechster.präfix();
     }
 
     public int[] splitSubs(int sub) {
@@ -87,7 +87,7 @@ public class DATENKNOTEN extends TERMELEMENT
 
     private int getRand(int min, int max) {
         Random rand = new Random();
-        System.out.println(min+" , "+max);
+       
         // nextInt is normally exclusive of the top value,
         // so add 1 to make it inclusive
         int randomNum = rand.nextInt((max - min) + 1) + min;
@@ -100,7 +100,7 @@ public class DATENKNOTEN extends TERMELEMENT
         if( number==0 ) {
             return 1;
         }
-        System.out.println(number+","+ oPos);
+        
         int[] dividents= new int[Math.abs(number)*2];
         int current=0;
 
@@ -140,7 +140,7 @@ public class DATENKNOTEN extends TERMELEMENT
 
     public void rechterTermErsetzen(boolean aoAddition,boolean aoSubstraction,boolean aoMultiplication,boolean aoDivision,int bracketDepth,int substitutions,int digits, boolean oPositive,int erg, int decimalPlaces) {
         if (substitutions<1 || bracketDepth<1) {
-            System.out.println(erg+" Ergebnis rechts");
+            
             this.setzeRechterNaechster(new ZAHL(erg));
         }
         else {
@@ -166,9 +166,9 @@ public class DATENKNOTEN extends TERMELEMENT
                 }
                 //!!!!!
                 plus2 =(int) erg-plus1;
-                System.out.println(plus1+" , "+plus2);
-                //System.out.println(" "+plus1+" "+plus2);
-                //this.setzeLinkerNaechster(new DATENKNOTEN("+".charAt(0)));
+                
+                
+                
                 this.setzeRechterNaechster(new DATENKNOTEN("+"));
 
                 this.rechterNaechster.rechterTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,(bracketDepth-1)-1,newSubs[0],digits, oPositive,plus1,decimalPlaces);
@@ -274,7 +274,7 @@ public class DATENKNOTEN extends TERMELEMENT
 
     public void linkerTermErsetzen(boolean aoAddition,boolean aoSubstraction,boolean aoMultiplication,boolean aoDivision,int bracketDepth,int substitutions,int digits, boolean oPositive,int erg,int decimalPlaces) {
         if (substitutions<1 || bracketDepth<1) {
-            System.out.println(erg+" Ergebnis links");
+            
             this.setzeLinkerNaechster(new ZAHL(erg));
         }
         else {
@@ -298,8 +298,8 @@ public class DATENKNOTEN extends TERMELEMENT
                     }
                 }
                 plus2 =(int) erg-plus1;
-                //System.out.println(plus1+" , "+plus2);
-                //this.setzeLinkerNaechster(new DATENKNOTEN("+".charAt(0)));
+                
+                
                 this.setzeLinkerNaechster(new DATENKNOTEN("+"));
 
                 this.linkerNaechster.rechterTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,(bracketDepth-1)-1,newSubs[0],digits,oPositive,plus1,decimalPlaces);
@@ -404,8 +404,8 @@ public class DATENKNOTEN extends TERMELEMENT
         }
     }
 
-    public int gibHÃ¶he() {
-        return 1+ Math.max(linkerNaechster.gibHÃ¶he(),rechterNaechster.gibHÃ¶he());
+    public int gibHöhe() {
+        return 1+ Math.max(linkerNaechster.gibHöhe(),rechterNaechster.gibHöhe());
     }
 
     public int gibAnzahl() {
@@ -414,7 +414,7 @@ public class DATENKNOTEN extends TERMELEMENT
 
     public boolean isAVL()
     {
-        if(linkerNaechster.gibHÃ¶he()-rechterNaechster.gibHÃ¶he()<=1|linkerNaechster.gibHÃ¶he()-rechterNaechster.gibHÃ¶he()>=-1)
+        if(linkerNaechster.gibHöhe()-rechterNaechster.gibHöhe()<=1|linkerNaechster.gibHöhe()-rechterNaechster.gibHöhe()>=-1)
         {
             return linkerNaechster.isAVL() &&rechterNaechster.isAVL();
 

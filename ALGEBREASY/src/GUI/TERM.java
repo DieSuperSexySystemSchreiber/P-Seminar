@@ -1,5 +1,5 @@
 /*
-Copyright (C) <2015>  <name of author>
+Copyright (C) 2015  Rieger Lukas, Steinberg Kilian
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -103,12 +103,12 @@ public class TERM
     }
 
     /**
-     * method prÃ¤fix
+     * method präfix
      *
      */
-    public void prÃ¤fix()
+    public void präfix()
     {
-        wurzel.prÃ¤fix();
+        wurzel.präfix();
     }
 
     /**
@@ -144,10 +144,10 @@ public class TERM
      *
      * @return height of the binary tree
      */
-    public int gibHÃ¶he()
+    public int gibHöhe()
     {
 
-        return wurzel.gibHÃ¶he();
+        return wurzel.gibHöhe();
     }
 
     /**
@@ -169,7 +169,7 @@ public class TERM
         if( number==0 ) {
             return 1;
         }
-        System.out.println(number+"+," +oPos);
+        
         int[] dividents= new int[Math.abs(number)*2];
         int current=0;
         if ( oPos) {
@@ -189,7 +189,7 @@ public class TERM
                 }
             }
         }
-        System.out.println(current);
+        
         if (current<1) {
             return dividents[getRand(0,0)];
         }
@@ -238,7 +238,7 @@ public class TERM
             int plus2=0;
             if (oPositive==true){
                 plus1=(int) getRand((int) 0, (int) erg);    
-                System.out.println(plus1);
+                
             }
             else {
                 if( erg>=0) {
@@ -251,7 +251,7 @@ public class TERM
                 }
             }
             plus2 =(int) erg-plus1;
-            //System.out.println(plus1+" , "+plus2);
+            
             this.wurzelSetzen(new DATENKNOTEN("+"));
             this.wurzel.rechterTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,(bracketDepth-1)-1,newSubs[1],digits,oPositive,plus1, decimalPlaces );
             this.wurzel.linkerTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,bracketDepth-1,newSubs[0],digits,oPositive,plus2, decimalPlaces);
@@ -275,9 +275,7 @@ public class TERM
             }
             min2 =(int)  min1 - (int)erg;
             //int[] newSubs=splitSubs(this.substitutions-1);
-            System.out.println(newSubs[1]+"subs1");
-            System.out.println(newSubs[0]+"subs0");
-            System.out.println(min1+" , "+min2);
+            
             this.wurzelSetzen(new DATENKNOTEN("-"));
             this.wurzel.rechterTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,(bracketDepth-1)-1,newSubs[1],digits,oPositive,min1,decimalPlaces);
             this.wurzel.linkerTermErsetzen(aoAddition,aoSubstraction,aoMultiplication,aoDivision,bracketDepth-1,newSubs[0],digits,oPositive,min2,decimalPlaces);
@@ -368,7 +366,7 @@ public class TERM
     private int getRand(int min, int max) {
 
         Random rand = new Random();
-        System.out.println(min+" , "+max);
+        
         // nextInt is normally exclusive of the top value,
         // so add 1 to make it inclusive
         int randomNum = rand.nextInt((max - min) + 1) + min;
@@ -409,7 +407,7 @@ public class TERM
             String fTerm= "";
             term=wurzel.collect(term);
             for(Object o:term) {
-                System.out.println(o.toString());
+                
                 if(o instanceof Integer ) {
 
                     int inst=(int) o;
@@ -425,15 +423,15 @@ public class TERM
                 //return "T";
             }
             double re=  this.result/ Math.pow(10,this.decimalPlaces);
-            //System.out.println(re+" = "+fTerm);
-            //System.out.println(wurzel.infix());
+            
+            
             return fTerm;
         }
         else {
-            System.out.println(wurzel.infix());
+            
             return  wurzel.infix();
         }
-        //System.out.println(result+"="+expression);
+        
 
     }
 
@@ -504,10 +502,10 @@ public class TERM
     public static void test(int anzahl,boolean aoAddition,boolean aoSubstraction,boolean aoMultiplication, boolean aoDivision,int bracketDepth, int substitutions, int digits, int decimalPlaces, boolean oPositive) {
         TERM[] terme=new TERM[anzahl];
         for(int i=0;i<anzahl;i++) {
-            System.out.println("Term: "+i);
+            
             terme[i]=new TERM( aoAddition, aoSubstraction, aoMultiplication,aoDivision, bracketDepth,  substitutions,  digits,  decimalPlaces,  oPositive);
         }
-        System.out.println("Erfolgreich");
+        
     }
     public void entnuller(String term)
     {

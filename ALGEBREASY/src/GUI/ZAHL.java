@@ -1,5 +1,5 @@
 /*
-Copyright (C) <2015>  <name of author>
+Copyright (C) 2015  Rieger Lukas, Steinberg Kilian
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ public class ZAHL extends TERMELEMENT
         number=NAN;
     }
 
-    public void prÃ¤fix()
+    public void präfix()
     {
     }
 
@@ -51,7 +51,7 @@ public class ZAHL extends TERMELEMENT
         return dest;
     }
 
-    public int gibHÃ¶he() {
+    public int gibHöhe() {
         return -1;
     }
 
